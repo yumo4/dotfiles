@@ -1,7 +1,8 @@
 # dotfiles
-- nvim
-- fish
-- alacritty
-- qtile
+## nvim
+## fish
+## alacritty
+## qtile
     - desktop
     - laptop
+## flameshot 
