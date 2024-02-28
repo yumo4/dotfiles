@@ -16,7 +16,7 @@ return {
                 -- kotlin
 				null_ls.builtins.formatting.ktlint,
                 -- rust
-				null_ls.builtins.formatting.rustfmt,
+				-- null_ls.builtins.formatting.rustfmt,
                 -- python
 				null_ls.builtins.formatting.black,
                 -- go
@@ -25,7 +25,7 @@ return {
                 -- DIAGNOSTICS
                 --
                 -- js
-				null_ls.builtins.diagnostics.eslint_d,
+				-- null_ls.builtins.diagnostics.eslint_d,
                 -- java, js, python, go
 				null_ls.builtins.diagnostics.semgrep,
                 -- kotlin
