@@ -21,8 +21,8 @@ keys = [
     Key([mod, "control"], "i", lazy.spawn("/home/max/JetBrains/rustrover"), desc="spawn Rustrover"),
     Key([mod, "control", "shift"], "i", lazy.spawn("/home/max/JetBrains/DataGrip"), desc="spawn Rustrover"),
     Key([mod], "c", lazy.spawn(terminal + " -e calcurse"), desc="spawn intellij"),
-    #Key([mod, "shift"], "s", lazy.spawn("flameshot gui"), desc="take screenshot"),
-    Key([mod, "shift"], "s", lazy.spawn("/home/max/scripts/screenshot.sh"), desc="take screenshot"),
+    Key([mod, "shift"], "s", lazy.spawn("flameshot gui"), desc="take screenshot"),
+    # Key([mod, "shift"], "s", lazy.spawn("/home/max/scripts/screenshot.sh"), desc="take screenshot"),
     Key([mod, "control"], "space", lazy.widget["keyboardlayout"].next_keyboard(), desc="switches to next keyboard layout"),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
