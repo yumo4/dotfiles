@@ -13,4 +13,4 @@ eos-welcome & disown
 
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & disown # start polkit agent from GNOME
 # Autostart
-# obsidian &
+obsidian &
