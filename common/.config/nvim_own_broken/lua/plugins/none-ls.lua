@@ -14,7 +14,7 @@ return {
                 -- c, c++, c#, java
 				null_ls.builtins.formatting.astyle,
                 -- kotlin
-				null_ls.builtins.formatting.ktlint,
+				-- null_ls.builtins.formatting.ktlint,
                 -- rust
 				-- null_ls.builtins.formatting.rustfmt,
                 -- python
@@ -29,7 +29,7 @@ return {
                 -- java, js, python, go
 				null_ls.builtins.diagnostics.semgrep,
                 -- kotlin
-				null_ls.builtins.diagnostics.ktlint,
+				-- null_ls.builtins.diagnostics.ktlint,
 
                 -- COMPLETION
                 --
