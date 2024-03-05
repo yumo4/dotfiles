@@ -18,12 +18,12 @@ keys = [
     Key([mod], "o", lazy.spawn("obsidian"), desc="spawn obsidian"),
     Key([mod], "i", lazy.spawn("JetBrains/idea"), desc="spawn intellij"),
     Key([mod, "shift"], "i", lazy.spawn("JetBrains/Webstorm"), desc="spawn Webstorm"),
-    Key([mod, "control"], "i", lazy.spawn("JetBrains/Rustrover"), desc="spawn Rustrover"),
-    Key([mod, "shift", "control"], "i", lazy.spawn("JetBrains/DataGrip"), desc="spawn DataGrip"),
+    # Key([mod, "control"], "i", lazy.spawn("JetBrains/Rustrover"), desc="spawn Rustrover"),
+    # Key([mod, "shift", "control"], "i", lazy.spawn("JetBrains/DataGrip"), desc="spawn DataGrip"),
     Key([mod], "c", lazy.spawn(terminal + " -e calcurse"), desc="spawn calcurse"),
-    #Key([mod, "shift"], "s", lazy.spawn("flameshot gui"), desc="take screenshot"),
-    Key([mod, "shift"], "s", lazy.spawn("/home/max/scripts/screenshot.sh"), desc="take screenshot"),
-    Key([mod], "p", lazy.spawn("/home/max/rofiscripts/screenSettings.sh"), desc="change screensettings"),
+    Key([mod, "shift"], "s", lazy.spawn("flameshot gui"), desc="take screenshot"),
+    # Key([mod, "shift"], "s", lazy.spawn("/home/max/scripts/screenshot.sh"), desc="take screenshot"),
+    Key([mod], "p", lazy.spawn("/home/max/git/dotfiles/rofiscripts/screenSettings.sh"), desc="change screensettings"),
     Key([mod, "control"], "space", lazy.widget["keyboardlayout"].next_keyboard(), desc="switches to next keyboard layout"),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
@@ -77,6 +77,7 @@ keys = [
     Key([], "XF86AudioRaiseVolume",lazy.spawn("amixer set Master 3%+")),
     Key([], "XF86AudioLowerVolume",lazy.spawn("amixer set Master 3%-")),
     Key([], "XF86AudioMute",lazy.spawn("amixer set Master toggle")),
+    # requires the user to be in the video group
     Key([],"XF86MonBrightnessUp",lazy.spawn("brillo -q -A 2")),
     Key([],"XF86MonBrightnessDown",lazy.spawn("brillo -q -U 2")),
 ]
