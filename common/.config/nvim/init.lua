@@ -218,12 +218,6 @@ require("lazy").setup({
 	--
 	-- Use `opts = {}` to force a plugin to be loaded.
 	--
-	--  This is equivalent to:
-	--    require('Comment').setup({})
-
-	-- "gc" to comment visual regions/lines
-	{ "numToStr/Comment.nvim", opts = {} },
-
 	-- Here is a more advanced example where we pass configuration
 	-- options to `gitsigns.nvim`. This is equivalent to the following lua:
 	--    require('gitsigns').setup({ ... })
@@ -247,6 +241,41 @@ require("lazy").setup({
 		"windwp/nvim-autopairs",
 		events = "InsertEnter",
 		opts = {},
+	},
+
+	{
+		-- Toggleterm
+		"akinsho/toggleterm.nvim",
+		version = "*",
+		-- config = true,
+		config = function()
+			require("toggleterm").setup()
+			-- LazyGit-Terminal
+			local Terminal = require("toggleterm.terminal").Terminal
+			local lazygit = Terminal:new({
+				cmd = "lazygit",
+				hidden = true,
+				direction = "float",
+			})
+			-- Terminal
+			local term = Terminal:new({
+				direction = "horizontal",
+				size = 10,
+				hidden = true,
+			})
+			-- Toggle LazyGit-Terminal
+			local function lazygit_toggle()
+				lazygit.dir = vim.fn.getcwd()
+				lazygit:toggle()
+			end
+			-- Toggle Terminal
+			local function terminal_toggle()
+				term.dir = vim.fn.getcwd()
+				term:toggle()
+			end
+			vim.keymap.set("n", "<leader>lg", lazygit_toggle, { noremap = true, silent = true })
+			vim.keymap.set("n", "<C-t>", terminal_toggle, { noremap = true, silent = true })
+		end,
 	},
 	{
 		-- Neotree
