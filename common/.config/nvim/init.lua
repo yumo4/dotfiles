@@ -242,7 +242,17 @@ require("lazy").setup({
 		events = "InsertEnter",
 		opts = {},
 	},
-
+	{
+		-- tmux
+		"christoomey/vim-tmux-navigator",
+		lazy = false,
+		config = function()
+			vim.keymap.set("n", "<C-h>", "<cmd> TmuxNavigateLeft<CR>", { silent = true })
+			vim.keymap.set("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>", { silent = true })
+			vim.keymap.set("n", "<C-k>", "<cmd> TmuxNavigateUp<CR>", { silent = true })
+			vim.keymap.set("n", "<C-l>", "<cmd> TmuxNavigateRight<CR>", { silent = true })
+		end,
+	},
 	{
 		-- Toggleterm
 		"akinsho/toggleterm.nvim",
@@ -590,6 +600,7 @@ require("lazy").setup({
 				gopls = {},
 				pyright = {},
 				rust_analyzer = {},
+				-- gdscript = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 				--
 				-- Some languages (like typescript) have entire language plugins that can be useful:
@@ -671,6 +682,7 @@ require("lazy").setup({
 				-- Conform can also run multiple formatters sequentially
 				python = { "isort", "black" },
 				go = { "gofumt" },
+				gdscript = { "gdtoolkit" },
 				--
 				-- You can use a sub-list to tell conform to run *until* a formatter
 				-- is found.
