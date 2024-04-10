@@ -227,12 +227,12 @@ require("lazy").setup({
 		"lewis6991/gitsigns.nvim",
 		opts = {
 			signs = {
-				add = { text = "│" },
-				change = { text = "│" },
-				delete = { text = "_" },
-				topdelete = { text = "‾" },
-				changedelete = { text = "~" },
-				untracked = { text = "┆" },
+				add = { text = "▎" },
+				change = { text = "▎" },
+				delete = { text = "" },
+				topdelete = { text = "" },
+				changedelete = { text = "▎" },
+				untracked = { text = "▎" },
 			},
 		},
 	},
@@ -608,6 +608,8 @@ require("lazy").setup({
 				--
 				-- But for many setups, the LSP (`tsserver`) will work just fine
 				tsserver = {},
+				ltex = {},
+				texlab = {},
 				--
 
 				lua_ls = {

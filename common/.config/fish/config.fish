@@ -6,6 +6,7 @@ alias ll "ls -l"
 alias ls "lsd"
 alias lst "tree -C"
 alias ta "tmux attach"
+alias FHWS "fortivpn connect FHWS -u k61965 -p -s"
 
 set -g fish_greeting ""
 # pomodoro timer
