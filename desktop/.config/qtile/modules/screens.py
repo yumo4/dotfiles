@@ -33,7 +33,7 @@ screens = [
                 # wifi
                 widget.TextBox(
                     text=" ",
-                    fontsize=15,
+                    fontsize=28,
                     foreground="#ebdbb2",
                     mouse_callbacks={
                         "Button1": lambda: qtile.cmd_spawn(
@@ -42,18 +42,18 @@ screens = [
                     },
                 ),
                 # volumemixer
-                widget.TextBox(
-                    text=" ",
-                    fontsize=15,
-                    foreground="#ebdbb2",
-                    mouse_callbacks={
-                        "Button1": lambda: qtile.cmd_spawn("/usr/bin/pavucontrol")
-                    },
-                ),
+                # widget.TextBox(
+                #     text=" ",
+                #     fontsize=15,
+                #     foreground="#ebdbb2",
+                #     mouse_callbacks={
+                #         "Button1": lambda: qtile.cmd_spawn("/usr/bin/pavucontrol")
+                #     },
+                # ),
                 # keyboard-icon
                 widget.TextBox(
                     text="󰌌",
-                    fontsize=18,
+                    fontsize=28,
                     padding=5,
                     foreground="#ebdbb2",
                 ),

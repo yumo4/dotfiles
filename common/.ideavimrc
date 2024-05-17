@@ -1,10 +1,87 @@
 
-:inoremap <C-h> <Left>
-:inoremap <C-j> <Down>
-:inoremap <C-k> <Up>
-:inoremap <C-l> <Right>
+let mapleader = " "
+let maplocalleader = " "
 
-set clipboard+=unnamedplus
-
-set relativenumber
+" Setting options
+" Make line numbers default
 set number
+" Enable relative line numbers
+set relativenumber
+
+" Enable mouse mode
+set mouse=a
+
+" Don't show the mode
+set noshowmode
+
+" Sync clipboard between OS and IdeaVim
+set clipboard=unnamedplus
+
+" Enable break indent
+set breakindent
+
+" Save undo history
+set undofile
+
+" Case-insensitive searching unless \C or capital in search
+set ignorecase
+set smartcase
+
+" Keep signcolumn on by default
+set signcolumn=yes
+
+" Decrease update time
+set updatetime=250
+set timeoutlen=300
+
+" Configure how new splits should be opened
+set splitright
+set splitbelow
+
+" Display certain whitespace in the editor
+" set list
+" set listchars=tab:»\ ,trail:·,nbsp:␣
+
+" Preview substitutions live
+set inccommand=split
+
+" Show which line your cursor is on
+set cursorline
+
+" Minimal number of screen lines to keep above and below the cursor
+set scrolloff=10
+
+" Better Visual Blockmode
+set virtualedit=block
+
+" Basic Keymaps
+" Set highlight on search, but clear on pressing <Esc> in normal mode
+set hlsearch
+nnoremap <Esc> :nohlsearch<CR>
+inoremap jj <Esc>
+
+" Diagnostic keymaps
+" nnoremap [d :lua vim.diagnostic.goto_prev()<CR>
+" nnoremap ]d :lua vim.diagnostic.goto_next()<CR>
+" nnoremap <leader>e :lua vim.diagnostic.open_float()<CR>
+" nnoremap <leader>q :lua vim.diagnostic.setloclist()<CR>
+
+" Exit terminal mode
+tnoremap <Esc><Esc> <C-\><C-n>
+
+" Keybinds to make split navigation easier
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+
+" Better navigation in insert mode
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+
+" Move selected text up / down
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
