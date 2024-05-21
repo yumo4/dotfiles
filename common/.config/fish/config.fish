@@ -7,6 +7,7 @@ alias ls "lsd"
 alias lst "tree -C"
 alias ta "tmux attach"
 alias FHWS "fortivpn connect FHWS -u k61965 -p -s"
+alias home-one "ssh home-one@192.168.178.65"
 
 set -g fish_greeting ""
 # pomodoro timer
