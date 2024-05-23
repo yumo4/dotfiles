@@ -1,4 +1,5 @@
 # Dotfiles
+
 dotfiles/
 ├── common
 │   ├── .config
@@ -22,6 +23,7 @@ dotfiles/
     ├── defaultResolution.sh
     ├── mirrorScreen.sh
     └── screenshot.sh
+
 ## Requirements
 ### Git
 ```bash
