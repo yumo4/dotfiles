@@ -1,5 +1,26 @@
 # Dotfiles
 
+## Requirements
+### Git
+```bash
+pacman -S git
+```
+### Stow
+```bash
+pacman -S stow
+```
+## Installation
+Clone the repo
+```bash
+cd ~/git
+```
+```bash
+git clone https://github.com/yumo4/dotfiles.git
+```
+```
+cd ~/dotfiles 
+```
+
 ```markdown
 dotfiles/
 ├── common
@@ -21,30 +42,11 @@ dotfiles/
 ├── rofiscripts
 │   └── screenSettings.sh
 └── scripts
-    ├── defaultResolution.sh
-    ├── mirrorScreen.sh
-    └── screenshot.sh
+├── defaultResolution.sh
+├── mirrorScreen.sh
+└── screenshot.sh
 ```
-## Requirements
-### Git
-```bash
-pacman -S git
-```
-### Stow
-```bash
-pacman -S stow
-```
-## Installation
-Clone the repo
-```bash
-cd ~/git
-```
-```bash
-git clone https://github.com/yumo4/dotfiles.git
-```
-```
-cd ~/dotfiles 
-```
+
 Create the symlinks with ```stow```
 ```bash
 cd ~/git/dotfiles/common
