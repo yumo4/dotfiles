@@ -1,4 +1,27 @@
 # Dotfiles
+dotfiles/
+├── common
+│   ├── .config
+│   │   ├── alacritty
+│   │   ├── fish
+│   │   ├── flameshot
+│   │   ├── nvim
+│   │   ├── nvim_own_broken
+│   │   ├── rofi
+│   │   └── tmux
+│   └── .ideavimrc
+├── desktop
+│   └── .config
+│       └── qtile
+├── laptop
+│   └── .config
+│       └── qtile
+├── rofiscripts
+│   └── screenSettings.sh
+└── scripts
+    ├── defaultResolution.sh
+    ├── mirrorScreen.sh
+    └── screenshot.sh
 ## Requirements
 ### Git
 ```bash
