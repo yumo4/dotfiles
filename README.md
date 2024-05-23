@@ -1,42 +1,45 @@
 # Dotfiles
 ## Requirements
 ### Git
-```
+```bash
 pacman -S git
 ```
 ### Stow
-```
+```bash
 pacman -S stow
 ```
 ## Installation
 Clone the repo
-```
+```bash
 cd ~/git
 ```
-```
-git clone git@github.com:MaximilianTroester/dotfiles.git
+```bash
+git clone https://github.com/yumo4/dotfiles.git
 ```
 ```
 cd ~/dotfiles 
 ```
-then create the stow symlinks
-```
+Create the symlinks with ```stow```
+```bash
 cd ~/git/dotfiles/common
 ```
-```
+```bash
 stow -t ~ .
 ```
-### desktop
-```
+### Desktop
+Create the symlinks for the ```desktop-qtile-config```
+```bash
 cd ~/git/dotfiles/desktop
 ```
-```
+```bash
 stow -t ~ .
 ```
-### latop
-```
+### Laptop
+Create the symlinks for the ```laptop-qtile-config```
+
+```bash
 cd ~/git/dotfiles/latop
 ```
-```
+```bash
 stow -t ~ .
 ```
