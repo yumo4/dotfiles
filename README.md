@@ -43,3 +43,9 @@ cd ~/git/dotfiles/latop
 ```bash
 stow -t ~ .
 ```
+
+## Updating
+Delete the files in ```~/.config/``` / ```~/``` and use this for updating
+```bash
+stow --adopt -t ~ .
+```
