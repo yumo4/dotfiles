@@ -16,6 +16,7 @@ screens = [
                     active="#ebdbb2",
                     inactive="#928374",
                     background="#1d2021",
+                    disable_drag=True,
                 ),
                 widget.WindowName(
                     foreground="#1d2021",
