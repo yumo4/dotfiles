@@ -30,9 +30,15 @@ dotfiles/
 │   │   ├── flameshot
 │   │   ├── nvim
 │   │   ├── nvim_own_broken
+│   │   ├── ohmyposh
 │   │   ├── rofi
 │   │   └── tmux
-│   └── .ideavimrc
+│   ├── .icons
+│   │   └── Gruvbox-Material-Dark
+│   ├── .ideavimrc
+│   ├── .themes
+│   │   └── Gruvbox-Material-Dark
+│   └── .zshrc
 ├── desktop
 │   └── .config
 │       └── qtile
@@ -42,12 +48,12 @@ dotfiles/
 ├── rofiscripts
 │   └── screenSettings.sh
 └── scripts
-├── defaultResolution.sh
-├── mirrorScreen.sh
-└── screenshot.sh
+    ├── defaultResolution.sh
+    ├── mirrorScreen.sh
+    └── screenshot.sh
 ```
 
-Create the symlinks with ```stow```
+Create the symlinks with `stow`
 ```bash
 cd ~/git/dotfiles/common
 ```
@@ -55,7 +61,7 @@ cd ~/git/dotfiles/common
 stow -t ~ .
 ```
 ### Desktop
-Create the symlinks for the ```desktop-qtile-config```
+Create the symlinks for the `desktop-qtile-config`
 ```bash
 cd ~/git/dotfiles/desktop
 ```
@@ -63,7 +69,7 @@ cd ~/git/dotfiles/desktop
 stow -t ~ .
 ```
 ### Laptop
-Create the symlinks for the ```laptop-qtile-config```
+Create the symlinks for the `laptop-qtile-config`
 
 ```bash
 cd ~/git/dotfiles/latop
@@ -73,7 +79,7 @@ stow -t ~ .
 ```
 
 ## Updating
-Delete the files in ```~/.config/``` / ```~/``` and use this for updating
+Delete the files in `~/.config/` / `~/` and use this for updating
 ```bash
 stow --adopt -t ~ .
 ```
