@@ -23,8 +23,10 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
     type = 'git'
     style = 'plain'
     foreground = 'p:grey'
+    # foreground = 'p:blue'
     background = 'transparent'
-    template = ' {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>'
+    # template = ' {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>'
+    template = ' {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}<yellow>*</>{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>'
 
     [blocks.segments.properties]
       branch_icon = ''
@@ -56,6 +58,7 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
     foreground_templates = [
       "{{if gt .Code 0}}red{{end}}",
       "{{if eq .Code 0}}yellow{{end}}",
+      # "{{if eq .Code 0}}green{{end}}",
     ]
     background = 'transparent'
     template = '➜'
@@ -64,6 +67,7 @@ console_title_template = '{{ .Shell }} in {{ .Folder }}'
   foreground_templates = [
     "{{if gt .Code 0}}red{{end}}",
     "{{if eq .Code 0}}yellow{{end}}",
+    # "{{if eq .Code 0}}green{{end}}",
   ]
   background = 'transparent'
   template = '➜ '

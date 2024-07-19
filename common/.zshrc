@@ -27,9 +27,12 @@ autoload -U compinit && compinit
 zinit cdreplay -q
 
 # keybindings
-bindkey -e
+# bindkey -e
+bindkey -v
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
+bindkey '^h' backward-char
+bindkey '^l' forward-char
 
 # history
 HISTSIZE=5000
@@ -59,6 +62,8 @@ alias ls="lsd"
 alias lst="tree -C"
 alias FHWS="fortivpn connect FHWS -u k61965 -p -s"
 alias home-one="ssh max@192.168.178.65"
+alias tmux attach-session="tmux attach-session -t"
+alias update="sudo pacman -Syu && yay -Syu"
 
 # shell integrations
 eval "$(fzf --zsh)"
