@@ -56,7 +56,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'lsd $realpath'
 
 # aliases
 alias vim="nvim"
-alias fetch="nerdfetch"
+alias fetch="fastfetch"
 alias ll="lsd -l"
 alias ls="lsd"
 alias lst="tree -C"
