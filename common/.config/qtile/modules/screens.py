@@ -10,7 +10,7 @@ def get_widgets_and_bar_height():
     try:
         # Check for battery presence as an indicator of a laptop
         result = subprocess.run(
-            ["ls", "/sys/class/power_supply/BAT0"],
+            ["ls", "/sys/class/power_supply/BAT1"],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
         )

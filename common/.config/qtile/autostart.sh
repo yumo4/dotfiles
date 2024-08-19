@@ -6,7 +6,7 @@ redshift -O 4000
 # Low battery notifier
 ~/.config/qtile/scripts/check_battery.sh & disown
 # Set screen orientation
-if [ -e /sys/class/power_supply/BAT0 ]; then
+if [ -e /sys/class/power_supply/BAT1 ]; then
     # Battery is present, do nothing
 else
     # No battery detected, execute xrandr command
