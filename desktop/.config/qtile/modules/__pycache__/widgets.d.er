@@ -1,9 +1,0 @@
-##[pylyzer] failed /home/max/.config/qtile/modules/widgets.py 1698324967 1754
-.___v_desugar_1 = pyimport "libqtile"
-.widget: Never
-.___v_desugar_2 = pyimport "libqtile"
-.qtile: Never
-.colors: Array!(Array!({"#3d3f4b", "#ff5555", "#4f76c7", "#ecbbfb", "#e1acff", "#434758", "#74438f", "#282c34", "#ffffff"}, 2), 8)
-.widget_defaults: Never
-.extension_defaults: Never
-.volume: Never

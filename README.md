@@ -23,7 +23,7 @@ cd ~/dotfiles
 
 ```markdown
 dotfiles/
-├── common
+├── dots
 │   ├── .config
 │   │   ├── alacritty
 │   │   ├── fish
@@ -39,12 +39,6 @@ dotfiles/
 │   ├── .themes
 │   │   └── Gruvbox-Material-Dark
 │   └── .zshrc
-├── desktop
-│   └── .config
-│       └── qtile
-├── laptop
-│   └── .config
-│       └── qtile
 ├── rofiscripts
 │   └── screenSettings.sh
 └── scripts
@@ -55,24 +49,7 @@ dotfiles/
 
 Create the symlinks with `stow`
 ```bash
-cd ~/git/dotfiles/common
-```
-```bash
-stow -t ~ .
-```
-### Desktop
-Create the symlinks for the `desktop-qtile-config`
-```bash
-cd ~/git/dotfiles/desktop
-```
-```bash
-stow -t ~ .
-```
-### Laptop
-Create the symlinks for the `laptop-qtile-config`
-
-```bash
-cd ~/git/dotfiles/latop
+cd ~/git/dotfiles/dots
 ```
 ```bash
 stow -t ~ .
