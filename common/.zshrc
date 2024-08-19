@@ -68,3 +68,6 @@ alias update="sudo pacman -Syu && yay -Syu"
 # shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+
+# go path
+export PATH=$PATH:$(go env GOPATH)/bin

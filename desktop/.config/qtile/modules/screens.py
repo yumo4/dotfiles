@@ -11,7 +11,7 @@ screens = [
                 widget.GroupBox(
                     highlight_method="block",
                     borderwidth=1,
-                            this_screen_border="#cc241d",
+                    this_screen_border="#cc241d",
                     this_current_screen_border="#d65d0e",
                     active="#ebdbb2",
                     inactive="#928374",
@@ -22,12 +22,12 @@ screens = [
                     foreground="#1d2021",
                     format="{}",
                 ),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
+                # widget.Chord(
+                #     chords_colors={
+                #         "launch": ("#ff0000", "#ffffff"),
+                #     },
+                #     name_transform=lambda name: name.upper(),
+                # ),
                 # systray
                 widget.Systray(icon_size=20),
                 widget.TextBox(text=" "),

@@ -1,0 +1,10 @@
+##[pylyzer] failed /home/max/git/dotfiles/common/.config/qtile/modules/hooks.py 1724078244 499
+.hook = pyimport "hook"
+
+.subprocess = pyimport "subprocess"
+
+.os = pyimport "os"
+
+.autostart: () -> Int
+.raise_floating_window_on_focus: |Type_549 <: Structural({.cmd_bring_to_front = (self: Obj) -> T; .floating = Type_751}), T: Type, Type_549 <: Structural({.cmd_bring_to_front = (self: Type_549) -> T; .floating = Type_751}), Type_751 <: Bool|(client: Type_549) -> T or NoneType
+.ensure_floating_always_on_top: |T: Type, Type_551 <: Structural({.cmd_bring_to_front = (self: Obj) -> T; .floating = Type_757}), Type_551 <: Structural({.cmd_bring_to_front = (self: Type_551) -> T; .floating = Type_757}), Type_757 <: Bool|(client: Type_551) -> T or NoneType
