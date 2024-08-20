@@ -7,6 +7,7 @@ redshift -O 4000
 ~/.config/qtile/scripts/check_battery.sh & disown
 # Set screen orientation
 if [ -e /sys/class/power_supply/BAT1 ]; then
+    setxkbmap -option caps:ctrl_modifier
     # Battery is present, do nothing
 else
     # No battery detected, execute xrandr command
