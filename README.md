@@ -26,11 +26,12 @@ dotfiles/
 ├── dots
 │   ├── .config
 │   │   ├── alacritty
+│   │   ├── fastfetch
 │   │   ├── fish
 │   │   ├── flameshot
 │   │   ├── nvim
-│   │   ├── nvim_own_broken
 │   │   ├── ohmyposh
+│   │   ├── qtile
 │   │   ├── rofi
 │   │   └── tmux
 │   ├── .icons
@@ -56,7 +57,7 @@ stow -t ~ .
 ```
 
 ## Updating
-Delete the files in `~/.config/` / `~/` and use this for updating
+(Delete the files in `~/.config/` / `~/` and) use this for updating
 ```bash
 stow --adopt -t ~ .
 ```

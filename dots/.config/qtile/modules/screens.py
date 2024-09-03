@@ -46,7 +46,8 @@ def get_widgets_and_bar_height():
             fontsize=15,
             foreground=colors[1],
             mouse_callbacks={
-                "Button1": lambda: qtile.cmd_spawn("/usr/bin/nm-connection-editor")
+                "Button1": lambda: qtile.cmd_spawn("/usr/bin/nm-connection-editor"),
+                "Button3": lambda: qtile.cmd_spawn("/usr/bin/blueman-manager"),
             },
         ),
         widget.Wlan(
@@ -71,16 +72,21 @@ def get_widgets_and_bar_height():
             padding=4,
         ),
         ## volume
-        widget.TextBox(
-            text="󰕾",
-            fontsize=16,
+        widget.Volume(
+            emoji=True,
+            font="JetBrains Mono Nerd Font",
+            emoji_list=["󰝟", "󰕿", "󰖀", "󰕾"],
+            fmt="{}",
             foreground=colors[1],
+            mouse_callbacks={
+                "Button1": lambda: qtile.cmd_spawn("/usr/bin/pavucontrol")
+            },
+            padding=4,
         ),
         widget.Volume(
-            # emoji=True,
             font="JetBrains Mono Nerd Font",
-            emoji_list=["󰝟", "", "", ""],
             fmt="{}",
+            mute_format="",
             foreground=colors[1],
             mouse_callbacks={
                 "Button1": lambda: qtile.cmd_spawn("/usr/bin/pavucontrol")
@@ -154,7 +160,8 @@ def get_widgets_and_bar_height():
             fontsize=28,
             foreground=colors[1],
             mouse_callbacks={
-                "Button1": lambda: qtile.cmd_spawn("/usr/bin/nm-connection-editor")
+                "Button1": lambda: qtile.cmd_spawn("/usr/bin/nm-connection-editor"),
+                "Button3": lambda: qtile.cmd_spawn("/usr/bin/blueman-manager"),
             },
         ),
         ## keyboard layout
