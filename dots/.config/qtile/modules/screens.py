@@ -55,6 +55,10 @@ def get_widgets_and_bar_height():
             foreground=colors[1],
             font="JetBrains Mono Nerd Font",
             format="{essid}",
+            mouse_callbacks={
+                "Button1": lambda: qtile.cmd_spawn("/usr/bin/nm-connection-editor"),
+                "Button3": lambda: qtile.cmd_spawn("/usr/bin/blueman-manager"),
+            },
         ),
         # brightness
         widget.TextBox(
@@ -75,6 +79,7 @@ def get_widgets_and_bar_height():
         widget.Volume(
             emoji=True,
             font="JetBrains Mono Nerd Font",
+            fontsize=16,
             emoji_list=["󰝟", "󰕿", "󰖀", "󰕾"],
             fmt="{}",
             foreground=colors[1],

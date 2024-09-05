@@ -3,7 +3,7 @@ from libqtile.config import Match
 from modules.theme import colors
 
 layouts = [
-    layout.MonadTall(margin=6, border_focus=colors[5], border_normal=colors[0]),
+    layout.MonadTall(margin=4, border_focus=colors[5], border_normal=colors[0]),
     layout.Max(),
     ## other layouts
     # layout.Columns(border_focus_stack='#d75f5f'),
