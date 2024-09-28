@@ -41,11 +41,13 @@ dotfiles/
 │   │   └── Gruvbox-Material-Dark
 │   └── .zshrc
 ├── rofiscripts
-│   └── screenSettings.sh
+│    ├── screenSettings.sh
+│    ├── defaultResolution.sh
+│    ├── mirrorScreen.sh
+│    └── screenshot.sh
 └── scripts
-    ├── defaultResolution.sh
-    ├── mirrorScreen.sh
-    └── screenshot.sh
+│   └── setup.sh
+└── wallpaper
 ```
 
 Create the symlinks with `stow`
@@ -61,3 +63,21 @@ stow -t ~ .
 ```bash
 stow --adopt -t ~ .
 ```
+
+## archinstall
+packages needed:
+```bash
+base-devel git stow
+```
+to install `yay` and `packages` and to setup `tmux tpm` run this script:
+```bash
+./scripts/setup.sh
+```
+
+### pacman config
+```bash
+sudo vim /etv/pacman.conf
+```
+- uncomment `Color` for better readability
+- uncomment `ParallelDownloads = 5` for faster downloads
+- add `ILoveCandy` for better progressbars

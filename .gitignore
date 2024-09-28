@@ -1,0 +1,6 @@
+# ignore tmux plugins
+dots/.config/tmux/plugins/*
+!dots/.config/tmux/plugins/
+
+# ignore __pychache__
+__pycache__/

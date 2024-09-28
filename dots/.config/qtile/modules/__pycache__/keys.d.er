@@ -1,2 +1,0 @@
-##[pylyzer] failed /home/max/git/dotfiles/common/.config/qtile/modules/keys.py 1724078144 0
-.keys: List!(Never, 38)

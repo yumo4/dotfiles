@@ -64,8 +64,9 @@ alias lst="tree -C"
 alias tas="tmux attach-session -t"
 alias FHWS="fortivpn connect FHWS -u k61965 -p -s"
 alias home-one="ssh max@192.168.178.65"
-alias tmux attach-session="tmux attach-session -t"
 alias update="sudo pacman -Syu && yay -Syu"
+alias homec="sudo wg-quick up wg_config"
+alias homedc="sudo wg-quick down wg_config"
 
 # shell integrations
 eval "$(fzf --zsh)"
@@ -73,3 +74,5 @@ eval "$(zoxide init --cmd cd zsh)"
 
 # go path
 export PATH=$PATH:$(go env GOPATH)/bin
+
+if [ -e /home/max/.nix-profile/etc/profile.d/nix.sh ]; then . /home/max/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

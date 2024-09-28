@@ -8,4 +8,6 @@ Gruvbox = [
     "#928374",  # inactive / windowborder focus - 5
 ]
 
+# active
 colors = Gruvbox
+font = "JetBrains Mono Nerd Font"

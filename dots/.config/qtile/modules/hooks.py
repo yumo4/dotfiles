@@ -16,7 +16,7 @@ def raise_floating_window_on_focus(client):
         client.cmd_bring_to_front()
 
 
-@hook.subscribe.client_managed
-def ensure_floating_always_on_top(client):
-    if client.floating:
-        client.cmd_bring_to_front()
+# @hook.subscribe.client_managed
+# def ensure_floating_always_on_top(client):
+#     if client.floating:
+#         client.cmd_bring_to_front()

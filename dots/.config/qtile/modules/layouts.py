@@ -20,6 +20,7 @@ layouts = [
     # layout.Zoomy(),
 ]
 
+floats_kept_above = True
 floating_layout = layout.Floating(
     float_rules=[
         *layout.Floating.default_float_rules,

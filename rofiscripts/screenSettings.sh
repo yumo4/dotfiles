@@ -5,10 +5,10 @@ selected_option=$(printf "%s\n" "${options[@]}" | rofi -dmenu -i -p "")
 
 case "$selected_option" in
     "default")
-        ~/git/dotfiles/scripts/defaultResolution.sh 
+        ~/git/dotfiles/rofiscripts/defaultResolution.sh 
         ;;
     "mirror")
-        ~/git/dotfiles/scripts/mirrorScreen.sh
+        ~/git/dotfiles/rofiscripts/mirrorScreen.sh
         ;;
 esac
 setxkbmap -option caps:ctrl_modifier

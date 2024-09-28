@@ -3,6 +3,7 @@ from libqtile.config import Key
 
 mod = "mod4"
 terminal = "alacritty"
+# browser = "zen-browser"
 browser = "brave"
 
 keys = [
@@ -29,7 +30,7 @@ keys = [
     Key([mod, "control"], "l", lazy.layout.shrink(), desc="Shrink window"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
     # toggle floating
-    Key([mod, "control"], "Tab", lazy.window.toggle_floating(), desc="Toggle floating"),
+    Key([mod], "t", lazy.window.toggle_floating(), desc="Toggle floating"),
     # fullscreen
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     # kill window
@@ -39,7 +40,7 @@ keys = [
     # rofi
     Key([mod], "space", lazy.spawn("rofi -show drun"), desc="spawn rofi"),
     # browser
-    Key([mod], "b", lazy.spawn("brave"), desc="spawn brave"),
+    Key([mod], "b", lazy.spawn(browser), desc="spawn browser"),
     # filemanager
     Key([mod], "f", lazy.spawn("pcmanfm"), desc="spawn pcmanfm"),
     # terminal
@@ -55,9 +56,8 @@ keys = [
     ##
     ## other ##
     # screenshot
-    Key([mod, "shift"], "s", lazy.spawn("flameshot gui"), desc="take screenshot"),
+    Key([mod, "control"], "s", lazy.spawn("flameshot gui"), desc="take screenshot"),
     # screensettings script
-    # TODO: move screenSettings script into qtile config
     Key(
         [mod],
         "p",

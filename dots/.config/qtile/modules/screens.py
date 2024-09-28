@@ -3,7 +3,7 @@ from libqtile import qtile
 from libqtile import bar
 from libqtile import widget
 from libqtile.config import Screen
-from modules.theme import colors
+from modules.theme import colors, font
 
 
 def get_widgets_and_bar_height():
@@ -53,7 +53,7 @@ def get_widgets_and_bar_height():
         widget.Wlan(
             fontsize=12,
             foreground=colors[1],
-            font="JetBrains Mono Nerd Font",
+            font=font,
             format="{essid}",
             mouse_callbacks={
                 "Button1": lambda: qtile.cmd_spawn("/usr/bin/nm-connection-editor"),
@@ -66,19 +66,19 @@ def get_widgets_and_bar_height():
             text="󰛨",
             padding=5,
             foreground=colors[1],
-            font="JetBrains Mono Nerd Font",
+            font=font,
         ),
         widget.Backlight(
             backlight_name="intel_backlight",
             foreground=colors[1],
-            font="JetBrains Mono Nerd Font",
+            font=font,
             format="{percent:1.0%}",
             padding=4,
         ),
         ## volume
         widget.Volume(
             emoji=True,
-            font="JetBrains Mono Nerd Font",
+            font=font,
             fontsize=16,
             emoji_list=["󰝟", "󰕿", "󰖀", "󰕾"],
             fmt="{}",
@@ -89,7 +89,7 @@ def get_widgets_and_bar_height():
             padding=4,
         ),
         widget.Volume(
-            font="JetBrains Mono Nerd Font",
+            font=font,
             fmt="{}",
             mute_format="",
             foreground=colors[1],
@@ -110,7 +110,7 @@ def get_widgets_and_bar_height():
         widget.KeyboardLayout(
             configured_keyboards=["us", "de qwerty"],
             display_map={"us": "us", "de qwerty": "de"},
-            font="JetBrains Mono Nerd Font",
+            font=font,
             foreground=colors[1],
             update_interval=1,
             fmt="{}",
@@ -126,7 +126,7 @@ def get_widgets_and_bar_height():
             discharge_char="",
             charge_char="󱐋",
             format="{char}{percent:1.0%}",
-            font="JetBrains Mono Nerd Font",
+            font=font,
             background=colors[0],
             foreground=colors[1],
             low_percentage=0.20,
@@ -135,7 +135,7 @@ def get_widgets_and_bar_height():
         ## time
         widget.Clock(
             format=" %d.%m.%Y %H:%M ",
-            font="JetBrains Mono Nerd Font",
+            font=font,
             background=colors[0],
             foreground=colors[1],
         ),
@@ -181,7 +181,7 @@ def get_widgets_and_bar_height():
         widget.KeyboardLayout(
             configured_keyboards=["us", "de qwerty"],
             display_map={"us": "us", "de qwerty": "de"},
-            font="JetBrains Mono",
+            font=font,
             foreground=colors[1],
             update_interval=1,
             fmt="{}",
@@ -189,7 +189,7 @@ def get_widgets_and_bar_height():
         # date
         widget.Clock(
             format=" %d.%m.%Y %H:%M ",
-            font="JetBrains Mono Nerd Font",
+            font=font,
             background=colors[0],
             foreground=colors[1],
             mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("/usr/bin/calcurse")},
