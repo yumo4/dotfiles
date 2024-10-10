@@ -30,6 +30,7 @@ def get_widgets_and_bar_height():
             this_screen_border=colors[2],
             this_current_screen_border=colors[3],
             active=colors[1],
+            hide_unused="True",
             inactive=colors[5],
             background=colors[0],
             disable_drag=True,
@@ -46,7 +47,7 @@ def get_widgets_and_bar_height():
             fontsize=15,
             foreground=colors[1],
             mouse_callbacks={
-                "Button1": lambda: qtile.cmd_spawn("/usr/bin/nm-connection-editor"),
+                "Button1": lambda: qtile.cmd_spawn("/run/current-system/sw/bin/nm-connection-editor"),
                 "Button3": lambda: qtile.cmd_spawn("/usr/bin/blueman-manager"),
             },
         ),
@@ -56,7 +57,7 @@ def get_widgets_and_bar_height():
             font=font,
             format="{essid}",
             mouse_callbacks={
-                "Button1": lambda: qtile.cmd_spawn("/usr/bin/nm-connection-editor"),
+                "Button1": lambda: qtile.cmd_spawn("/run/current-system/sw/bin/nm-connection-editor"),
                 "Button3": lambda: qtile.cmd_spawn("/usr/bin/blueman-manager"),
             },
         ),
@@ -148,6 +149,7 @@ def get_widgets_and_bar_height():
             this_screen_border=colors[2],
             this_current_screen_border=colors[3],
             active=colors[1],
+            hide_unused="True",
             inactive=colors[5],
             background=colors[0],
             disable_drag=True,
@@ -165,7 +167,7 @@ def get_widgets_and_bar_height():
             fontsize=28,
             foreground=colors[1],
             mouse_callbacks={
-                "Button1": lambda: qtile.cmd_spawn("/usr/bin/nm-connection-editor"),
+                "Button1": lambda: qtile.cmd_spawn("/run/current-system/sw/bin/nm-connection-editor"),
                 "Button3": lambda: qtile.cmd_spawn("/usr/bin/blueman-manager"),
             },
         ),

@@ -47,5 +47,5 @@ yay -Syu --needed --noconfirm \
 
 # installing tmux tpm
 if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 fi
