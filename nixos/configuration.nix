@@ -48,7 +48,7 @@
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
   # services.xserver.displayManager.ly.enable = true;
-  # services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
   services.xserver.windowManager.qtile.enable = true;
 
 
@@ -89,11 +89,12 @@
   users.users.max = {
     isNormalUser = true;
     description = "max";
-    extraGroups = [ "networkmanager" "video" "wheel" "docker"];
+    extraGroups = [ "networkmanager" "video" "wheel" "docker" "uinput"];
     shell = pkgs.zsh;
     packages = with pkgs; [
    	tree
 	lsd
+	fastfetch
     ];
   };
 
@@ -106,59 +107,80 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neovim
-    alejandra
-    brave
-    git
-    # home-manager
-    gtk3
-    tmux
-    system-config-printer
-    # hplip
-    calibre
-    brillo
-    flameshot
-    playerctl
-    alsa-utils
-    fzf
-    oh-my-posh
-    vesktop
-    btop
-    nitrogen
-    pika-backup
-    obsidian
-    syncthing
-    pcmanfm
-    nodejs_22
-    gcc
-    gofumpt
-    tailwindcss
-    # networkmanager
-    stow
-    rofi
     # ly
-    stylua
+    # networkmanager
     # typescript-language-server
-    ripgrep
-    networkmanagerapplet
+    alacritty
+    alejandra
+    alsa-utils
     blueman
-    lua-language-server
-    gopls
-    golines
-    go-migrate
-    goimports-reviser
+    brave
+    brillo
+    btop
+    calibre
+    dunst
+    flameshot
+    fzf
+    gcc
+    git
     go
+    go-migrate
+    gofumpt
+    goimports-reviser
+    golines
+    gopls
+    gtk3
+    kanata
+    lua-language-server
+    neovim
+    networkmanagerapplet
+    nitrogen
+    nodejs_22
+    obsidian
+    oh-my-posh
+    pcmanfm
+    pika-backup
+    playerctl
     racket
     redshift
-    zoom-us
-    # qtile
-    zip
+    ripgrep
+    rofi
+    stow
+    stylua
+    syncthing
+    tailwindcss
+    tmux
     unzip
+    vesktop
     xclip
+    zip
+    zoom-us
     zoxide
-    alacritty
   #  wget
   ];
+
+  services.kanata = {
+      enable = true;
+      keyboards = {
+	internalKeyboard = {
+	  devices = [
+	    "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
+	  ];
+	  extraDefCfg = "process-unmapped-keys yes";
+	  config = ''
+	    (defsrc
+	     caps
+	    )
+	    (defalias
+	     caps (tap-hold 100 100 esc lctl)
+	    )
+	    (deflayer base
+	     @caps
+	    )
+	  '';
+	};
+      };
+    };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
