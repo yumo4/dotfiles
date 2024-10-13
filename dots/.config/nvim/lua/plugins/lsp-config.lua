@@ -108,12 +108,12 @@ return { -- LSP Configuration & Plugins
 			clangd = {},
 			gopls = {},
 			pyright = {},
+			pylsp = {},
 			rust_analyzer = {},
-			-- gdscript = {},
-			-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 			ts_ls = {},
 			ltex = {},
 			texlab = {},
+			-- rnix = {},
 			jdtls = {},
 			--
 
@@ -158,6 +158,10 @@ return { -- LSP Configuration & Plugins
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
 			"stylua", -- Used to format lua code
+			"black", -- python
+			"gofumpt", -- go
+			"prettier", -- js/ts
+			"prettierd", -- js/ts
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 

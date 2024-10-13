@@ -39,6 +39,7 @@
     ".config/flameshot".source = ~/Projects/dotfiles/dots/.config/flameshot;
     ".config/ohmyposh".source = ~/Projects/dotfiles/dots/.config/ohmyposh;
     ".config/fish".source = ~/Projects/dotfiles/dots/.config/fish;
+    # ".config/starship".source = ~/Projects/dotfiles/dots/.config/starship;
     ".config/qtile".source = ~/Projects/dotfiles/dots/.config/qtile;
     ".config/rofi".source = ~/Projects/dotfiles/dots/.config/rofi;
 
@@ -46,23 +47,6 @@
     ".themes/Gruvbox-Material-Dark".source = ~/Projects/dotfiles/dots/.themes/Gruvbox-Material-Dark;
     ".icons/Gruvbox-Material-Dark".source = ~/Projects/dotfiles/dots/.icons/Gruvbox-Material-Dark;
   };
-
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. These will be explicitly sourced when using a
-  # shell provided by Home Manager. If you don't want to manage your shell
-  # through Home Manager then you have to manually source 'hm-session-vars.sh'
-  # located at either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/max/etc/profile.d/hm-session-vars.sh
-  #
 
   home.sessionVariables = {
     EDITOR = "nvim";

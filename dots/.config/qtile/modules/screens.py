@@ -48,7 +48,8 @@ def get_widgets_and_bar_height():
             foreground=colors[1],
             mouse_callbacks={
                 "Button1": lambda: qtile.cmd_spawn("/run/current-system/sw/bin/nm-connection-editor"),
-                "Button3": lambda: qtile.cmd_spawn("/usr/bin/blueman-manager"),
+                # "Button3": lambda: qtile.cmd_spawn("/usr/bin/blueman-manager"),
+                "Button3": lambda: qtile.cmd_spawn("/run/current-system/sw/bin/blueman-manager"),
             },
         ),
         widget.Wlan(

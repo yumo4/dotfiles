@@ -61,6 +61,12 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # services.blueman.enable = true;
+  services.syncthing = {
+    enable = true;
+    user = "max";
+  };
+
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -99,6 +105,7 @@
   };
 
   programs.firefox.enable = true;
+  programs.fish.enable = true;
   programs.zsh.enable = true;
 
   # Allow unfree packages
@@ -119,6 +126,7 @@
     btop
     calibre
     dunst
+    fish
     flameshot
     fzf
     gcc
@@ -141,10 +149,14 @@
     pcmanfm
     pika-backup
     playerctl
+    # python312Packages.iwlib # qtile wlan widget fix?
+    # iw # qtile wlan widget fix?
+    # wirelesstools # qtile wlan widget fix?
     racket
     redshift
     ripgrep
     rofi
+    # starship
     stow
     stylua
     syncthing
