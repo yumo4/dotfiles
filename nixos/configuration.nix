@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
@@ -46,10 +46,18 @@
   services.xserver.enable = true;
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  # services.xserver.displayManager.ly.enable = true;
+  # services.xserver.displayManager.gdm.enable = true;
+  services.displayManager.ly.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
   services.xserver.windowManager.qtile.enable = true;
+  programs.hyprland.enable = true;
+
+ # xdg.portal = {
+ #    enable = true;
+ #    extraPortals = lib.mkForce [
+ #      pkgs.xdg-desktop-portal-gtk # For both
+ #    ];
+ #  };
 
 
   # Configure keymap in X11
@@ -114,7 +122,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # ly
     # networkmanager
     # typescript-language-server
     alacritty
@@ -124,12 +131,13 @@
     brave
     brillo
     btop
-    calibre
+    # calibre
     dunst
     fish
     flameshot
     fzf
     gcc
+    swww
     git
     go
     go-migrate
@@ -147,15 +155,19 @@
     obsidian
     oh-my-posh
     pcmanfm
+    xfce.thunar
     pika-backup
+    vlc
     playerctl
     # python312Packages.iwlib # qtile wlan widget fix?
     # iw # qtile wlan widget fix?
     # wirelesstools # qtile wlan widget fix?
     racket
     redshift
+    gammastep
     ripgrep
     rofi
+    rofi-wayland
     # starship
     stow
     stylua
@@ -164,6 +176,7 @@
     tmux
     unzip
     vesktop
+    waybar
     xclip
     zip
     zoom-us
