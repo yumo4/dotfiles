@@ -70,10 +70,6 @@
   services.printing.enable = true;
 
   # services.blueman.enable = true;
-  services.syncthing = {
-    enable = true;
-    user = "max";
-  };
 
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
