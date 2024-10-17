@@ -11,18 +11,29 @@
     let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
+    hosts = [
+      {
+        name = "framework";
+      }
+    ];
     in {
-    nixosConfigurations = {
-      # Define your NixOS configuration here
-      system = nixpkgs.lib.nixosSystem {
-        inherit system;
-        modules = [
-          ./configuration.nix
-          ./hardware-configuration.nix
-          # Add any other NixOS modules you may have
-        ];
-      };
-    };
+    nixosConfigurations = builtins.listToAttrs (map (host: {
+        name = host.name;
+        value = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./configuration.nix
+            ./machines/${host.name}/hardware-configuration.nix
+          ];
+          specialArgs = {
+            meta = {
+              hostname = host.name;
+            };
+            inputs = self.inputs;
+            outputs = self.outputs;
+          };
+        };
+      }) hosts);
     homeConfigurations = {
       max = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
