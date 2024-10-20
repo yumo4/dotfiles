@@ -35,7 +35,7 @@
     ".zshrc".source = ~/Projects/dotfiles/dots/.zshrc;
     ".ideavimrc".source = ~/Projects/dotfiles/dots/.ideavimrc;
     ".config/nvim".source = ~/Projects/dotfiles/dots/.config/nvim;
-    ".config/tmux".source = ~/Projects/dotfiles/dots/.config/tmux;
+    # ".config/tmux".source = ~/Projects/dotfiles/dots/.config/tmux;
     ".config/alacritty".source = ~/Projects/dotfiles/dots/.config/alacritty;
     ".config/fastfetch".source = ~/Projects/dotfiles/dots/.config/fastfetch;
     ".config/flameshot".source = ~/Projects/dotfiles/dots/.config/flameshot;
@@ -53,6 +53,8 @@
   home.sessionVariables = {
     EDITOR = "nvim";
   };
+
+  programs.tmux = import ./home/tmux.nix {inherit pkgs;}; 
 
   programs.git = {
     enable = true;

@@ -62,7 +62,9 @@ keys = [
     Key(
         [mod],
         "p",
-        lazy.spawn("/home/max/git/dotfiles/rofiscripts/screenSettings.sh"),
+        lazy.spawn(
+            "/home/max/Projects/dotfiles/dots/.config/qtile/scripts/screenSettings.sh"
+        ),
         desc="change screensettings",
     ),
     # toggle between keyboard layouts

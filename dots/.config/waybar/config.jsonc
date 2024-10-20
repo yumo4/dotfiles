@@ -51,7 +51,7 @@
         },
         "format": " {icon} {capacity}% ",
         "format-full": " {icon} {capacity}% ",
-        "format-charging": " {icon}󱐋 {capacity}% ",
+        "format-charging": " {icon}󱐋{capacity}% ",
         "format-icons": ["󰁺", "󰁼", "󰁾", "󰂀", "󰁹"]
     },
     "network": {
@@ -62,6 +62,7 @@
         //"format-linked": "{ifname} (No IP) ",
         "format-disconnected": " 󱘖 ",
         //"format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "on-click": "nm-connection-editor"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
