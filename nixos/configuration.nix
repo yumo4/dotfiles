@@ -115,6 +115,10 @@
   programs.firefox.enable = true;
   programs.fish.enable = true;
   programs.zsh.enable = true;
+  hardware.brillo.enable = true;
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="intel_backlight", MODE="0666"
+  '';
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -129,9 +133,8 @@
     alsa-utils
     blueman
     brave
-    brillo
     btop
-    # calibre
+    calibre
     dunst
     fish
     flameshot

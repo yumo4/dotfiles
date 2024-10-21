@@ -32,22 +32,21 @@
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-    ".zshrc".source = ~/Projects/dotfiles/dots/.zshrc;
-    ".ideavimrc".source = ~/Projects/dotfiles/dots/.ideavimrc;
-    ".config/nvim".source = ~/Projects/dotfiles/dots/.config/nvim;
-    # ".config/tmux".source = ~/Projects/dotfiles/dots/.config/tmux;
-    ".config/alacritty".source = ~/Projects/dotfiles/dots/.config/alacritty;
-    ".config/fastfetch".source = ~/Projects/dotfiles/dots/.config/fastfetch;
-    ".config/flameshot".source = ~/Projects/dotfiles/dots/.config/flameshot;
-    ".config/ohmyposh".source = ~/Projects/dotfiles/dots/.config/ohmyposh;
-    ".config/fish".source = ~/Projects/dotfiles/dots/.config/fish;
-    ".config/qtile".source = ~/Projects/dotfiles/dots/.config/qtile;
-    ".config/hypr".source = ~/Projects/dotfiles/dots/.config/hypr;
-    ".config/waybar".source = ~/Projects/dotfiles/dots/.config/waybar;
-    ".config/rofi".source = ~/Projects/dotfiles/dots/.config/rofi;
+    ".zshrc".source = ../dots/.zshrc;
+    ".ideavimrc".source = ../dots/.ideavimrc;
+    ".config/nvim".source = ../dots/.config/nvim;
+    ".config/alacritty".source = ../dots/.config/alacritty;
+    ".config/fastfetch".source = ../dots/.config/fastfetch;
+    ".config/flameshot".source = ../dots/.config/flameshot;
+    ".config/ohmyposh".source = ../dots/.config/ohmyposh;
+    ".config/fish".source = ../dots/.config/fish;
+    ".config/qtile".source = ../dots/.config/qtile;
+    ".config/hypr".source = ../dots/.config/hypr;
+    ".config/waybar".source = ../dots/.config/waybar;
+    ".config/rofi".source = ../dots/.config/rofi;
 
-    ".themes/Gruvbox-Material-Dark".source = ~/Projects/dotfiles/dots/.themes/Gruvbox-Material-Dark;
-    ".icons/Gruvbox-Material-Dark".source = ~/Projects/dotfiles/dots/.icons/Gruvbox-Material-Dark;
+    ".themes/Gruvbox-Material-Dark".source = ../dots/.themes/Gruvbox-Material-Dark;
+    ".icons/Gruvbox-Material-Dark".source = ../dots/.icons/Gruvbox-Material-Dark;
   };
 
   home.sessionVariables = {
