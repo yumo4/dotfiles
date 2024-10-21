@@ -54,7 +54,7 @@
     EDITOR = "nvim";
   };
 
-  programs.tmux = import ./home/tmux.nix {inherit pkgs;}; 
+  programs.tmux = import ./home/tmux.nix {inherit pkgs;};
 
   programs.git = {
     enable = true;
