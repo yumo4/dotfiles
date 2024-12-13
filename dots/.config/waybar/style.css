@@ -1,0 +1,14 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+#workspaces button {
+	color: #928374;
+	padding: 0 2px;
+}
+#workspaces button.active {
+	color: #ebdbb2;
+	padding: 0 2px;
+}
+

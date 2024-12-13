@@ -5,6 +5,7 @@ mod = "mod4"
 terminal = "alacritty"
 # browser = "zen-browser"
 browser = "brave"
+filebrowser = "thunar"
 
 keys = [
     ## windows ##
@@ -42,7 +43,7 @@ keys = [
     # browser
     Key([mod], "b", lazy.spawn(browser), desc="spawn browser"),
     # filemanager
-    Key([mod], "f", lazy.spawn("pcmanfm"), desc="spawn pcmanfm"),
+    Key([mod], "f", lazy.spawn(filebrowser), desc="spawn pcmanfm"),
     # terminal
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     # obsidian
@@ -61,7 +62,9 @@ keys = [
     Key(
         [mod],
         "p",
-        lazy.spawn("/home/max/git/dotfiles/rofiscripts/screenSettings.sh"),
+        lazy.spawn(
+            "/home/max/Projects/dotfiles/dots/.config/qtile/scripts/screenSettings.sh"
+        ),
         desc="change screensettings",
     ),
     # toggle between keyboard layouts

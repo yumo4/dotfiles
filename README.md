@@ -71,7 +71,7 @@ to install `yay` and `packages` and to setup `tmux tpm` run this script:
 
 ### pacman config
 ```bash
-sudo vim /etv/pacman.conf
+sudo vim /etc/pacman.conf
 ```
 - uncomment `Color` for better readability
 - uncomment `ParallelDownloads = 5` for faster downloads
