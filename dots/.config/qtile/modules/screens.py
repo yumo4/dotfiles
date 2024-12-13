@@ -31,6 +31,7 @@ def get_widgets_and_bar_height():
             this_current_screen_border=colors[3],
             active=colors[1],
             inactive=colors[5],
+            hide_unused="True",
             background=colors[0],
             disable_drag=True,
         ),
@@ -149,6 +150,7 @@ def get_widgets_and_bar_height():
             this_current_screen_border=colors[3],
             active=colors[1],
             inactive=colors[5],
+            hide_unused="True",
             background=colors[0],
             disable_drag=True,
         ),
@@ -179,8 +181,8 @@ def get_widgets_and_bar_height():
         ),
         # keyboardlayout
         widget.KeyboardLayout(
-            configured_keyboards=["us", "de qwerty"],
-            display_map={"us": "us", "de qwerty": "de"},
+            configured_keyboards=["us altgr-intl", "de qwerty"],
+            display_map={"us altgr-intl": "us", "de qwerty": "de"},
             font=font,
             foreground=colors[1],
             update_interval=1,

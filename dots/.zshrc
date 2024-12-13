@@ -76,3 +76,6 @@ eval "$(zoxide init --cmd cd zsh)"
 export PATH=$PATH:$(go env GOPATH)/bin
 
 if [ -e /home/max/.nix-profile/etc/profile.d/nix.sh ]; then . /home/max/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"

@@ -11,7 +11,7 @@ return { -- Autoformat
 			-- Conform can also run multiple formatters sequentially
 			python = { "isort", "black" },
 			go = { "gofumt" },
-			gdscript = { "gdtoolkit" },
+			-- gdscript = { "gdtoolkit" },
 			--
 			-- You can use a sub-list to tell conform to run *until* a formatter
 			-- is found.

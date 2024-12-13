@@ -11,3 +11,12 @@ alias home-one "ssh max@192.168.178.65"
 set -g fish_greeting ""
 
 end
+
+function starship_transient_prompt_func
+  starship module character
+end
+starship init fish | source
+enable_transience
+
+# Generated for envman. Do not edit.
+test -s ~/.config/envman/load.fish; and source ~/.config/envman/load.fish

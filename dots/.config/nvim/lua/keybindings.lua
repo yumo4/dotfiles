@@ -37,3 +37,8 @@ vim.keymap.set("n", "<Leader>vs", ":vsplit<CR>", { silent = true })
 -- Comment
 vim.keymap.set({ "n", "v", "o" }, "<C-/>", "gc", { remap = true })
 vim.keymap.set({ "n", "o" }, "<C-/>", "gcc", { remap = true })
+
+-- source / update
+vim.keymap.set("n", "<Leader>x", ":.lua<CR>")
+vim.keymap.set("n", "<Leader><Space>x", ":source %<CR>")
+vim.keymap.set("v", "<Leader>x", ":lua<CR>")

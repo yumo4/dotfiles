@@ -40,12 +40,7 @@ dotfiles/
 │   ├── .themes
 │   │   └── Gruvbox-Material-Dark
 │   └── .zshrc
-├── rofiscripts
-│    ├── screenSettings.sh
-│    ├── defaultResolution.sh
-│    ├── mirrorScreen.sh
-│    └── screenshot.sh
-└── scripts
+├── scripts
 │   └── setup.sh
 └── wallpaper
 ```
