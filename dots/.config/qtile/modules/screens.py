@@ -158,7 +158,6 @@ def get_widgets_and_bar_height():
             active=colors[1],
             hide_unused="True",
             inactive=colors[5],
-            hide_unused="True",
             background=colors[0],
             disable_drag=True,
         ),
