@@ -35,7 +35,7 @@ yay -Syu --needed --noconfirm \
 	fzf go gst-plugin-pipewire hplip hyprwayland-scanner-git \
 	hyprland-git hyprpaper-git lsd luarocks lxappearance-gtk3 neovim \
 	networkmanager nitrogen nodejs noto-fonts noto-fonts-emoji \
-	npm obsidian oh-my-posh openresolv p7zip p7zip-gui \
+	npm nm-connection-editor obsidian oh-my-posh openresolv p7zip p7zip-gui \
 	pavucontrol pcmanfm pika-backup pipewire pipewire-alsa \
 	pipewire-jack pipewire-pulse playerctl \
 	python-iwlib qtile redshift rofi \

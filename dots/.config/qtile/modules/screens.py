@@ -47,9 +47,13 @@ def get_widgets_and_bar_height():
             fontsize=15,
             foreground=colors[1],
             mouse_callbacks={
-                "Button1": lambda: qtile.cmd_spawn("/run/current-system/sw/bin/nm-connection-editor"),
+                "Button1": lambda: qtile.cmd_spawn(
+                    "/run/current-system/sw/bin/nm-connection-editor"
+                ),
                 # "Button3": lambda: qtile.cmd_spawn("/usr/bin/blueman-manager"),
-                "Button3": lambda: qtile.cmd_spawn("/run/current-system/sw/bin/blueman-manager"),
+                "Button3": lambda: qtile.cmd_spawn(
+                    "/run/current-system/sw/bin/blueman-manager"
+                ),
             },
         ),
         widget.Wlan(
@@ -58,7 +62,9 @@ def get_widgets_and_bar_height():
             font=font,
             format="{essid}",
             mouse_callbacks={
-                "Button1": lambda: qtile.cmd_spawn("/run/current-system/sw/bin/nm-connection-editor"),
+                "Button1": lambda: qtile.cmd_spawn(
+                    "/run/current-system/sw/bin/nm-connection-editor"
+                ),
                 "Button3": lambda: qtile.cmd_spawn("/usr/bin/blueman-manager"),
             },
         ),
@@ -168,7 +174,9 @@ def get_widgets_and_bar_height():
             fontsize=28,
             foreground=colors[1],
             mouse_callbacks={
-                "Button1": lambda: qtile.cmd_spawn("/run/current-system/sw/bin/nm-connection-editor"),
+                "Button1": lambda: qtile.cmd_spawn(
+                    "/run/current-system/sw/bin/nm-connection-editor"
+                ),
                 "Button3": lambda: qtile.cmd_spawn("/usr/bin/blueman-manager"),
             },
         ),
@@ -182,8 +190,8 @@ def get_widgets_and_bar_height():
         ),
         # keyboardlayout
         widget.KeyboardLayout(
-            configured_keyboards=["us", "de qwerty"],
-            display_map={"us": "us", "de qwerty": "de"},
+            configured_keyboards=["us altgr-intl", "de qwerty"],
+            display_map={"us altgr-intl": "us", "de qwerty": "de"},
             font=font,
             foreground=colors[1],
             update_interval=1,

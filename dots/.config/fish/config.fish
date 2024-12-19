@@ -9,7 +9,7 @@ alias FHWS "fortivpn connect FHWS -u k61965 -p -s"
 alias home-one "ssh max@192.168.178.65"
 
 set -g fish_greeting ""
-#set -x STARSHIP_CONFIG ~/.config/starship/starship.toml
 
 end
-#starship init fish | source
+# Generated for envman. Do not edit.
+test -s ~/.config/envman/load.fish; and source ~/.config/envman/load.fish
