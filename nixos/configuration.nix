@@ -49,11 +49,10 @@
     videoDrivers = ["intel" "amdgpu"];
   };
 
-  # Enable the GNOME Desktop Environment.
   # services.xserver.displayManager.gdm.enable = true;
   services.displayManager.ly.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
-  services.xserver.windowManager.qtile.enable = true;
+  # services.xserver.windowManager.qtile.enable = true;
   programs.hyprland.enable = true;
 
  # xdg.portal = {
@@ -67,7 +66,7 @@
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
-    variant = "";
+    variant = "altgr-intl";
   };
 
   # Enable CUPS to print documents.
@@ -92,12 +91,9 @@
   };
 
   # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
+  services.libinput.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes"];
-
-  fonts.packages = with pkgs; [ (nerdfonts.override { fonts = [ "JetBrainsMono" ]; }) ];
-
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.max = {
@@ -126,21 +122,21 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # networkmanager
-    # typescript-language-server
     alacritty
     alejandra
     alsa-utils
+    bambu-studio
     blueman
     brave
     btop
     calibre
     dunst
+    fd
     fish
     flameshot
     fzf
+    gammastep
     gcc
-    swww
     git
     go
     go-migrate
@@ -149,42 +145,45 @@
     golines
     gopls
     gtk3
+    hyprshot
+    jetbrains-mono
     kanata
+    lua
     lua-language-server
+    luajitPackages.luarocks
     neovim
+    nerd-fonts.jetbrains-mono
     networkmanagerapplet
     nitrogen
+    nixd
     nodejs_22
     obsidian
     oh-my-posh
     pcmanfm
-    xfce.thunar
     pika-backup
-    vlc
     playerctl
-    # python312Packages.iwlib # qtile wlan widget fix?
-    # iw # qtile wlan widget fix?
-    # wirelesstools # qtile wlan widget fix?
+    python3
     racket
     redshift
-    gammastep
     ripgrep
     rofi
     rofi-wayland
-    # starship
     stow
     stylua
+    swww
     syncthing
     tailwindcss
     tmux
     unzip
     vesktop
+    vlc
     waybar
+    wget
     xclip
     zip
     zoom-us
     zoxide
-  #  wget
+    zulu # java
   ];
 
   services.kanata = {
@@ -197,24 +196,47 @@
 	  extraDefCfg = "process-unmapped-keys yes";
 	  config = ''
 	    (defsrc
-	     caps
+	     caps a s d f j k l ;
+	    )
+	    (defvar
+	     tap-time 150
+	     hold-time 200
 	    )
 	    (defalias
 	     caps (tap-hold 100 100 esc lctl)
+	     a (tap-hold $tap-time $hold-time a lmet)
+	     s (tap-hold $tap-time $hold-time s lalt)
+	     d (tap-hold $tap-time $hold-time d lsft)
+	     f (tap-hold $tap-time $hold-time f lctl)
+	     j (tap-hold $tap-time $hold-time j rctl)
+	     k (tap-hold $tap-time $hold-time k rsft)
+	     l (tap-hold $tap-time $hold-time l ralt)
+	     ; (tap-hold $tap-time $hold-time ; rmet)
 	    )
+
 	    (deflayer base
-	     @caps
+	     @caps @a  @s  @d  @f  @j  @k  @l  @;
 	    )
 	  '';
 	};
       };
     };
+# Optimization & Garbage Collection
+
+  # Optimize Nix-Store During Rebuilds
+  # NOTE: Optimizes during builds - results in slower builds
+  nix.settings.auto-optimise-store = true;
+
+  # Purge Unused Nix-Store Entries
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 14d";
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
+  # programs.mtr.enable = true; programs.gnupg.agent = { enable = true;
   #   enableSSHSupport = true;
   # };
 
@@ -229,11 +251,5 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "24.05";
 }

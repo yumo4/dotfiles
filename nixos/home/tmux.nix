@@ -56,9 +56,6 @@
 		'';
 	    }
 	];
-	# # fixes colorscheme
-	# set -g default-terminal "screen-256color"
-	# set-option -sa terminal-overrides ",xterm*:Tc"
 	extraConfig = ''
 	   # Set prefix
 	   set -g prefix C-Space
@@ -66,6 +63,9 @@
 	   set -s extended-keys on
 	   # set-option -g xterm-keys on
 	   set -as terminal-features 'xterm*:extkeys'
+	   # fixes colorscheme
+	   set -g default-terminal "screen-256color"
+	   set-option -sa terminal-overrides ",xterm*:Tc"
 	   # reload config
 	   bind r source-file ~/.config/tmux/tmux.conf
 	   # switch like vim
