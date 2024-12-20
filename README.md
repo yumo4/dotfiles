@@ -1,85 +1,29 @@
-# Dotfiles
+# dotfiles
 
-## Requirements
-### Git
-```bash
-pacman -S git
-```
-### Stow
-```bash
-pacman -S stow
-```
+This repo contains my dotfile and nixos configuration and the wallpapers I use.
+I manage my dotfiles with [GNU Stow](https://www.gnu.org/software/stow/) or [Home Manger](https://nix-community.github.io/home-manager/).
+
+My dotfiles include: `alacritty`, `dunst`, `fastfetch`, `fish`, `flameshot`, `hypr`, `nvim`, `oh-my-posh`, `qtile`, `rofi`, `tmux`, `waybar`, `.zshrc`, `.ideavimrc` and `Gruvbox-Material-Dark` icons and themes.
+
 ## Installation
-Clone the repo
-```bash
-cd ~/git
-```
 ```bash
 git clone https://github.com/yumo4/dotfiles.git
 ```
-```
-cd ~/dotfiles 
-```
-
-```markdown
-dotfiles/
-├── dots
-│   ├── .config
-│   │   ├── alacritty
-│   │   ├── fastfetch
-│   │   ├── fish
-│   │   ├── flameshot
-│   │   ├── nvim
-│   │   ├── ohmyposh
-│   │   ├── qtile
-│   │   ├── rofi
-│   │   └── tmux
-│   ├── .icons
-│   │   └── Gruvbox-Material-Dark
-│   ├── .ideavimrc
-│   ├── .themes
-│   │   └── Gruvbox-Material-Dark
-│   └── .zshrc
-├── scripts
-│   └── setup.sh
-└── wallpaper
-```
-
-Create the symlinks with `stow`
-```bash
-cd ~/git/dotfiles/dots
-```
-```bash
-stow -t ~ .
-```
-
-## Updating
-(Delete the files in `~/.config/` / `~/` and) use this for updating
-```bash
-stow --adopt -t ~ .
-```
-
-## archinstall
-packages needed:
-```bash
-base-devel git stow
-```
-to install `yay` and `packages` and to setup `tmux tpm` run this script:
-```bash
-./scripts/setup.sh
-```
-
-### pacman config
-```bash
-sudo vim /etc/pacman.conf
-```
-- uncomment `Color` for better readability
-- uncomment `ParallelDownloads = 5` for faster downloads
-- add `ILoveCandy` for better progressbars
-
-
 ### homemanager
 #### installation
+**installing nix** (only needed on arch)
+```bash
+sh <(curl -L https://nixos.org/nix/install) --daemon
+```
+using the standalone installation (on the unstable branch)
+```bash
+nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+nix-channel --update
+```
+```bash
+nix-shell '<home-manager' -A install
+```
+If you get an error with something like "source not found" or "home-manager not found" log out and log back in and try again.
 #### update config
 from within the `nixos` directory
 ```bash
@@ -99,14 +43,14 @@ stow . --adopt
 ## nixos
 
 ### update config
-from within the `nixos` directory (`#device flake`)
+from within the `nixos` directory (`#device-flake`)
 ```bash
 sudo nixos-rebuild switch --flake .#framework
 ```
 
 ## arch
+<configuration>
 
-<details>
 ### archinstall
 packages needed:
 ```bash
@@ -121,10 +65,11 @@ to install `yay` and `packages` and to setup `tmux tpm` run this script:
 ```bash
 sudo vim /etc/pacman.conf
 ```
+add these to the `pacman.conf` file
 ```bash
 # Misc options
 Color
 ILoveCandy
 ParallelDownloads = 5
 ```
-</details>
+</configuration>
