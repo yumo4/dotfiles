@@ -44,6 +44,7 @@
     ".config/hypr".source = ../dots/.config/hypr;
     ".config/waybar".source = ../dots/.config/waybar;
     ".config/rofi".source = ../dots/.config/rofi;
+    ".config/dunst".source = ../dots/.config/dunst;
 
     ".themes/Gruvbox-Material-Dark".source = ../dots/.themes/Gruvbox-Material-Dark;
     ".icons/Gruvbox-Material-Dark".source = ../dots/.icons/Gruvbox-Material-Dark;
@@ -82,6 +83,9 @@
   gtk = {
       enable = true;
       gtk3.extraConfig = {
+          gtk-application-prefer-dark-theme = true;
+      };
+      gtk4.extraConfig = {
           gtk-application-prefer-dark-theme = true;
       };
       theme.name = "Gruvbox-Material-Dark";
