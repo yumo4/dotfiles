@@ -22,13 +22,18 @@ nix-channel --update
 ```
 - installing home-manager:
 ```bash
-nix-shell '<home-manager' -A install
+nix-shell '<home-manager>' -A install
 ```
 If you get an error with something like "source not found" or "home-manager not found" log out and log back in and try again.
 #### updating your dotfiles
 from within the `nixos` directory run
+on nixos:
 ```bash
 home-manger switch --flake . --impure
+```
+on arch:
+```bash
+home-manger switch --flake . --impure --extra-experimental-features nix-command --extra-experimental-features flakes
 ```
 
 ### stow
@@ -50,9 +55,6 @@ sudo nixos-rebuild switch --flake .#framework
 ```
 
 ## arch
-<setup>
-for setting up arch:
-
 ### archinstall
 packages needed:
 ```bash
@@ -74,4 +76,3 @@ Color
 ILoveCandy
 ParallelDownloads = 5
 ```
-</setup>
