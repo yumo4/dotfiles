@@ -1,0 +1,25 @@
+font-family = JetBrainsMono NF
+font-size = 10
+font-feature = -calt
+font-feature = -liga
+font-feature = -dlig
+font-thicken = true
+
+theme = GruvboxDark
+
+cursor-style = block
+cursor-style-blink = false
+shell-integration= zsh
+shell-integration= fish
+shell-integration-features = no-cursor
+cursor-click-to-move = true
+
+confirm-close-surface = false
+window-decoration = false
+window-padding-x = 6
+window-padding-y = 4
+resize-overlay = never
+focus-follows-mouse = true
+mouse-hide-while-typing = true
+
+keybind = ctrl+g>r=reload_config

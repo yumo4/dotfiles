@@ -21,6 +21,9 @@ return { -- Autoformat
       stylua = {
         prepend_args = { "--indent-type", "Spaces", "--indent-width", "2" },
       },
+      gofmt = {
+        prepend_args = { "--indent-type", "Tabs", "--indent-width", "4" }, -- ?
+      },
     },
   },
 }
