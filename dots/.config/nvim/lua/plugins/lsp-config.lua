@@ -114,7 +114,8 @@ return { -- LSP Configuration & Plugins
       ts_ls = {},
       ltex = {},
       texlab = {},
-      -- rnix = {},
+      -- rnix-lsp = {},
+      -- nil = {},
       jdtls = {},
       --
 
@@ -161,6 +162,7 @@ return { -- LSP Configuration & Plugins
       "stylua", -- Used to format lua code
       "black", -- python
       "gofumpt", -- go
+      "alejandra", -- nix
       "prettier", -- js/ts
       "prettierd", -- js/ts
     })

@@ -1,14 +1,16 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, lib, meta, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./machines/${meta.hostname}/hardware-configuration.nix
-    ];
+  config,
+  pkgs,
+  lib,
+  meta,
+  inputs,
+  outputs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./machines/${meta.hostname}/hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -46,7 +48,7 @@
   services.xserver = {
     enable = true;
     enableTearFree = true;
-    videoDrivers = ["intel" "amdgpu"];
+    videoDrivers = ["modesetting" "amdgpu"];
   };
 
   # services.xserver.displayManager.gdm.enable = true;
@@ -55,13 +57,12 @@
   # services.xserver.windowManager.qtile.enable = true;
   programs.hyprland.enable = true;
 
- # xdg.portal = {
- #    enable = true;
- #    extraPortals = lib.mkForce [
- #      pkgs.xdg-desktop-portal-gtk # For both
- #    ];
- #  };
-
+  # xdg.portal = {
+  #    enable = true;
+  #    extraPortals = lib.mkForce [
+  #      pkgs.xdg-desktop-portal-gtk # For both
+  #    ];
+  #  };
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -75,7 +76,7 @@
   # services.blueman.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -93,18 +94,19 @@
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes"];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.max = {
     isNormalUser = true;
     description = "max";
-    extraGroups = [ "networkmanager" "video" "wheel" "docker" "uinput"];
+    extraGroups = ["networkmanager" "video" "wheel" "docker" "uinput"];
+    # shell = pkgs.fish;
     shell = pkgs.zsh;
     packages = with pkgs; [
-   	tree
-	lsd
-	fastfetch
+      tree
+      lsd
+      fastfetch
     ];
   };
 
@@ -130,6 +132,7 @@
     brave
     btop
     calibre
+    cargo
     dunst
     fd
     fish
@@ -137,6 +140,7 @@
     fzf
     gammastep
     gcc
+    ghostty
     git
     go
     go-migrate
@@ -146,27 +150,28 @@
     gopls
     gtk3
     hyprshot
+    inputs.zen-browser.packages."${system}".default
     jetbrains-mono
     kanata
     lua
     lua-language-server
+    luajitPackages.lua-lsp
     luajitPackages.luarocks
     neovim
     nerd-fonts.jetbrains-mono
     networkmanagerapplet
-    nitrogen
+    nil
     nixd
     nodejs_22
     obsidian
     oh-my-posh
+    pavucontrol
     pcmanfm
     pika-backup
     playerctl
     python3
-    racket
-    redshift
+    # racket
     ripgrep
-    rofi
     rofi-wayland
     stow
     stylua
@@ -179,54 +184,57 @@
     vlc
     waybar
     wget
-    xclip
+    wl-clipboard
     zip
     zoom-us
     zoxide
     zulu # java
+    # xorg
+    # nitrogen
+    # redshift
+    # rofi
+    # xclip
   ];
 
   services.kanata = {
-      enable = true;
-      keyboards = {
-	internalKeyboard = {
-	  devices = [
-	    "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
-	  ];
-	  extraDefCfg = "process-unmapped-keys yes";
-	  config = ''
-	    (defsrc
-	     caps a s d f j k l ;
-	    )
-	    (defvar
-	     tap-time 150
-	     hold-time 200
-	    )
-	    (defalias
-	     caps (tap-hold 100 100 esc lctl)
-	     a (tap-hold $tap-time $hold-time a lmet)
-	     s (tap-hold $tap-time $hold-time s lalt)
-	     d (tap-hold $tap-time $hold-time d lsft)
-	     f (tap-hold $tap-time $hold-time f lctl)
-	     j (tap-hold $tap-time $hold-time j rctl)
-	     k (tap-hold $tap-time $hold-time k rsft)
-	     l (tap-hold $tap-time $hold-time l ralt)
-	     ; (tap-hold $tap-time $hold-time ; rmet)
-	    )
+    enable = true;
+    keyboards = {
+      internalKeyboard = {
+        devices = [
+          "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
+        ];
+        extraDefCfg = "process-unmapped-keys yes";
+        config = ''
+          (defsrc
+           caps a s d f j k l ;
+          )
+          (defvar
+           tap-time 150
+           hold-time 200
+          )
+          (defalias
+           caps esc
+           a (tap-hold $tap-time $hold-time a lmet)
+           s (tap-hold $tap-time $hold-time s lalt)
+           d (tap-hold $tap-time $hold-time d lsft)
+           f (tap-hold $tap-time $hold-time f lctl)
+           j (tap-hold $tap-time $hold-time j rctl)
+           k (tap-hold $tap-time $hold-time k rsft)
+           l (tap-hold $tap-time $hold-time l ralt)
+           ; (tap-hold $tap-time $hold-time ; rmet)
+          )
 
-	    (deflayer base
-	     @caps @a  @s  @d  @f  @j  @k  @l  @;
-	    )
-	  '';
-	};
+          (deflayer base
+           @caps @a  @s  @d  @f  @j  @k  @l  @;
+          )
+        '';
       };
     };
-# Optimization & Garbage Collection
+  };
 
+  # Optimization & Garbage Collection
   # Optimize Nix-Store During Rebuilds
-  # NOTE: Optimizes during builds - results in slower builds
   nix.settings.auto-optimise-store = true;
-
   # Purge Unused Nix-Store Entries
   nix.gc = {
     automatic = true;
