@@ -101,6 +101,10 @@ in {
     iconTheme.name = "Gruvbox-Material-Dark";
     font.name = "JetBrainsMono Nerd Font";
   };
+  dconf = {
+    enable = true;
+    settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

@@ -157,6 +157,7 @@
     lua-language-server
     luajitPackages.lua-lsp
     luajitPackages.luarocks
+    nautilus
     neovim
     nerd-fonts.jetbrains-mono
     networkmanagerapplet
@@ -166,7 +167,6 @@
     obsidian
     oh-my-posh
     pavucontrol
-    pcmanfm
     pika-backup
     playerctl
     python3
@@ -218,10 +218,10 @@
            s (tap-hold $tap-time $hold-time s lalt)
            d (tap-hold $tap-time $hold-time d lsft)
            f (tap-hold $tap-time $hold-time f lctl)
-           j (tap-hold $tap-time $hold-time j rctl)
-           k (tap-hold $tap-time $hold-time k rsft)
-           l (tap-hold $tap-time $hold-time l ralt)
-           ; (tap-hold $tap-time $hold-time ; rmet)
+           j (tap-hold $tap-time $hold-time j lctl)
+           k (tap-hold $tap-time $hold-time k lsft)
+           l (tap-hold $tap-time $hold-time l lalt)
+           ; (tap-hold $tap-time $hold-time ; lmet)
           )
 
           (deflayer base
