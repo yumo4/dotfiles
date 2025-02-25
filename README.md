@@ -7,7 +7,7 @@ My dotfiles include configurations for: `alacritty`, `dunst`, `fastfetch`, `fish
 
 ## Installation
 ```bash
-nix-shell -p git
+nix-shell -p git neovim ghostty
 ```
 ```bash
 git clone https://github.com/yumo4/dotfiles.git
@@ -37,7 +37,7 @@ If you get an error with something like "source not found" or "home-manager not 
 from within the `nixos` directory run
 on nixos:
 ```bash
-home-manger switch --flake . --impure
+home-manager switch --flake . --impure
 ```
 
 <details>
