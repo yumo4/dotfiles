@@ -39,12 +39,6 @@ on nixos:
 ```bash
 home-manger switch --flake . --impure
 ```
-on arch:
-```bash
-home-manger switch --flake . --impure --extra-experimental-features nix-command --extra-experimental-features flakes
-```
-
-```
 
 <details>
 
@@ -91,5 +85,10 @@ add these to the `pacman.conf` file
 Color
 ILoveCandy
 ParallelDownloads = 5
+```
+
+### updating using home-manager 
+```bash
+home-manger switch --flake . --impure --extra-experimental-features nix-command --extra-experimental-features flakes
 ```
 </details>
