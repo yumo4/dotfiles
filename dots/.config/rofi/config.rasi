@@ -1,90 +1,119 @@
-// credit: https://github.com/gordonn/dotfiles/blob/main/rofi/config.rasi
+// credit: https://github.com/RedaKadri/dotfiles/blob/main/.config/rofi/config.rasi
 
 configuration {
-	modi: "drun";
-	font: "Jetbrains Mono Nerd 14";
-	//show-icons: true;
-	icon-theme: "Gruvbox-Material-Dark";
-	display-drun: "";
-	sidebar-mode: false;
-	disable-history: false;
-	drun-display-format: "{name}";
+    modi: "drun";
+    font: "Jetbrains Mono Nerd 12";
+    //show-icons: true;
+    icon-theme: "Gruvbox-Material-Dark";
+    display-drun: "";
+    sidebar-mode: false;
+    disable-history: false;
+    drun-display-format: "{name}";
 }
 
 @theme "/dev/null"
 
 * {
-	bg: #282828;
-	fg: #ebdbb2;
-	//background: #d3869b;
-	input: #32302f;
-	accent: #ebdbb2;
-
-	background-color: @bg;
-	text-color: @fg;
-	input-color: @input;
-	mauve: @accent;
+    bg0:    #282828;
+    bg1:    #3c3836;
+    bg2:    #50494580;
+    bg3:    #d5c4a1;
+    fg0:    #ebdbb2;
+    fg1:    #fbf1c7;
+    fg2:    #ebdbb2;
+    fg3:    #665c54;
 }
+
+* {
+    font:   "Jetbrains Mono Nerd  12";
+
+    background-color:   transparent;
+    text-color:         @fg0;
+
+    margin:     0px;
+    padding:    0px;
+    spacing:    0px;
+}
+
 
 window {
-	transparency: "real";
-	width: 20%;
-	y-offset: 10px;
-	padding: 20px;
-	border: 1px;
-	border-color: @mauve;
-}
+    location:       north;
+    y-offset:       calc(50% - 176px);
+    width:          800;
+    border-radius:  15px;
 
-prompt { enabled: false; }
-
-entry {
-	placeholder: "Search";
-	expand: true;
-	padding: 5px 2% 5px 2%;
-	background-color: #00000000;
-	placeholder-color: @fg;
-}
-
-inputbar {
-	children: [ prompt, entry ];
-	background-color: @input;
-	text-color: @fg;
-	expand: false;
-	padding: 8px;
-}
-
-listview {
-	columns: 1;
-	lines: 5;
-	cycle: false;
-	dynamic: true;
-	layout: vertical;
-	background-color: #00000000;
+    background-color:   @bg0;
 }
 
 mainbox {
-	children: [ inputbar, listview ];
-	spacing: 2%;
-	padding: 2% 1% 2% 1%;
-	background-color: #00000000;
+    padding:    12px;
+}
+
+inputbar {
+    background-color:   @bg1;
+    border-color:       @bg3;
+
+    border:         2px;
+    border-radius:  10px;
+
+    padding:    8px 16px;
+    spacing:    8px;
+    children:   [ prompt, entry ];
+}
+
+entry {
+    placeholder:        " Search";
+    placeholder-color:  @fg3;
+}
+
+message {
+    margin:             12px 0 0;
+    border-radius:      10px;
+    border-color:       @bg2;
+    background-color:   @bg2;
+}
+
+textbox {
+    padding:    8px 24px;
+}
+
+listview {
+    background-color:   transparent;
+
+    margin:     12px 0 0;
+    lines:      8;
+    columns:    1;
+
+    fixed-height: true;
 }
 
 element {
-	orientation: vertical;
-	border-radius: 0%;
-	padding: 1.5% 0% 1.5% 0%;
-	background-color: #00000000;
+    padding:        8px 16px;
+    spacing:        8px;
+    border-radius:  10px;
+}
+
+element normal active {
+    text-color: @bg3;
+}
+
+element alternate active {
+    text-color: @bg3;
+}
+
+element selected normal, element selected active {
+    background-color:   @bg3;
+}
+
+element-icon {
+    size:           1em;
+    vertical-align: 0.5;
 }
 
 element-text {
-	expand: true;
-	vertical-align: 0.5;
-	margin: 0.5% 3% 0% 3%;
-	background-color: inherit;
-	text-color: inherit;
+    text-color: inherit;
 }
 
 element selected {
-	background-color: @mauve;
-	text-color: #282828;
+    text-color: @bg1;
 }

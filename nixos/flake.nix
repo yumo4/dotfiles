@@ -5,22 +5,13 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    # zen-browser.url = "github:MarceColl/zen-browser-flake";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
-    #    zen-browser = {
-    # url = "github:0xc000022070/zen-browser-flake";
-    #    };
-    #    ghostty = {
-    # url = "github:ghostty-org/ghostty";
-    #    };
   };
 
-  # outputs = { self, nixpkgs, home-manager, ghostty, zen-browser, ... }:
   outputs = {
     self,
     nixpkgs,
     home-manager,
-    zen-browser,
     ...
   }: let
     system = "x86_64-linux";

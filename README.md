@@ -3,18 +3,26 @@
 This repo contains my dotfiles, nixos configuration and the wallpapers I use.
 I manage my dotfiles with [GNU Stow](https://www.gnu.org/software/stow/) or [Home Manger](https://nix-community.github.io/home-manager/).
 
-My dotfiles include configurations for: `alacritty`, `dunst`, `fastfetch`, `fish`, `flameshot`, `hypr`, `nvim`, `oh-my-posh`, `qtile`, `rofi`, `tmux`, `waybar`, `.zshrc`, `.ideavimrc` and `Gruvbox-Material-Dark` icons and themes.
+My dotfiles include configurations for: `alacritty`, `dunst`, `fastfetch`, `fish`, `flameshot`, `ghostty`, `hypr`, `nvim`, `oh-my-posh`, `qtile`, `rofi`, `tmux`, `waybar`, `.zshrc`, `.ideavimrc` and `Gruvbox-Material-Dark` icons and themes.
 
 ## Installation
 ```bash
+nix-shell -p git
+```
+```bash
 git clone https://github.com/yumo4/dotfiles.git
+```
+- create new host directory
+- create new hardware configuration
+```bash
+sudo nixos-generate-config --dir . --no-filesystems
+```
+inside of the `nixos` directory run this to build your system
+```bah
+sudo nixos-rebuild switch --flake .#<name of your host> --show-trac
 ```
 ### homemanager
 #### installing 
-- installing nix (only needed on arch):
-```bash
-sh <(curl -L https://nixos.org/nix/install) --daemon
-```
 - using the standalone installation (on the unstable branch):
 ```bash
 nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
@@ -36,7 +44,14 @@ on arch:
 home-manger switch --flake . --impure --extra-experimental-features nix-command --extra-experimental-features flakes
 ```
 
-### stow
+```
+
+<details>
+
+<summary>arch & stow stuff</summary>
+
+## stow
+
 for setting up the symlinks: from within the `dots` directory run
 ```bash
 stow .
@@ -44,18 +59,11 @@ stow .
 or for updating / adding a new config run:
 ```bash
 stow . --adopt
-```
-
-## nixos
-
-### update config
-from within the `nixos` directory (`#device-flake`)
-```bash
-sudo nixos-rebuild switch --flake .#framework
-```
 
 ## arch
+
 ### archinstall
+
 packages needed:
 ```bash
 base-devel git stow
@@ -65,7 +73,15 @@ to install `yay` and `packages` and to setup `tmux tpm` run this script:
 ./scripts/setup.sh
 ```
 
+### nix install
+
+- installing nix (only needed on arch):
+```bash
+sh <(curl -L https://nixos.org/nix/install) --daemon
+```
+
 ### pacman config
+
 ```bash
 sudo vim /etc/pacman.conf
 ```
@@ -76,3 +92,4 @@ Color
 ILoveCandy
 ParallelDownloads = 5
 ```
+</details>
