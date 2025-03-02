@@ -13,13 +13,13 @@ nix-shell -p git neovim ghostty
 git clone https://github.com/yumo4/dotfiles.git
 ```
 - create new host directory
-- create new hardware configuration
+- copy hardware configuration into host directory
 ```bash
-sudo nixos-generate-config --dir . --no-filesystems
+sudo cp /etc/nixos/hardware-configuration.nix .
 ```
 inside of the `nixos` directory run this to build your system
 ```bah
-sudo nixos-rebuild switch --flake .#<name of your host> --show-trac
+sudo nixos-rebuild switch --flake .#<hostname> --show-trace
 ```
 ### homemanager
 #### installing 

@@ -63,6 +63,7 @@
     # fixes colorscheme
     set -g default-terminal "screen-256color"
     set-option -sa terminal-overrides ",xterm*:Tc"
+    bind C-j display-popup -E "tmux list-sessions | sed -E 's/:.*$//' | grep -v \"^$(tmux display-message -p '#S')\$\" | fzf --reverse | xargs tmux switch-client -t"
     # reload config
     bind r source-file ~/.config/tmux/tmux.conf
     # switch like vim
@@ -87,9 +88,4 @@
     set-window-option -g pane-base-index 1
     set-option -g renumber-windows on
   '';
-  # resizes panes
-  # bind -r j resize-pane -D 5
-  # bind -r k resize-pane -U 5
-  # bind -r l resize-pane -R 5
-  # bind -r h resize-pane -L 5
 }
