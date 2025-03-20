@@ -63,7 +63,8 @@
     # fixes colorscheme
     set -g default-terminal "screen-256color"
     set-option -sa terminal-overrides ",xterm*:Tc"
-    bind C-j display-popup -E "tmux list-sessions | sed -E 's/:.*$//' | grep -v \"^$(tmux display-message -p '#S')\$\" | fzf --reverse | xargs tmux switch-client -t"
+    # session switching
+    bind s display-popup -E "tmux list-sessions | sed -E 's/:.*$//' | grep -v \"^$(tmux display-message -p '#S')\$\" | fzf --reverse | xargs tmux switch-client -t"
     # reload config
     bind r source-file ~/.config/tmux/tmux.conf
     # switch like vim

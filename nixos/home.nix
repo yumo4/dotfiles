@@ -51,6 +51,8 @@ in {
 
   home.sessionVariables = {
     EDITOR = "nvim";
+    XCURSOR_SIZE = "24";
+    XCURSOR_THEME = "Adwaita";
   };
 
   programs.tmux = import ./home/tmux.nix {inherit pkgs;};
@@ -94,12 +96,14 @@ in {
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme = true;
     };
-    gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
-    };
+    # gtk4.extraConfig = {
+    #   gtk-application-prefer-dark-theme = true;
+    # };
     theme.name = "Gruvbox-Material-Dark";
     iconTheme.name = "Gruvbox-Material-Dark";
     font.name = "JetBrainsMono Nerd Font";
+    # cursorTheme.name = "Adwaita";
+    # cursorTheme.size = 24;
   };
   dconf = {
     enable = true;

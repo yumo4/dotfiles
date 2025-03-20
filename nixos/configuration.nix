@@ -6,7 +6,33 @@
   inputs,
   outputs,
   ...
-}: {
+}: let
+  texlive = pkgs.texlive.combine {
+    # Directly use pkgs.texlive
+    inherit
+      (pkgs.texlive)
+      scheme-small
+      academicons
+      arydshln
+      fontawesome5
+      marvosym
+      moderncv
+      multirow
+      ;
+  };
+  makeFontsConf = pkgs.makeFontsConf; # Get makeFontsConf from pkgs
+
+  xelatex =
+    pkgs.runCommand "xelatex" {
+      nativeBuildInputs = [pkgs.makeWrapper];
+    } ''
+      mkdir -p $out/bin
+      makeWrapper ${texlive}/bin/xelatex $out/bin/xelatex \
+        --prefix FONTCONFIG_FILE : ${makeFontsConf {
+        fontDirectories = [pkgs.lmodern pkgs.font-awesome_4];
+      }}
+    '';
+in {
   imports = [
     # Include the results of the hardware scan.
     ./machines/${meta.hostname}/hardware-configuration.nix
@@ -178,6 +204,8 @@
     swww
     syncthing
     tailwindcss
+    texlab
+    texlive
     tmux
     unzip
     vesktop
