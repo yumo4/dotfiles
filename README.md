@@ -10,7 +10,7 @@ My dotfiles include configurations for: `alacritty`, `dunst`, `fastfetch`, `fish
 nix-shell -p git neovim ghostty
 ```
 ```bash
-git clone https://github.com/yumo4/dotfiles.git
+git clone git@github.com:yumo4/dotfiles.git
 ```
 - create new host directory
 - copy hardware configuration into host directory
