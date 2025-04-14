@@ -16,18 +16,28 @@ in {
     package = pkgs.adwaita-icon-theme;
     size = 24;
   };
+  home.shell.enableFishIntegration = true;
+  home.shellAliases = {
+    vi = "nvim";
+    vim = "nvim";
+    fetch = "fastfetch";
+    ls = "lsd";
+    ll = "lsd -l";
+    lst = "tree -C";
+    tas = "tmux attach-session -t";
+    home-one = "ssh max@192.168.178.65";
+  };
 
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
+  home.packages = with pkgs; [
   ];
 
   xdg.enable = true;
 
   xdg.configFile.nvim.source = mkOutOfStoreSymlink "/home/max/Projects/dotfiles/dots/.config/nvim";
-  xdg.configFile.ghostty.source = mkOutOfStoreSymlink "/home/max/Projects/dotfiles/dots/.config/ghostty";
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -36,14 +46,12 @@ in {
     ".ideavimrc".source = ../dots/.ideavimrc;
     ".config/alacritty".source = ../dots/.config/alacritty;
     ".config/fastfetch".source = ../dots/.config/fastfetch;
-    ".config/flameshot".source = ../dots/.config/flameshot;
-    ".config/ohmyposh".source = ../dots/.config/ohmyposh;
-    # ".config/fish".source = ../dots/.config/fish;
-    ".config/qtile".source = ../dots/.config/qtile;
-    ".config/hypr".source = ../dots/.config/hypr;
+    # ".config/flameshot".source = ../dots/.config/flameshot;
+    # ".config/qtile".source = ../dots/.config/qtile;
+    # ".config/hypr".source = ../dots/.config/hypr;
     ".config/waybar".source = ../dots/.config/waybar;
     ".config/rofi".source = ../dots/.config/rofi;
-    ".config/dunst".source = ../dots/.config/dunst;
+    # ".config/dunst".source = ../dots/.config/dunst;
 
     ".themes/Gruvbox-Material-Dark".source = ../dots/.themes/Gruvbox-Material-Dark;
     ".icons/Gruvbox-Material-Dark".source = ../dots/.icons/Gruvbox-Material-Dark;
@@ -55,7 +63,19 @@ in {
     XCURSOR_THEME = "Adwaita";
   };
 
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+    enableFishIntegration = true;
+    enableBashIntegration = true;
+    options = ["--cmd cd"];
+  };
+
   programs.tmux = import ./home/tmux.nix {inherit pkgs;};
+  programs.ghostty = import ./home/ghostty.nix {inherit pkgs;};
+  wayland.windowManager = {
+    hyprland = import ./home/hyprland.nix {inherit pkgs;};
+  };
 
   programs.git = {
     enable = true;
@@ -68,17 +88,13 @@ in {
     };
   };
 
-  programs.fish = {
-    enable = true;
-    shellInit = ''
-      oh-my-posh init fish --config "$HOME/.config/ohmyposh/config.toml" | source
-    '';
-    loginShellInit = ''
-      oh-my-posh init fish --config "$HOME/.config/ohmyposh/config.toml" | source
-    '';
-  };
+  programs.fish = import ./home/fish.nix {inherit pkgs;};
 
   services.syncthing = {
+    enable = true;
+  };
+
+  services.swaync = {
     enable = true;
   };
 
@@ -91,19 +107,38 @@ in {
     enable = true;
   };
 
+  # gtk = {
+  #   enable = true;
+  #   gtk3.extraConfig = {
+  #     gtk-application-prefer-dark-theme = true;
+  #   };
+  #   gtk4.extraConfig = {
+  #     gtk-application-prefer-dark-theme = true;
+  #   };
+  #   theme.name = "Gruvbox-Material-Dark";
+  #   iconTheme.name = "Gruvbox-Material-Dark";
+  #   # theme.package = pkgs.gnome-themes-extra;
+  #   # pkgs.gnome-themes-extra
+  #   font.name = "JetBrainsMono Nerd Font";
+  #   # cursorTheme.name = "Adwaita";
+  #   # cursorTheme.size = 24;
+  # };
+  # dconf = {
+  #   enable = true;
+  #   settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+  # };
   gtk = {
     enable = true;
+
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme = true;
     };
-    # gtk4.extraConfig = {
-    #   gtk-application-prefer-dark-theme = true;
-    # };
+    gtk4.extraConfig = {
+      gtk-application-prefer-dark-theme = true;
+    };
     theme.name = "Gruvbox-Material-Dark";
     iconTheme.name = "Gruvbox-Material-Dark";
     font.name = "JetBrainsMono Nerd Font";
-    # cursorTheme.name = "Adwaita";
-    # cursorTheme.size = 24;
   };
   dconf = {
     enable = true;

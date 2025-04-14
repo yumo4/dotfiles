@@ -22,12 +22,15 @@
   };
   makeFontsConf = pkgs.makeFontsConf; # Get makeFontsConf from pkgs
 
-  xelatex =
-    pkgs.runCommand "xelatex" {
+  # xelatex =
+  pdflatex =
+    # pkgs.runCommand "xelatex" {
+    pkgs.runCommand "pdflatex" {
       nativeBuildInputs = [pkgs.makeWrapper];
     } ''
       mkdir -p $out/bin
-      makeWrapper ${texlive}/bin/xelatex $out/bin/xelatex \
+      # makeWrapper ${texlive}/bin/xelatex $out/bin/xelatex \
+      makeWrapper ${texlive}/bin/pdflatex $out/bin/pdflatex \
         --prefix FONTCONFIG_FILE : ${makeFontsConf {
         fontDirectories = [pkgs.lmodern pkgs.font-awesome_4];
       }}
@@ -127,8 +130,8 @@ in {
     isNormalUser = true;
     description = "max";
     extraGroups = ["networkmanager" "video" "wheel" "docker" "uinput"];
-    # shell = pkgs.fish;
-    shell = pkgs.zsh;
+    # shell = pkgs.zsh;
+    shell = pkgs.fish;
     packages = with pkgs; [
       tree
       lsd
@@ -153,13 +156,14 @@ in {
     alacritty
     alejandra
     alsa-utils
-    bambu-studio
+    # bambu-studio
+    orca-slicer
     blueman
     brave
     btop
     calibre
     cargo
-    dunst
+    # dunst
     fd
     fish
     flameshot
@@ -173,14 +177,17 @@ in {
     gofumpt
     goimports-reviser
     golines
+    gotools
     gopls
     gtk3
     hyprshot
     inputs.zen-browser.packages."${system}".default
     jetbrains-mono
     kanata
+    libnotify
     lua
     lua-language-server
+    luajit
     luajitPackages.lua-lsp
     luajitPackages.luarocks
     nautilus
@@ -201,12 +208,14 @@ in {
     rofi-wayland
     stow
     stylua
+    swaynotificationcenter
     swww
     syncthing
     tailwindcss
     texlab
     texlive
     tmux
+    tree-sitter
     unzip
     vesktop
     vlc
@@ -263,10 +272,11 @@ in {
   # Optimization & Garbage Collection
   # Optimize Nix-Store During Rebuilds
   nix.settings.auto-optimise-store = true;
+  nix.optimise.automatic = true;
   # Purge Unused Nix-Store Entries
   nix.gc = {
     automatic = true;
-    dates = "weekly";
+    dates = "daily";
     options = "--delete-older-than 14d";
   };
 

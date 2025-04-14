@@ -9,19 +9,25 @@ return { -- Autoformat
     formatters_by_ft = {
       lua = { "stylua" },
       python = { "isort", "black" },
-      go = { "goimport", "gofmt" },
+      -- go = { "gofumpt", "goimports-reviser" },
+      go = { "gofumpt", "goimports-reviser" },
       javascript = { { "prettierd", "prettier" } },
       nix = { "alejandra" },
+      latex = { "tex-fmt" },
     },
     formatters = {
+      -- lua
       stylua = {
         prepend_args = { "--indent-type", "Spaces", "--indent-width", "2" },
       },
-      gofmt = {
-        prepend_args = { "--indent-type", "Tabs", "--indent-width", "4" }, -- ?
+      -- go
+      gofumpt = {
+        prepend_args = { "--indent-type", "Tabs", "--indent-width", "4" },
       },
-      alejandra = {
-      },
+      -- nix
+      alejandra = {},
+      -- tex-fmt = {
+      -- },
     },
   },
 }

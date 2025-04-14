@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   enable = true;
-  shell = "${pkgs.zsh}/bin/zsh";
+  shell = "${pkgs.fish}/bin/fish";
   keyMode = "vi";
   mouse = true;
   terminal = "screen-256color";
@@ -13,31 +13,6 @@
     }
     {
       plugin = vim-tmux-navigator;
-    }
-    {
-      plugin = tmux-nova;
-      extraConfig = ''
-        set -g @nova-nerdfonts true
-        set -g @nova-nerdfonts-left "█"
-        set -g @nova-nerdfonts-right "█"
-
-        set -g @nova-pane "#I#{?pane_in_mode, #{pane_mode},} #W"
-
-        ## bar background
-        set -g @nova-status-style-bg "#32302f"
-        ## active pane border
-        set -g @nova-pane-active-border-style "#ebdbb2"
-        ## active window
-        set -g @nova-status-style-active-bg "#ebdbb2"
-        set -g @nova-status-style-active-fg "#282828"
-
-        #set -g @nova-segment-mode "#{?client_prefix, P, T}"
-        set -g @nova-segment-mode "#{?client_prefix,,}"
-        set -g @nova-segment-mode-colors "#ebdbb2 #282828"
-
-        set -g @nova-rows 0
-        set -g @nova-segments-0-left "mode"
-      '';
     }
     {
       plugin = resurrect;
@@ -63,8 +38,10 @@
     # fixes colorscheme
     set -g default-terminal "screen-256color"
     set-option -sa terminal-overrides ",xterm*:Tc"
+
     # session switching
-    bind s display-popup -E "tmux list-sessions | sed -E 's/:.*$//' | grep -v \"^$(tmux display-message -p '#S')\$\" | fzf --reverse | xargs tmux switch-client -t"
+    bind s display-popup -E "$HOME/Projects/dotfiles/scripts/tmux-list-sesssions.sh"
+
     # reload config
     bind r source-file ~/.config/tmux/tmux.conf
     # switch like vim
@@ -81,6 +58,7 @@
     bind v split-window -h -c '#{pane_current_path}'
 
     bind -r m resize-pane -Z
+    bind-key m resize-pane -Z
     # bar position
     # set-option -g status-position bottom
     # index
@@ -88,5 +66,22 @@
     set -g pane-base-index 1
     set-window-option -g pane-base-index 1
     set-option -g renumber-windows on
+
+    # bar
+    set -g status on
+    set -g status-justify left
+    set -g status-style "fg=#ebdbb2"
+    set -g status-left " #{?client_prefix, , }"
+    # set -g status-left "#[fg=#282828]█#[fg=#ebdbb2]{?client_prefix,  }#[fg=#282828]█"
+    set -g status-right-length 50
+
+    set -g status-right " #[fg=#665c54] session:#[fg=#ebdbb2,bg=default] #S"
+    set -g window-status-format " #[fg=#665c54,bg=default]#I: #[fg=#default,bg=#ebdbb2]#W"
+
+    set -g window-status-current-format " #[fg=#ebdbb2,bg=default]#I: #[fg=#665c54,bg=#default]#W"
+
+    # pane dividers
+    set -g pane-border-style "fg=#665c54"
+    set -g pane-active-border-style "fg=#ebdbb2"
   '';
 }
