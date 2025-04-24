@@ -12,7 +12,7 @@
     "modules-center": [
     ],
     "modules-right": [
-	"tray",
+		"tray",
         "network",
         "backlight",
         "pulseaudio",

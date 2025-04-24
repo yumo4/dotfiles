@@ -1,9 +1,4 @@
-{
-  pkgs,
-  # inputs,
-  # system,
-  ...
-}: {
+{pkgs, ...}: {
   enable = true;
   settings = {
     monitor = [
@@ -11,10 +6,11 @@
       "DP-3, 1920x1080@143.98100, 0x0, 1.00"
     ];
 
+    exec = [
+      ''gsettings set org.gnome.desktop.interface gtk-theme "Adwaita"   # for GTK3 apps''
+      ''gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"   # for GTK4 apps''
+    ];
     exec-once = [
-      # "${pkgs.waybar}/bin/waybar"
-      # "${pkgs.obsidian}/bin/obsidian"
-      # "${pkgs.gammastep}/bin/gammastep -O 4000"
       "waybar &"
       "obsidian &"
       "gammastep -O 4000 &"
@@ -25,14 +21,13 @@
       "XCURSOR_THEME, Adwaita"
       "XCURSOR_SIZE, 24"
 
-      "XDG_CURRENT_DESKTOP,Hyprland"
-      "XDG_SESSION_TYPE,wayland"
-      "XDG_SESSION_DESKTOP,Hyprland"
+      # "XDG_CURRENT_DESKTOP,Hyprland"
+      # "XDG_SESSION_TYPE,wayland"
+      # "XDG_SESSION_DESKTOP,Hyprland"
+
       # "GTK_APPLICATION_PREFER_DARK_THEME,1"
       # "GTK_THEME_VARIANT,dark"
       # "GTK_THEME=Gruvbox-Material-Dark"
-      # "GTK_THEME=gruvbox-material-gtk"
-      "GTK_THEME_VARIANT=dark"
     ];
     general = {
       "gaps_in" = 2;
@@ -119,14 +114,13 @@
 
     "$mainMod" = "SUPER";
     "$terminal" = "${pkgs.ghostty}/bin/ghostty";
-    # # "$browser" = "${inputs.zen-browser.packages."${system}".default}/bin/zen-beta";
     "$browser" = "zen-beta";
-    "$fileManager" = "${pkgs.nautilus}/bin/nautilus";
+    "$fileManager" = "${pkgs.nautilus}/bin/nautilus --new-window";
     "$menu" = "rofi -show drun";
     "$quicknote" = "~/Projects/dotfiles/dots/.config/rofi/rofi-quicknote.sh";
     bind = [
       "$mainMod, W, killactive,"
-      "$mainMod CONTROL, R, exec, ~/.config/waybar/reload.sh"
+      "$mainMod CONTROL, R, exec, ~/Projects/dotfiles/dots/.config/waybar/reload.sh"
 
       "$mainMod, return, exec, $terminal"
       "$mainMod, B, exec, $browser"

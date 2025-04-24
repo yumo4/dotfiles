@@ -1,9 +1,9 @@
 # dotfiles
 
 This repo contains my dotfiles, nixos configuration and the wallpapers I use.
-I manage my dotfiles with [GNU Stow](https://www.gnu.org/software/stow/) or [Home Manger](https://nix-community.github.io/home-manager/).
+I manage my dotfiles with [Home Manger](https://nix-community.github.io/home-manager/).
 
-My dotfiles include configurations for: `alacritty`, `dunst`, `fastfetch`, `fish`, `flameshot`, `ghostty`, `hypr`, `nvim`, `oh-my-posh`, `qtile`, `rofi`, `tmux`, `waybar`, `.zshrc`, `.ideavimrc` and `Gruvbox-Material-Dark` icons and themes.
+My dotfiles include configurations for: `alacritty`, `fastfetch`, `fish`, `flameshot`, `ghostty`, `hyprland`, `nvim`, `oh-my-posh`, `qtile`, `rofi`, `tmux`, `waybar`, `.zshrc`, `.ideavimrc` and `Gruvbox-Material-Dark` icons and themes.
 
 ## Installation
 ```bash

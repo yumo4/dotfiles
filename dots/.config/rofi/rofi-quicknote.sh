@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # --- Configuration ---
-OBSIDIAN_DAILY_NOTES_PATH="$HOME/obsidian/holocron/000 Zettelkasten"
+OBSIDIAN_DAILY_NOTES_PATH="$HOME/obsidian/holocron/000-Zettelkasten"
 DAILY_NOTE_PREFIX=""
 DAILY_NOTE_SUFFIX=".md"
 QUICK_NOTE_PREFIX="- "

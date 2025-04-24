@@ -77,21 +77,22 @@ in {
   services.xserver = {
     enable = true;
     enableTearFree = true;
-    videoDrivers = ["modesetting" "amdgpu"];
+    videoDrivers = ["modesetting" "amdgpu"]; # intel amd
   };
 
-  # services.xserver.displayManager.gdm.enable = true;
   services.displayManager.ly.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
   # services.xserver.windowManager.qtile.enable = true;
   programs.hyprland.enable = true;
 
-  # xdg.portal = {
-  #    enable = true;
-  #    extraPortals = lib.mkForce [
-  #      pkgs.xdg-desktop-portal-gtk # For both
-  #    ];
-  #  };
+  xdg.portal = {
+    enable = true;
+    extraPortals = lib.mkForce [
+      pkgs.xdg-desktop-portal-gtk # For both
+      pkgs.xdg-desktop-portal-hyprland # For Hyprland
+      pkgs.xdg-desktop-portal-gnome # For GNOME
+    ];
+  };
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -130,6 +131,7 @@ in {
     isNormalUser = true;
     description = "max";
     extraGroups = ["networkmanager" "video" "wheel" "docker" "uinput"];
+    # extraGroups = ["networkmanager" "video" "wheel" "docker" "uinput" "plugdev"];
     # shell = pkgs.zsh;
     shell = pkgs.fish;
     packages = with pkgs; [
@@ -145,6 +147,31 @@ in {
   hardware.brillo.enable = true;
   services.udev.extraRules = ''
     ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="intel_backlight", MODE="0666"
+
+    # Rules for Oryx web flashing and live training
+    # KERNEL=="hidraw*", ATTRS{idVendor}=="16c0", MODE="0664", GROUP="plugdev"
+    # KERNEL=="hidraw*", ATTRS{idVendor}=="3297", MODE="0664", GROUP="plugdev"
+
+    # Legacy rules for live training over webusb (Not needed for firmware v21+)
+    # Rule for all ZSA keyboards
+    # SUBSYSTEM=="usb", ATTR{idVendor}=="3297", GROUP="plugdev"
+    # Rule for the Moonlander
+    # SUBSYSTEM=="usb", ATTR{idVendor}=="3297", ATTR{idProduct}=="1969", GROUP="plugdev"
+    # Rule for the Ergodox EZ
+    # SUBSYSTEM=="usb", ATTR{idVendor}=="feed", ATTR{idProduct}=="1307", GROUP="plugdev"
+    # Rule for the Planck EZ
+    # SUBSYSTEM=="usb", ATTR{idVendor}=="feed", ATTR{idProduct}=="6060", GROUP="plugdev"
+
+    # Wally Flashing rules for the Ergodox EZ
+    # ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789B]?", ENV{ID_MM_DEVICE_IGNORE}="1"
+    # ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789A]?", ENV{MTP_NO_PROBE}="1"
+    # SUBSYSTEMS=="usb", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789ABCD]?", MODE:="0666"
+    # KERNEL=="ttyACM*", ATTRS{idVendor}=="16c0", ATTRS{idProduct}=="04[789B]?", MODE:="0666"
+
+    # Keymapp / Wally Flashing rules for the Moonlander and Planck EZ
+    # SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", MODE:="0666", SYMLINK+="stm32_dfu"
+    # Keymapp Flashing rules for the Voyager
+    # SUBSYSTEMS=="usb", ATTRS{idVendor}=="3297", MODE:="0666", SYMLINK+="ignition_dfu"
   '';
 
   # Allow unfree packages
@@ -193,10 +220,12 @@ in {
     nautilus
     neovim
     nerd-fonts.jetbrains-mono
+    # nerd-fonts.comic-shanns-mono
     networkmanagerapplet
     nil
     nixd
     nodejs_22
+    obs-studio
     obsidian
     oh-my-posh
     pavucontrol
@@ -276,7 +305,7 @@ in {
   # Purge Unused Nix-Store Entries
   nix.gc = {
     automatic = true;
-    dates = "daily";
+    dates = "weekly";
     options = "--delete-older-than 14d";
   };
 

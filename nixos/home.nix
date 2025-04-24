@@ -49,7 +49,7 @@ in {
     # ".config/flameshot".source = ../dots/.config/flameshot;
     # ".config/qtile".source = ../dots/.config/qtile;
     # ".config/hypr".source = ../dots/.config/hypr;
-    ".config/waybar".source = ../dots/.config/waybar;
+    # ".config/waybar".source = ../dots/.config/waybar;
     ".config/rofi".source = ../dots/.config/rofi;
     # ".config/dunst".source = ../dots/.config/dunst;
 
@@ -61,6 +61,7 @@ in {
     EDITOR = "nvim";
     XCURSOR_SIZE = "24";
     XCURSOR_THEME = "Adwaita";
+    GTK_THEME = "Gruvbox-Material-Dark";
   };
 
   programs.zoxide = {
@@ -72,10 +73,14 @@ in {
   };
 
   programs.tmux = import ./home/tmux.nix {inherit pkgs;};
+
   programs.ghostty = import ./home/ghostty.nix {inherit pkgs;};
+
   wayland.windowManager = {
     hyprland = import ./home/hyprland.nix {inherit pkgs;};
   };
+
+  programs.waybar = import ./home/waybar.nix {inherit pkgs;};
 
   programs.git = {
     enable = true;
@@ -107,44 +112,31 @@ in {
     enable = true;
   };
 
-  # gtk = {
-  #   enable = true;
-  #   gtk3.extraConfig = {
-  #     gtk-application-prefer-dark-theme = true;
-  #   };
-  #   gtk4.extraConfig = {
-  #     gtk-application-prefer-dark-theme = true;
-  #   };
-  #   theme.name = "Gruvbox-Material-Dark";
-  #   iconTheme.name = "Gruvbox-Material-Dark";
-  #   # theme.package = pkgs.gnome-themes-extra;
-  #   # pkgs.gnome-themes-extra
-  #   font.name = "JetBrainsMono Nerd Font";
-  #   # cursorTheme.name = "Adwaita";
-  #   # cursorTheme.size = 24;
-  # };
-  # dconf = {
-  #   enable = true;
-  #   settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
-  # };
   gtk = {
     enable = true;
 
     gtk3.extraConfig = {
       gtk-application-prefer-dark-theme = true;
     };
-    gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
+    # gtk4.extraConfig = {
+    #   gtk-application-prefer-dark-theme = true;
+    # };
+    theme = {
+      name = "Adwaita-dark";
+      package = pkgs.gnome-themes-extra;
+      # package = pkgs.flat-remix-gtk;
+      # name = "Flat-Remix-GTK-Grey-Dark";
+      # name = "Gruvbox-Material-Dark";
     };
-    theme.name = "Gruvbox-Material-Dark";
     iconTheme.name = "Gruvbox-Material-Dark";
+
     font.name = "JetBrainsMono Nerd Font";
   };
+
   dconf = {
     enable = true;
     settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
   };
-
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }
