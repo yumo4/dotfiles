@@ -210,6 +210,9 @@ in {
     hyprshot
     inputs.zen-browser.packages."${system}".default
     jetbrains-mono
+    jdt-language-server
+    java-language-server
+    google-java-format
     kanata
     libnotify
     lua
@@ -248,6 +251,7 @@ in {
     unzip
     vesktop
     vlc
+    vscodium-fhs
     waybar
     wget
     wl-clipboard

@@ -13,6 +13,7 @@ return { -- Autoformat
       go = { "gofumpt", "goimports-reviser" },
       javascript = { { "prettierd", "prettier" } },
       nix = { "alejandra" },
+      java = { "google-java-format" },
       latex = { "tex-fmt" },
     },
     formatters = {
@@ -26,6 +27,8 @@ return { -- Autoformat
       },
       -- nix
       alejandra = {},
+      -- java
+      google_java_format = {},
       -- tex-fmt = {
       -- },
     },

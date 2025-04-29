@@ -88,6 +88,7 @@ return { -- LSP Configuration & Plugins
       texlab = {},
       -- java
       jdtls = {},
+      -- java-language-server = {},
       -- nix
       nil_ls = {},
 

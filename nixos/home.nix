@@ -33,6 +33,7 @@ in {
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    gruvbox-gtk-theme
   ];
 
   xdg.enable = true;
@@ -61,7 +62,11 @@ in {
     EDITOR = "nvim";
     XCURSOR_SIZE = "24";
     XCURSOR_THEME = "Adwaita";
-    GTK_THEME = "Gruvbox-Material-Dark";
+
+    # changes this for gtk themes:
+    # GTK_THEME = "Gruvbox-Material-Dark";
+    GTK_THEME = "Adwaita-dark";
+    # GTK_THEME = "gruvbox-gtk-theme";
   };
 
   programs.zoxide = {
@@ -122,8 +127,8 @@ in {
     #   gtk-application-prefer-dark-theme = true;
     # };
     theme = {
-      name = "Adwaita-dark";
-      package = pkgs.gnome-themes-extra;
+      # name = "Adwaita-dark";
+      # package = pkgs.gnome-themes-extra;
       # package = pkgs.flat-remix-gtk;
       # name = "Flat-Remix-GTK-Grey-Dark";
       # name = "Gruvbox-Material-Dark";

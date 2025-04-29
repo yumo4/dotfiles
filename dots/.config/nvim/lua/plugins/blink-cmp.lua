@@ -2,7 +2,7 @@ return {
   "saghen/blink.cmp",
   dependencies = "rafamadriz/friendly-snippets",
 
-  version = "v0.*",
+  version = "v1.*",
 
   opts = {
     keymap = { preset = "default" },
@@ -12,9 +12,15 @@ return {
       nerd_font_variant = "mono",
     },
 
+    completion = { documentation = { auto_show = true } },
+
     sources = {
       default = { "lsp", "path", "snippets", "buffer" },
     },
+
     signature = { enabled = true },
+
+    fuzzy = { implementation = "prefer_rust_with_warning" },
   },
+  opts_extend = { "sources.default" },
 }
