@@ -9,12 +9,13 @@ return { -- Autoformat
     formatters_by_ft = {
       lua = { "stylua" },
       python = { "isort", "black" },
-      -- go = { "gofumpt", "goimports-reviser" },
       go = { "gofumpt", "goimports-reviser" },
       javascript = { { "prettierd", "prettier" } },
       nix = { "alejandra" },
       java = { "google-java-format" },
       latex = { "tex-fmt" },
+      html = { "htmlbeautifier" },
+      -- css = { "stylelint" },
     },
     formatters = {
       -- lua
@@ -29,6 +30,12 @@ return { -- Autoformat
       alejandra = {},
       -- java
       google_java_format = {},
+      -- html
+      htmlbeutifier = {},
+      -- css
+      -- stylelint = {},
+      -- js
+      prettierd = {},
       -- tex-fmt = {
       -- },
     },

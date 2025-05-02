@@ -212,6 +212,7 @@ in {
     jetbrains-mono
     jdt-language-server
     java-language-server
+    jsbeautifier
     google-java-format
     kanata
     libnotify
@@ -234,24 +235,28 @@ in {
     pavucontrol
     pika-backup
     playerctl
+    prettierd
     python3
     # racket
     ripgrep
     rofi-wayland
     stow
     stylua
+    stylelint
     swaynotificationcenter
     swww
     syncthing
     tailwindcss
     texlab
     texlive
+    typescript-language-server
     tmux
     tree-sitter
     unzip
     vesktop
     vlc
     vscodium-fhs
+    vscode-langservers-extracted
     waybar
     wget
     wl-clipboard

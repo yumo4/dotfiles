@@ -47,12 +47,7 @@ in {
     ".ideavimrc".source = ../dots/.ideavimrc;
     ".config/alacritty".source = ../dots/.config/alacritty;
     ".config/fastfetch".source = ../dots/.config/fastfetch;
-    # ".config/flameshot".source = ../dots/.config/flameshot;
-    # ".config/qtile".source = ../dots/.config/qtile;
-    # ".config/hypr".source = ../dots/.config/hypr;
-    # ".config/waybar".source = ../dots/.config/waybar;
     ".config/rofi".source = ../dots/.config/rofi;
-    # ".config/dunst".source = ../dots/.config/dunst;
 
     ".themes/Gruvbox-Material-Dark".source = ../dots/.themes/Gruvbox-Material-Dark;
     ".icons/Gruvbox-Material-Dark".source = ../dots/.icons/Gruvbox-Material-Dark;
@@ -120,17 +115,16 @@ in {
   gtk = {
     enable = true;
 
-    gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = true;
-    };
+    # gtk3.extraConfig = {
+    #   gtk-application-prefer-dark-theme = true;
+    # };
     # gtk4.extraConfig = {
     #   gtk-application-prefer-dark-theme = true;
     # };
     theme = {
-      # name = "Adwaita-dark";
-      # package = pkgs.gnome-themes-extra;
+      name = "Adwaita-dark";
+      package = pkgs.gnome-themes-extra;
       # package = pkgs.flat-remix-gtk;
-      # name = "Flat-Remix-GTK-Grey-Dark";
       # name = "Gruvbox-Material-Dark";
     };
     iconTheme.name = "Gruvbox-Material-Dark";
@@ -138,10 +132,11 @@ in {
     font.name = "JetBrainsMono Nerd Font";
   };
 
-  dconf = {
-    enable = true;
-    settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
-  };
+  # dconf = {
+  #   enable = true;
+  #   settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+  # };
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }

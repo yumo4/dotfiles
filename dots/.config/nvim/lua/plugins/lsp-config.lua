@@ -91,6 +91,10 @@ return { -- LSP Configuration & Plugins
       -- java-language-server = {},
       -- nix
       nil_ls = {},
+      -- html
+      html = {},
+      -- css
+      cssls = {},
 
       -- lua
       lua_ls = {
