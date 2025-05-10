@@ -80,6 +80,8 @@ in {
     hyprland = import ./home/hyprland.nix {inherit pkgs;};
   };
 
+  programs.hyprlock = import ./home/hyprlock.nix {inherit pkgs;};
+
   programs.waybar = import ./home/waybar.nix {inherit pkgs;};
 
   programs.git = {

@@ -55,3 +55,8 @@ vim.opt.scrolloff = 10
 
 -- Better Visual Blockmode
 vim.opt.virtualedit = "block"
+
+-- Set up diagnostics
+vim.diagnostic.config({
+  virtual_lines = true,
+})

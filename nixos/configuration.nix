@@ -193,7 +193,7 @@ in {
     # dunst
     fd
     fish
-    flameshot
+    # flameshot
     fzf
     gammastep
     gcc
@@ -207,6 +207,7 @@ in {
     gotools
     gopls
     gtk3
+    hyprlock
     hyprshot
     inputs.zen-browser.packages."${system}".default
     jetbrains-mono
@@ -236,6 +237,7 @@ in {
     pika-backup
     playerctl
     prettierd
+    # protonvpn-gui
     python3
     # racket
     ripgrep
@@ -306,6 +308,11 @@ in {
       };
     };
   };
+
+  # security = {
+  #   polkit.enable = true;
+  #   pam.services.hyprlock = {};
+  # };
 
   # Optimization & Garbage Collection
   # Optimize Nix-Store During Rebuilds
