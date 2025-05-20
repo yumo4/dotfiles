@@ -6,13 +6,13 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    # ./home.nix
 
     ../../modules/core.nix
     ../../modules/gui.nix
     ../../modules/languages.nix
     ../../modules/latex.nix
     ../../modules/locales.nix
+    ../../modules/zsa.nix
   ];
 
   # Bootloader.
@@ -28,19 +28,6 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-
-  # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
-    enableTearFree = true;
-    videoDrivers = ["modesetting" "amdgpu"]; # intel amd
-  };
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "altgr-intl";
-  };
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
@@ -69,6 +56,7 @@
   environment.systemPackages = with pkgs; [
     # pika-backup
     # protonvpn-gui
+    # stable.protonvpn-gui
     # vesktop
     calibre
     libation # audible

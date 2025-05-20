@@ -49,15 +49,15 @@ in {
   };
 
   programs = {
-    btop = import ../../home/btop.nix;
+    btop = import ../../home/btop.nix {inherit pkgs;};
     fish = import ../../home/fish.nix {inherit pkgs;};
-    ghostty = import ../../home/ghostty.nix;
-    git = import ../../home/git.nix;
-    gui = import ../../home/gui.nix;
+    ghostty = import ../../home/ghostty.nix {inherit pkgs;};
+    git = import ../../home/git.nix {inherit pkgs;};
+    gui = import ../../home/gui.nix {inherit pkgs;};
     hyprlock = import ../../home/hyprlock.nix {inherit pkgs;};
-    tmux = import ../../home/tmux.nix;
-    waybar = import ../../home/waybar.nix;
-    zoxide = import ../../home/zoxide.nix;
+    tmux = import ../../home/tmux.nix {inherit pkgs;};
+    waybar = import ../../home/waybar.nix {inherit pkgs;};
+    zoxide = import ../../home/zoxide.nix {inherit pkgs;};
   };
 
   services = {

@@ -10,6 +10,8 @@
 
     ../../modules/core.nix
     ../../modules/gui.nix
+    ../../modules/udev-brightnesskeys.nix
+    ../../modules/kanata.nix
     ../../modules/languages.nix
     ../../modules/latex.nix
     ../../modules/locales.nix
@@ -29,19 +31,6 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
-    enableTearFree = true;
-    videoDrivers = ["modesetting" "amdgpu"]; # intel amd
-  };
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "altgr-intl";
-  };
-
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -60,6 +49,7 @@
   programs.firefox.enable = true;
   programs.fish.enable = true;
   programs.zsh.enable = true;
+  hardware.brillo.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

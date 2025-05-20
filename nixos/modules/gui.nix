@@ -37,6 +37,19 @@
     #media-session.enable = true;
   };
 
+  # Enable the X11 windowing system.
+  services.xserver = {
+    enable = true;
+    enableTearFree = true;
+    videoDrivers = ["modesetting" "amdgpu"]; # intel amd
+  };
+
+  # Configure keymap in X11
+  services.xserver.xkb = {
+    layout = "us";
+    variant = "altgr-intl";
+  };
+
   # enables touchpads
   services.libinput.enable = true;
 

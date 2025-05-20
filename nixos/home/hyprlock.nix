@@ -1,13 +1,32 @@
 # {pkgs, ...}: let
-{...}:
-# hostname = ?
-#    if hostname == "chimaera"
-#    then "~/Projects/dotfiles/wallpaper/julian-calle-falcon.jpg"
-#    else if hostname == "framework"
-#    then "~/Projects/dotfiles/wallpaper/friendly-robot-ssd.jpg"
-#    else "~/Projects/dotfiles/wallpaper/RMcQ-Deathstar-Construction.png";
-# in {
 {
+  pkgs,
+  meta,
+  ...
+}: let
+  # hostname = ?
+  #    if hostname == "chimaera"
+  #    then "~/Projects/dotfiles/wallpaper/julian-calle-falcon.jpg"
+  #    else if hostname == "framework"
+  #    then "~/Projects/dotfiles/wallpaper/friendly-robot-ssd.jpg"
+  #    else "~/Projects/dotfiles/wallpaper/RMcQ-Deathstar-Construction.png";
+  # in {
+  positions =
+    if meta.hostname == "chimaera"
+    then {
+      time = "0, -25%";
+      date = "0, -30%";
+    }
+    else if meta.hostname == "framework"
+    then {
+      time = "0, -20%";
+      date = "0, -25%";
+    }
+    else {
+      time = "0, -25%";
+      date = "0, -30%";
+    };
+in {
   enable = true;
   settings = {
     general = {
@@ -31,8 +50,9 @@
         color = "rgb(f9f5d7)";
         font_size = 150;
         font_family = "JetBrains Mono Nerd Font Mono ExtraBold";
-        position = "0, -420";
+        # position = "0, -420";
         # position = "0, 0%";
+        position = positions.time;
         halign = "center";
         valign = "top";
       }
@@ -44,7 +64,8 @@
         color = "rgb(f9f5d7)";
         font_size = 14;
         font_family = "JetBrains Mono Nerd Font Mono ExtraBold";
-        position = "0, -130";
+        # position = "0, -130";
+        position = positions.date;
         # position = "0, 0%";
         halign = "center";
         valign = "center";
