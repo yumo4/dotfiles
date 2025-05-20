@@ -129,7 +129,7 @@
       "$mainMod, O, exec, obsidian"
       "$mainMod CONTROL, S, exec, hyprshot -m region --clipboard-only"
       "$mainMod, n, exec, $quicknote"
-      "$mainMod SHIFT CONTROL, l, exec, hyprlock"
+      "$mainMod ALT SHIFT CONTROL, l, exec, hyprlock"
 
       "$mainMod, H, movefocus, l"
       "$mainMod, J, movefocus, d"
