@@ -1,5 +1,5 @@
 # {pkgs, ...}: let
-{pkgs, ...}:
+{...}:
 # hostname = ?
 #    if hostname == "chimaera"
 #    then "~/Projects/dotfiles/wallpaper/julian-calle-falcon.jpg"
