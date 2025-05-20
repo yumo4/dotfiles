@@ -61,7 +61,7 @@ in {
   };
 
   services = {
-    syncthing = import ../../home/syncthing.nix;
+    syncthing = import ../../home/syncthing.nix {inherit pkgs;};
   };
 
   wayland.windowManager = {

@@ -1,5 +1,5 @@
-{pkgs}: {
-  services.syncthing = {
-    enable = true;
-  };
+{pkgs, ...}: {
+  # services.syncthing = {
+  enable = true;
+  # };
 }

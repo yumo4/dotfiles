@@ -96,5 +96,8 @@
     #language {
        	color: #ebdbb2;
     }
+    #backlight {
+       	color: #ebdbb2;
+    }
   '';
 }

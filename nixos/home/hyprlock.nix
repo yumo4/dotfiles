@@ -4,27 +4,20 @@
   meta,
   ...
 }: let
-  # hostname = ?
-  #    if hostname == "chimaera"
-  #    then "~/Projects/dotfiles/wallpaper/julian-calle-falcon.jpg"
-  #    else if hostname == "framework"
-  #    then "~/Projects/dotfiles/wallpaper/friendly-robot-ssd.jpg"
-  #    else "~/Projects/dotfiles/wallpaper/RMcQ-Deathstar-Construction.png";
-  # in {
   positions =
     if meta.hostname == "chimaera"
     then {
       time = "0, -25%";
-      date = "0, -30%";
+      date = "0, +30%";
     }
     else if meta.hostname == "framework"
     then {
-      time = "0, -20%";
-      date = "0, -25%";
+      time = "0, -5%";
+      date = "0, +30%";
     }
     else {
       time = "0, -25%";
-      date = "0, -30%";
+      date = "0, +30%";
     };
 in {
   enable = true;

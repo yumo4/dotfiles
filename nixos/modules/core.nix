@@ -4,8 +4,10 @@
     fd
     fish
     fzf
+    gammastep
     git
     jetbrains-mono
+    nerd-fonts.jetbrains-mono
     neovim
     oh-my-posh
     ripgrep

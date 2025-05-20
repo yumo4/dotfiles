@@ -1,10 +1,14 @@
 {
   config,
   pkgs,
+  meta,
   ...
 }: let
   inherit (config.lib.file) mkOutOfStoreSymlink;
 in {
+  imports = [
+    ../../home/gui.nix
+  ];
   home.username = "max";
   home.homeDirectory = "/home/max";
   home.pointerCursor = {
@@ -30,14 +34,14 @@ in {
   xdg.configFile.nvim.source = mkOutOfStoreSymlink "/home/max/Projects/dotfiles/dots/.config/nvim";
 
   home.file = {
-    ".zshrc".source = ../dots/.zshrc;
-    ".ideavimrc".source = ../dots/.ideavimrc;
-    ".config/alacritty".source = ../dots/.config/alacritty;
-    ".config/fastfetch".source = ../dots/.config/fastfetch;
-    ".config/rofi".source = ../dots/.config/rofi;
+    ".zshrc".source = ../../../dots/.zshrc;
+    ".ideavimrc".source = ../../../dots/.ideavimrc;
+    ".config/alacritty".source = ../../../dots/.config/alacritty;
+    ".config/fastfetch".source = ../../../dots/.config/fastfetch;
+    ".config/rofi".source = ../../../dots/.config/rofi;
 
-    ".themes/Gruvbox-Material-Dark".source = ../dots/.themes/Gruvbox-Material-Dark;
-    ".icons/Gruvbox-Material-Dark".source = ../dots/.icons/Gruvbox-Material-Dark;
+    ".themes/Gruvbox-Material-Dark".source = ../../../dots/.themes/Gruvbox-Material-Dark;
+    ".icons/Gruvbox-Material-Dark".source = ../../../dots/.icons/Gruvbox-Material-Dark;
   };
 
   home.sessionVariables = {
@@ -49,23 +53,23 @@ in {
   };
 
   programs = {
-    btop = import ../../home/btop.nix;
+    btop = import ../../home/btop.nix {inherit pkgs;};
     fish = import ../../home/fish.nix {inherit pkgs;};
-    ghostty = import ../../home/ghostty.nix;
-    git = import ../../home/git.nix;
-    gui = import ../../home/gui.nix;
-    hyprlock = import ../../home/hyprlock.nix {inherit pkgs;};
-    tmux = import ../../home/tmux.nix;
-    waybar = import ../../home/waybar.nix;
-    zoxide = import ../../home/zoxide.nix;
+    ghostty = import ../../home/ghostty.nix {inherit pkgs;};
+    git = import ../../home/git.nix {inherit pkgs;};
+    # gui = import ../../home/gui.nix {inherit pkgs;};
+    hyprlock = import ../../home/hyprlock.nix {inherit pkgs meta;};
+    tmux = import ../../home/tmux.nix {inherit pkgs;};
+    waybar = import ../../home/waybar.nix {inherit pkgs;};
+    zoxide = import ../../home/zoxide.nix {inherit pkgs;};
   };
 
   services = {
-    syncthing = import ../../home/syncthing.nix;
+    syncthing = import ../../home/syncthing.nix {inherit pkgs;};
   };
 
   wayland.windowManager = {
-    hyprland = import ./home/hyprland.nix {inherit pkgs;};
+    hyprland = import ../../home/hyprland.nix {inherit pkgs;};
   };
 
   home.stateVersion = "24.05";
