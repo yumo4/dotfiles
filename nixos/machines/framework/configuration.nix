@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  pkgs-stable,
   lib,
   ...
 }: {
@@ -8,12 +9,13 @@
     ./hardware-configuration.nix
 
     ../../modules/core.nix
+    ../../modules/gc.nix
     ../../modules/gui.nix
-    ../../modules/udev-brightnesskeys.nix
-    ../../modules/kanata.nix
     ../../modules/languages.nix
     ../../modules/latex.nix
     ../../modules/locales.nix
+    ../../modules/user.nix
+    ../../modules/zsa.nix
   ];
 
   # Bootloader.
@@ -30,21 +32,6 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.max = {
-    isNormalUser = true;
-    description = "max";
-    extraGroups = ["networkmanager" "video" "wheel" "docker" "uinput"];
-    shell = pkgs.fish;
-    packages = with pkgs; [
-      tree
-      lsd
-      fastfetch
-    ];
-  };
-
   programs.firefox.enable = true;
   programs.fish.enable = true;
   programs.zsh.enable = true;
@@ -53,29 +40,20 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    # pika-backup
-    # protonvpn-gui
-    # vesktop
-    calibre
-    libation # audible
-    orca-slicer
-    syncthing
-    vscodium-fhs
-  ];
-
-  # Optimization & Garbage Collection
-  # Optimize Nix-Store During Rebuilds
-  nix.settings.auto-optimise-store = true;
-  nix.optimise.automatic = true;
-  # Purge Unused Nix-Store Entries
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 14d";
-  };
+  environment.systemPackages =
+    (with pkgs; [
+      # pika-backup
+      # protonvpn-gui
+      # vesktop
+      calibre
+      libation # audible
+      orca-slicer
+      syncthing
+      vscodium-fhs
+    ])
+    ++ (with pkgs-stable; [
+      protonvpn-gui
+    ]);
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

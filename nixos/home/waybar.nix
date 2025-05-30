@@ -52,6 +52,7 @@
         format-ethernet = " 󰌗  ";
         format-disconnected = " 󱘖 ";
         on-click = "nm-connection-editor";
+        on-click-right = "blueman-manager";
       };
       "pulseaudio" = {
         format = "{icon} {volume}% ";

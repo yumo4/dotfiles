@@ -20,11 +20,13 @@
   outputs = {
     self,
     nixpkgs,
+    nixpkgs-stable,
     home-manager,
     ...
   } @ inputs: let
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
+    pkgs-stable = nixpkgs-stable.legacyPackages.${system};
     username = "max";
     hosts = [
       {
@@ -45,6 +47,7 @@
           ];
           specialArgs = {
             inherit inputs;
+            inherit pkgs-stable;
             meta = {
               hostname = host.name;
               # monitors = host.monitors or [];

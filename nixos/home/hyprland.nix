@@ -80,8 +80,10 @@
 
     input = {
       "follow_mouse" = "1";
-
       "sensitivity" = "0";
+
+      "kb_layout" = "us";
+      "kb_variant" = "altgr-intl";
 
       "touchpad" = {
         natural_scroll = false;
@@ -195,7 +197,7 @@
       "bordersize 0, fullscreenstate:* 1"
       "suppressevent maximize, class:.*"
       "float,class:^(nm-connection-editor)$"
-      "float,class:^(blueman-manager)$"
+      "float,class:^(.blueman-manager-wrapped)$"
       "float,class:^(org.pulseaudio.pavucontrol)$"
       "float,class:^(org.gnome.Nautilus)$"
       "nofocus,class:^$,title:^$,xwayland:1,floating:1,fullscreen:0,pinned:0"

@@ -1,5 +1,4 @@
-{...}: {
-  # programs.git = {
+{pkgs, ...}: {
   enable = true;
   userName = "yumo4";
   userEmail = "maximilian.troe@gmail.com";
@@ -8,5 +7,4 @@
       defaultBranch = "main";
     };
   };
-  # };
 }
