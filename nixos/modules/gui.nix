@@ -5,7 +5,7 @@
   ...
 }: {
   services.displayManager.ly.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.desktopManager.gnome.enable = true;
   # services.xserver.windowManager.qtile.enable = true;
   programs.hyprland.enable = true;
 
