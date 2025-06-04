@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  pkgs-stable,
   lib,
   meta,
   ...
@@ -9,41 +8,50 @@
   imports = [
     ./hardware-configuration.nix
 
-    ../../modules/core
-    ../../modules/optional/gui.nix
-    ../../modules/optional/kanata.nix
-    ../../modules/optional/latex.nix
-    ../../modules/optional/udev-brightnesskeys.nix
-    ../../modules/optional/zsa.nix
+    ../../modules/core.nix
+    ../../modules/gc.nix
+    ../../modules/languages.nix
+    ../../modules/locales.nix
+
+    # ../../homelab/services/
   ];
+
+  # Bootloader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = meta.hostname;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+  users.users.max = {
+    isNormalUser = true;
+    description = "max";
+    extraGroups = ["networkmanager" "wheel" "docker"];
+    shell = pkgs.fish;
+    packages = with pkgs; [
+      tree
+      lsd
+      fastfetch
+    ];
+  };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  programs.firefox.enable = true;
-  hardware.brillo.enable = true;
+  # Enable networking
+  networking.networkmanager.enable = true;
+
+  programs.fish.enable = true;
+  programs.zsh.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages =
-    (with pkgs; [
-      # pika-backup
-      # protonvpn-gui
-      # vesktop
-      calibre
-      libation # audible
-      orca-slicer
-      syncthing
-      vscodium-fhs
-    ])
-    ++ (with pkgs-stable; [
-      protonvpn-gui
-    ]);
+  environment.systemPackages = with pkgs; [
+    # libation # audible
+    # syncthing
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

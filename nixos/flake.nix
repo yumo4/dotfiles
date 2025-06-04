@@ -6,10 +6,13 @@
 
     # this makes picking both unstable and stable packages possible
     # unstable is the default
-    # for installing a stable package use `stable.<packagename>`
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    sops-nix = {
+      url = "github:mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -35,6 +38,9 @@
       {
         name = "chimaera";
       }
+      {
+        name = "homeone";
+      }
     ];
   in {
     nixosConfigurations = builtins.listToAttrs (map (host: {
@@ -50,7 +56,6 @@
             inherit pkgs-stable;
             meta = {
               hostname = host.name;
-              # monitors = host.monitors or [];
             };
           };
         };
@@ -66,9 +71,6 @@
             meta = {hostname = host.name;};
           };
           modules = [
-            # Common home configuration files
-            # ./home.nix
-            # Machine-specific home configuration if it exists
             ./machines/${host.name}/home.nix
           ];
         };
