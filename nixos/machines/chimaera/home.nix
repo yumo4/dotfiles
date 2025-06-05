@@ -1,10 +1,13 @@
 {pkgs, ...}: {
   imports = [
     ../../home/core
-    ../../home/optional/gui.nix
+
     ../../home/optional/ghostty.nix
+    ../../home/optional/gui.nix
     ../../home/optional/hyprland.nix
     ../../home/optional/hyprlock.nix
+    ../../home/optional/sops.nix
+    ../../home/optional/ssh.nix
     ../../home/optional/syncthing.nix
     ../../home/optional/waybar.nix
   ];

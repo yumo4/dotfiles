@@ -1,16 +1,20 @@
 # NOTE: THIS IS ON A SYSTEM / HOSTLEVEL
-# (for the home / user level see home/sops.nix)
+# (for the home / user level see home/optional/sops.nix)
 {
   inputs,
   config,
+  meta,
   ...
-}: {
+}: let
+  secretspath = builtins.toString inputs.mysecrets;
+in {
   imports = [inputs.sops-nix.nixosModules.sops];
 
   sops = {
-    defaultSopsFile = ../secrets.yaml;
+    defaultSopsFile = "${secretspath}/secrets.yaml";
     validateSopsFiles = false;
 
+    # NOTE: this "enables" decrypting/encryipting
     age = {
       # imports SSH keys as age keys
       sshKeyPaths = ["etc/ssh/ssh_host_ed25519_key"];

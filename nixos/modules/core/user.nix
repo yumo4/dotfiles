@@ -11,15 +11,15 @@
     isNormalUser = true;
     description = "max";
     # hashedPasswordFile = config.sops.secrets.max-password.paht;
-    extraGroups = ["networkmanager" "video" "wheel" "docker" "uinput"];
+    extraGroups = ["networkmanager" "video" "wheel" "docker" "uinput" "scanner" "lp"];
     shell = pkgs.fish;
     packages = with pkgs; [
       tree
       lsd
       fastfetch
     ];
-    # openssh.authorizedKeys.keys = [
-    #   (builtins.readFile ./keys/id_keyname.pub)
-    # ];
+    openssh.authorizedKeys.keys = [
+      (builtins.readFile ../keys/id_chimaera.pub)
+    ];
   };
 }

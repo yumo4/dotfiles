@@ -9,14 +9,19 @@
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    sops-nix = {
-      url = "github:mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix = {
+      url = "github:mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    mysecrets = {
+      url = "git+ssh://git@github.com/yumo4/nix-secrets.git?ref=main&shallow=1";
+      flake = false;
+    };
+
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
@@ -68,6 +73,7 @@
           inherit pkgs;
           extraSpecialArgs = {
             inherit inputs;
+            inherit pkgs-stable;
             meta = {hostname = host.name;};
           };
           modules = [

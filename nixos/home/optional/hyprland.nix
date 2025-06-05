@@ -130,7 +130,7 @@
         "$mainMod, space, exec, $menu"
         "$mainMod, F, exec, $fileManager"
         "$mainMod, O, exec, obsidian"
-        "$mainMod CONTROL, S, exec, hyprshot -m region --clipboard-only"
+        "$mainMod CONTROL, S, exec, hyprshot -m region --clipboard-only --freeze"
         "$mainMod, n, exec, $quicknote"
         "$mainMod ALT SHIFT CONTROL, l, exec, hyprlock"
 

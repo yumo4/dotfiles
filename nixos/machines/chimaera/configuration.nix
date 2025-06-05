@@ -14,18 +14,9 @@
     ../../modules/optional/latex.nix
     ../../modules/optional/zsa.nix
 
-    # ../../modules/core.nix
-    ../../modules/sops.nix
-    # ../../modules/gc.nix
-    # ../../modules/gui.nix
-    # ../../modules/languages.nix
-    # ../../modules/latex.nix
-    # ../../modules/locales.nix
-    # ../../modules/user.nix
-    # ../../modules/zsa.nix
+    ../../modules/core/sops.nix
   ];
 
-  # networking.hostName = "chimaera";
   networking.hostName = meta.hostname;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 

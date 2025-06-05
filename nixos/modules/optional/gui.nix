@@ -62,6 +62,7 @@
     gtk3
     hyprlock
     hyprshot
+    hyprpicker
     inputs.zen-browser.packages."${system}".default
     libnotify
     nautilus
