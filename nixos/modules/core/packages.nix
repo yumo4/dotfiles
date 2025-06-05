@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   nix.settings.experimental-features = ["nix-command" "flakes"];
   environment.systemPackages = with pkgs; [
+    age
     bat
     btop
     fd
@@ -9,13 +10,13 @@
     gammastep
     git
     jetbrains-mono
-    nerd-fonts.jetbrains-mono
     neovim
+    nerd-fonts.jetbrains-mono
     oh-my-posh
     ripgrep
+    sops
     tmux
     wget
-    # wl-clipboard
     zoxide
   ];
 }

@@ -43,6 +43,9 @@
     ])
     ++ (with pkgs-stable; [
       protonvpn-gui
+      protonvpn-cli
+      wireguard-go
+      wireguard-tools
     ]);
 
   # Some programs need SUID wrappers, can be configured further or are

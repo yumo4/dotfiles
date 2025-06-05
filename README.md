@@ -10,7 +10,8 @@ My dotfiles include configurations for: `alacritty`, `fastfetch`, `fish`, `flame
 nix-shell -p git neovim ghostty
 ```
 ```bash
-git clone git@github.com:yumo4/dotfiles.git
+# git clone git@github.com:yumo4/dotfiles.git
+git clone https://github.com/yumo4/dotfiles.git
 ```
 - create new host directory
 - copy hardware configuration into host directory
@@ -19,7 +20,7 @@ sudo cp /etc/nixos/hardware-configuration.nix .
 ```
 inside of the `nixos` directory run this to build your system
 ```bah
-sudo nixos-rebuild switch --flake .#<hostname> --show-trace
+sudo nixos-rebuild switch --flake .#<hostname>
 ```
 ### homemanager
 #### installing 
@@ -33,62 +34,65 @@ nix-channel --update
 nix-shell '<home-manager>' -A install
 ```
 If you get an error with something like "source not found" or "home-manager not found" log out and log back in and try again.
+
+#### creating home.nix
+- create a `home.nix` file in your host directory
+- copy a `home.nix` from another host, remove or add modules from `home/optional`
 #### updating your dotfiles
 from within the `nixos` directory run
-on nixos:
 ```bash
-home-manager switch --flake . --impure
+home-manager switch --flake .#max@<hostname>
 ```
 
-<details>
-
-<summary>arch & stow stuff</summary>
-
-## stow
-
-for setting up the symlinks: from within the `dots` directory run
-```bash
-stow .
-```
-or for updating / adding a new config run:
-```bash
-stow . --adopt
-
-## arch
-
-### archinstall
-
-packages needed:
-```bash
-base-devel git stow
-```
-to install `yay` and `packages` and to setup `tmux tpm` run this script:
-```bash
-./scripts/setup.sh
-```
-
-### nix install
-
-- installing nix (only needed on arch):
-```bash
-sh <(curl -L https://nixos.org/nix/install) --daemon
-```
-
-### pacman config
-
-```bash
-sudo vim /etc/pacman.conf
-```
-add these to the `pacman.conf` file
-```bash
-# Misc options
-Color
-ILoveCandy
-ParallelDownloads = 5
-```
-
-### updating using home-manager 
-```bash
-home-manger switch --flake . --impure --extra-experimental-features nix-command --extra-experimental-features flakes
-```
-</details>
+<!-- <details> -->
+<!---->
+<!-- <summary>arch & stow stuff</summary> -->
+<!---->
+<!-- ## stow -->
+<!---->
+<!-- for setting up the symlinks: from within the `dots` directory run -->
+<!-- ```bash -->
+<!-- stow . -->
+<!-- ``` -->
+<!-- or for updating / adding a new config run: -->
+<!-- ```bash -->
+<!-- stow . --adopt -->
+<!---->
+<!-- ## arch -->
+<!---->
+<!-- ### archinstall -->
+<!---->
+<!-- packages needed: -->
+<!-- ```bash -->
+<!-- base-devel git stow -->
+<!-- ``` -->
+<!-- to install `yay` and `packages` and to setup `tmux tpm` run this script: -->
+<!-- ```bash -->
+<!-- ./scripts/setup.sh -->
+<!-- ``` -->
+<!---->
+<!-- ### nix install -->
+<!---->
+<!-- - installing nix (only needed on arch): -->
+<!-- ```bash -->
+<!-- sh <(curl -L https://nixos.org/nix/install) --daemon -->
+<!-- ``` -->
+<!---->
+<!-- ### pacman config -->
+<!---->
+<!-- ```bash -->
+<!-- sudo vim /etc/pacman.conf -->
+<!-- ``` -->
+<!-- add these to the `pacman.conf` file -->
+<!-- ```bash -->
+<!-- # Misc options -->
+<!-- Color -->
+<!-- ILoveCandy -->
+<!-- ParallelDownloads = 5 -->
+<!-- ``` -->
+<!---->
+<!-- ### updating using home-manager  -->
+<!-- ```bash -->
+<!-- home-manger switch --flake . --impure --extra-experimental-features nix-command --extra-experimental-features flakes -->
+<!-- ``` -->
+<!-- </details> -->

@@ -13,8 +13,6 @@
     ../../modules/optional/gui.nix
     ../../modules/optional/latex.nix
     ../../modules/optional/zsa.nix
-
-    ../../modules/core/sops.nix
   ];
 
   networking.hostName = meta.hostname;
@@ -38,8 +36,6 @@
       orca-slicer
       syncthing
       vscodium-fhs
-      age
-      sops
     ])
     ++ (with pkgs-stable; [
       protonvpn-gui
