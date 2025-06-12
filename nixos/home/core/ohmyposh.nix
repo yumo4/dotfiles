@@ -26,10 +26,6 @@
           "{{if gt .Code 0}}red{{end}}"
           "{{if eq .Code 0}}yellow{{end}}"
         ];
-        # Add right-aligned SSH indicator to transient prompt
-        rtemplate = "{{ if .SSHSession }}🔗 {{ .UserName }}@{{ .HostName }}{{ end }}";
-        rforeground = "cyan";
-        rbackground = "transparent";
       };
 
       blocks = [
@@ -79,14 +75,15 @@
             }
           ];
         }
-        # Optional: Add SSH indicator to the main prompt as well (right-aligned)
         {
           type = "prompt";
           alignment = "right";
           segments = [
             {
-              template = "{{ if .SSHSession }}🔗 {{ .UserName }}@{{ .HostName }}{{ end }}";
-              foreground = "cyan";
+              # template = "{{ if .SSHSession }}🔗 {{ .UserName }}@{{ .HostName }}{{ end }}";
+              template = "{{ if .SSHSession }} {{ .UserName }}@{{ .HostName }}{{ end }}";
+              # foreground = "cyan";
+              foreground = "p:grey";
               background = "transparent";
               type = "session";
               style = "plain";
