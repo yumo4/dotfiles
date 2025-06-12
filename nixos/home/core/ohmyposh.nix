@@ -60,6 +60,19 @@
         }
         {
           type = "prompt";
+          alignment = "right";
+          segments = [
+            {
+              template = "{{ if .SSHSession }} {{ .UserName }}@{{ .HostName }}{{ end }}";
+              foreground = "p:grey";
+              background = "transparent";
+              type = "session";
+              style = "plain";
+            }
+          ];
+        }
+        {
+          type = "prompt";
           alignment = "left";
           newline = true;
           segments = [
@@ -72,21 +85,6 @@
                 "{{if gt .Code 0}}red{{end}}"
                 "{{if eq .Code 0}}yellow{{end}}"
               ];
-            }
-          ];
-        }
-        {
-          type = "prompt";
-          alignment = "right";
-          segments = [
-            {
-              # template = "{{ if .SSHSession }}🔗 {{ .UserName }}@{{ .HostName }}{{ end }}";
-              template = "{{ if .SSHSession }} {{ .UserName }}@{{ .HostName }}{{ end }}";
-              # foreground = "cyan";
-              foreground = "p:grey";
-              background = "transparent";
-              type = "session";
-              style = "plain";
             }
           ];
         }
