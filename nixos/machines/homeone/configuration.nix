@@ -21,15 +21,15 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   users.users.max = {
-    isNormalUser = true;
-    description = "max";
+    # isNormalUser = true;
+    # description = "max";
     extraGroups = ["networkmanager" "wheel" "docker"];
-    shell = pkgs.fish;
-    packages = with pkgs; [
-      tree
-      lsd
-      fastfetch
-    ];
+    # shell = pkgs.fish;
+    # packages = with pkgs; [
+    #   tree
+    #   lsd
+    #   fastfetch
+    # ];
   };
 
   # Configure network proxy if necessary
