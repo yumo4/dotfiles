@@ -3,8 +3,10 @@
   meta,
   ...
 }: {
+  services.ssh-agent.enable = true;
   programs.ssh = {
     enable = true;
+    addKeysToAgent = "yes";
     matchBlocks = {
       # NOTE: this "forces" git to use a specific ssh key
       # the name doesn't matter

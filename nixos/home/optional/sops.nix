@@ -17,4 +17,7 @@ in {
       };
     };
   };
+  # home.file.".ssh/id_${meta.hostname}.pub" = {
+  #   source = ../../modules/keys/id_${meta.hostname}.pub;
+  # };
 }

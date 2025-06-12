@@ -8,10 +8,7 @@
   imports = [
     ./hardware-configuration.nix
 
-    ../../modules/core.nix
-    ../../modules/gc.nix
-    ../../modules/languages.nix
-    ../../modules/locales.nix
+    ../../modules/core
 
     # ../../homelab/services/
   ];
@@ -50,7 +47,7 @@
 
   environment.systemPackages = with pkgs; [
     # libation # audible
-    # syncthing
+    syncthing
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
