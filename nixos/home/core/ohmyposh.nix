@@ -60,10 +60,10 @@
         }
         {
           type = "prompt";
-          alignment = "right";
+          alignment = "left";
           segments = [
             {
-              template = "{{ if .SSHSession }} {{ .UserName }}@{{ .HostName }}{{ end }}";
+              template = "{{ if .SSHSession }} {{ .UserName }}@{{ .HostName }}<yellow>󰌘</>{{ end }}";
               foreground = "p:grey";
               background = "transparent";
               type = "session";
