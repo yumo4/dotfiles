@@ -1,5 +1,6 @@
 {
   pkgs,
+  meta,
   # config,
   # inputs,
   ...
@@ -11,7 +12,11 @@
     isNormalUser = true;
     description = "max";
     # hashedPasswordFile = config.sops.secrets.max-password.paht;
-    extraGroups = ["networkmanager" "video" "wheel" "docker" "uinput" "scanner" "lp"];
+    extraGroups =
+      if meta.isServer
+      then ["networkmanager" "wheel" "docker"]
+      else ["networkmanager" "video" "wheel" "docker" "uinput" "scanner" "lp"];
+
     shell = pkgs.fish;
     packages = with pkgs; [
       tree
@@ -20,6 +25,7 @@
     ];
     openssh.authorizedKeys.keys = [
       (builtins.readFile ../keys/id_chimaera.pub)
+      (builtins.readFile ../keys/id_framework.pub)
     ];
   };
 }

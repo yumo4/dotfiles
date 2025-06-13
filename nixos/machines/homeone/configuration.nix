@@ -10,6 +10,12 @@
 
     ../../modules/core
 
+    ../../homelab/core/acme.nix
+    ../../homelab/core/caddy.nix
+
+    # ./homelab
+    # ./services
+
     # ../../homelab/services/
   ];
 
@@ -19,18 +25,6 @@
 
   networking.hostName = meta.hostname;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  users.users.max = {
-    # isNormalUser = true;
-    # description = "max";
-    extraGroups = ["networkmanager" "wheel" "docker"];
-    # shell = pkgs.fish;
-    # packages = with pkgs; [
-    #   tree
-    #   lsd
-    #   fastfetch
-    # ];
-  };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";

@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1749657191,
-        "narHash": "sha256-QLilaHuhGxiwhgceDWESj9gFcKIdEp7+9lRqNGpN8S4=",
+        "lastModified": 1749821119,
+        "narHash": "sha256-X3WAS322EsebI4ohJcXhKpiyG1v+7wE4VOiXy1pxM/c=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "faeab32528a9360e9577ff4082de2d35c6bbe1ce",
+        "rev": "79dfd9aa295e53773aad45480b44c131da29f35b",
         "type": "github"
       },
       "original": {
@@ -44,10 +44,10 @@
     "mysecrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1749740571,
-        "narHash": "sha256-y3xCTjf4wVe/BIzJ6+Wrhf5Sj8LaAh4RB+e5Razq2Y0=",
+        "lastModified": 1749827151,
+        "narHash": "sha256-vDWHbFzBnLCfV3Yu2gOk/hEac4c6y5MljzGLPTqg5rU=",
         "ref": "main",
-        "rev": "340d41b3ba94aa7960ea3eb3823d5910ad0dfb64",
+        "rev": "0a85edbdd641f0c9ef6d1eb6d99bd774efaad53a",
         "shallow": true,
         "type": "git",
         "url": "ssh://git@github.com/yumo4/nix-secrets.git"
@@ -160,11 +160,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1749702416,
-        "narHash": "sha256-Ttb8hW8oQpF04l22eyzzVSiUFZeYtrwXFyC1IDRuOVU=",
+        "lastModified": 1749824378,
+        "narHash": "sha256-nIo7+VnvMgzgY+Jc7TEQV6hfbI3YcBc4vhNqsfvevl0=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
-        "rev": "edd92f84ddeb4f2ae0390e02dcae9bc0221af753",
+        "rev": "8ecc9960f00fd30e35e6caec7c22461058bdee73",
         "type": "github"
       },
       "original": {

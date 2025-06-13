@@ -10,6 +10,7 @@
     ./hardware-configuration.nix
 
     ../../modules/core
+
     ../../modules/optional/gui.nix
     ../../modules/optional/kanata.nix
     ../../modules/optional/latex.nix

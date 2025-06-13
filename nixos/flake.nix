@@ -39,12 +39,15 @@
     hosts = [
       {
         name = "framework";
+        isServer = false;
       }
       {
         name = "chimaera";
+        isServer = false;
       }
       {
         name = "homeone";
+        isServer = true;
       }
     ];
   in {
@@ -61,6 +64,7 @@
             inherit pkgs-stable;
             meta = {
               hostname = host.name;
+              isServer = host.isServer;
             };
           };
         };
@@ -74,7 +78,10 @@
           extraSpecialArgs = {
             inherit inputs;
             inherit pkgs-stable;
-            meta = {hostname = host.name;};
+            meta = {
+              hostname = host.name;
+              isServer = host.isServer;
+            };
           };
           modules = [
             ./machines/${host.name}/home.nix

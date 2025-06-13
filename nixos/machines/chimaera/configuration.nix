@@ -10,6 +10,7 @@
     ./hardware-configuration.nix
 
     ../../modules/core
+
     ../../modules/optional/gui.nix
     ../../modules/optional/latex.nix
     ../../modules/optional/zsa.nix
