@@ -12,6 +12,9 @@
 
     ../../homelab/core/acme.nix
     ../../homelab/core/caddy.nix
+    ../../homelab/services/uptime-kuma.nix
+    ../../homelab/services/adguard.nix
+    ../../homelab/services/vaultwarden.nix
 
     # ./homelab
     # ./services
@@ -42,6 +45,8 @@
   environment.systemPackages = with pkgs; [
     # libation # audible
     syncthing
+    inetutils
+    dnsutils
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
