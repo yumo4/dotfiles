@@ -2,6 +2,7 @@
   pkgs,
   config,
   inputs,
+  lib,
   ...
 }: let
   baseDomain = "yumo4.duckdns.org";
@@ -58,6 +59,16 @@ in {
 
     # admin_token, smtp_password, smtp_username
     environmentFile = "${config.sops.secrets."vaultwarden-env".path}";
+  };
+
+  homelab.services.vaultwarden = {
+    homepage = {
+      name = "Vaultwarden";
+      description = "";
+      icon = "bitwarden.svg";
+      category = "Services";
+    };
+    url = "${subDomain}.${baseDomain}";
   };
 
   services.caddy = {

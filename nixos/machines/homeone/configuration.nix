@@ -9,15 +9,19 @@
     ./hardware-configuration.nix
 
     ../../modules/core
+    ./samba
 
     ../../homelab/core/acme.nix
     ../../homelab/core/caddy.nix
-    ../../homelab/services/uptime-kuma.nix
-    ../../homelab/services/adguard.nix
-    ../../homelab/services/vaultwarden.nix
 
-    # ./homelab
-    # ./services
+    ../../homelab/services/adguard.nix
+    ../../homelab/services/audiobookshelf.nix
+    ../../homelab/services/homepage.nix
+    ../../homelab/services/paperless.nix
+    ../../homelab/services/stirling-pdf.nix
+    ../../homelab/services/syncthing.nix
+    ../../homelab/services/uptime-kuma.nix
+    ../../homelab/services/vaultwarden.nix
 
     # ../../homelab/services/
   ];
@@ -44,7 +48,7 @@
 
   environment.systemPackages = with pkgs; [
     # libation # audible
-    syncthing
+    # syncthing
     inetutils
     dnsutils
   ];

@@ -1,29 +1,29 @@
 {pkgs, ...}: let
   baseDomain = "yumo4.duckdns.org";
-  subDomain = "uptime";
-  port = 3001;
+  subDomain = "pdf";
+  localDomain = "homeone";
+  port = 8085;
 in {
   environment.systemPackages = with pkgs; [
-    uptime-kuma
+    stirling-pdf
   ];
 
   networking.firewall = {
     allowedTCPPorts = [port];
   };
-  services.uptime-kuma = {
+  services.stirling-pdf = {
     enable = true;
-    settings = {
-      PORT = toString port;
-      HOST = "0.0.0.0";
+    environment = {
+      INSTALL_BOOK_AND_ADVANCED_HTML_OPS = "true";
+      SERVER_PORT = port;
     };
-    # appriseSupport = false;
   };
 
-  homelab.services.uptime-kuma = {
+  homelab.services.stirling-pdf = {
     homepage = {
-      name = "Uptime Kuma";
+      name = "Stirling PDF";
       description = "";
-      icon = "uptime-kuma.svg";
+      icon = "stirling-pdf.svg";
       category = "Services";
     };
     url = "${subDomain}.${baseDomain}";
@@ -33,7 +33,12 @@ in {
     virtualHosts."${subDomain}.${baseDomain}" = {
       useACMEHost = baseDomain;
 
-      # reverse_proxy http://localhost:${toString port}
+      extraConfig = ''
+        reverse_proxy http://127.0.0.1:${toString port}
+      '';
+    };
+
+    virtualHosts."${subDomain}.${localDomain}" = {
       extraConfig = ''
         reverse_proxy http://127.0.0.1:${toString port}
       '';
