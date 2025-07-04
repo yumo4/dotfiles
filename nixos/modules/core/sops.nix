@@ -24,7 +24,9 @@ in {
       generateKey = true;
     };
     # secrets will be output to /run/secrets
-    secrets = {
-    };
+    # secrets = {
+    # "duckdns-env" = {};
+    # "duckdns-token" = {};
+    # };
   };
 }

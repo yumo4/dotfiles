@@ -9,6 +9,5 @@
     lst = "tree -C";
     cat = "bat";
     tas = "tmux attach-session -t";
-    home-one = "ssh max@192.168.178.65";
   };
 }

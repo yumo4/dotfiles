@@ -9,6 +9,19 @@
     ./hardware-configuration.nix
 
     ../../modules/core
+    ./samba
+
+    ../../homelab/core/acme.nix
+    ../../homelab/core/caddy.nix
+
+    ../../homelab/services/adguard.nix
+    ../../homelab/services/audiobookshelf.nix
+    ../../homelab/services/homepage.nix
+    ../../homelab/services/paperless.nix
+    ../../homelab/services/stirling-pdf.nix
+    ../../homelab/services/syncthing.nix
+    ../../homelab/services/uptime-kuma.nix
+    ../../homelab/services/vaultwarden.nix
 
     # ../../homelab/services/
   ];
@@ -19,18 +32,6 @@
 
   networking.hostName = meta.hostname;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  users.users.max = {
-    # isNormalUser = true;
-    # description = "max";
-    extraGroups = ["networkmanager" "wheel" "docker"];
-    # shell = pkgs.fish;
-    # packages = with pkgs; [
-    #   tree
-    #   lsd
-    #   fastfetch
-    # ];
-  };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -47,7 +48,9 @@
 
   environment.systemPackages = with pkgs; [
     # libation # audible
-    syncthing
+    # syncthing
+    inetutils
+    dnsutils
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

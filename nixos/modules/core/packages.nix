@@ -19,6 +19,7 @@
     ripgrep
     sops
     tmux
+    tree-sitter
     wget
     zoxide
   ];
