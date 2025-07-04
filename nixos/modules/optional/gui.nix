@@ -79,6 +79,7 @@
     rofi-wayland
     swaynotificationcenter
     swww
+    tailscale-systray
     unzip
     vesktop
     vlc
