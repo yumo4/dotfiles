@@ -5,6 +5,7 @@
     ../../home/optional/ghostty.nix
     ../../home/optional/gui.nix
     ../../home/optional/hyprland.nix
+    ../../home/optional/niri
     ../../home/optional/hyprlock.nix
     ../../home/optional/sops.nix
     ../../home/optional/ssh.nix
@@ -39,6 +40,8 @@
 
     GTK_THEME = "Adwaita-dark";
   };
+
+  nixpkgs.config.allowUnfree = true;
 
   home.stateVersion = "24.05";
   programs.home-manager.enable = true;

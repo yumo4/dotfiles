@@ -4,12 +4,15 @@
     age
     bat
     btop
+    dnsutils
     fd
     fish
     fzf
     gammastep
     git
+    inetutils
     jetbrains-mono
+    just
     neovim
     nerd-fonts.jetbrains-mono
     oh-my-posh

@@ -2,6 +2,7 @@
   config,
   pkgs,
   pkgs-stable,
+  inputs,
   lib,
   meta,
   ...
@@ -10,8 +11,12 @@
     ./hardware-configuration.nix
 
     ../../modules/core
+    ./samba
+
     ../../modules/optional/gui.nix
     ../../modules/optional/latex.nix
+    ../../modules/optional/printing.nix
+    ../../modules/optional/tailscale.nix
     ../../modules/optional/zsa.nix
   ];
 
@@ -34,6 +39,7 @@
       calibre
       libation # audible
       orca-slicer
+      # bambu-studio
       syncthing
       vscodium-fhs
     ])

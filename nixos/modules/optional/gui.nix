@@ -4,10 +4,14 @@
   inputs,
   ...
 }: {
+  imports = [inputs.niri.nixosModules.niri];
+
   services.displayManager.ly.enable = true;
   services.desktopManager.gnome.enable = true;
   # services.xserver.windowManager.qtile.enable = true;
   programs.hyprland.enable = true;
+  programs.niri.enable = true;
+  # programs.niri.package = inputs.niri.packages.${pkgs.system}.niri;
 
   xdg.portal = {
     enable = true;
@@ -15,11 +19,10 @@
       pkgs.xdg-desktop-portal-gtk # For both
       pkgs.xdg-desktop-portal-hyprland # For Hyprland
       pkgs.xdg-desktop-portal-gnome # For GNOME
+      pkgs.xdg-desktop-portal-wlr # For Niri
     ];
   };
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
   # services.blueman.enable = true;
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
@@ -59,11 +62,13 @@
     # orca-slicer
     alsa-utils
     ghostty
+    gnome-control-center
     gtk3
     hyprlock
     hyprshot
     hyprpicker
     inputs.zen-browser.packages."${system}".default
+    niri
     libnotify
     nautilus
     networkmanagerapplet
