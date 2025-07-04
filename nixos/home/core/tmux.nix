@@ -32,10 +32,13 @@
     extraConfig = ''
       # Set prefix
       set -g prefix C-Space
+
       # unbind so comment shortcut in nvim works
       set -s extended-keys on
+
       # set-option -g xterm-keys on
       set -as terminal-features 'xterm*:extkeys'
+
       # fixes colorscheme
       set -g default-terminal "screen-256color"
       set-option -sa terminal-overrides ",xterm*:Tc"
@@ -45,6 +48,7 @@
 
       # reload config
       bind r source-file ~/.config/tmux/tmux.conf
+
       # switch like vim
       bind-key C-h select-pane -L
       bind-key C-j select-pane -D
@@ -53,13 +57,25 @@
       bind-key -T copy-mode-vi v send-keys -X begin-selection
       bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
       bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
+
       # opens splits in current directory
       # tmux is weird -> v and h are switched
       bind h split-window -v -c '#{pane_current_path}'
       bind v split-window -h -c '#{pane_current_path}'
 
+      # pop up / floating
+      unbind t
+      bind t display-popup \
+      -w 80% \
+      -h 80% \
+      -d "#{pane_current_path}" \
+      -E "fish"
+
+      # resize pane
       bind -r m resize-pane -Z
       bind-key m resize-pane -Z
+
+      # bar
       # bar position
       # set-option -g status-position bottom
       # index
@@ -68,7 +84,6 @@
       set-window-option -g pane-base-index 1
       set-option -g renumber-windows on
 
-      # bar
       set -g status on
       set -g status-justify left
       set -g status-style "fg=#ebdbb2"

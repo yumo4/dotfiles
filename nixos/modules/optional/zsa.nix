@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   hardware.keyboard.zsa.enable = true;
-  environment.systemPackages = [
-    pkgs.keymapp
+  environment.systemPackages = with pkgs; [
+    keymapp
   ];
 }

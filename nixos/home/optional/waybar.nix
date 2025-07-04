@@ -8,6 +8,7 @@
 
         modules-left = [
           "hyprland/workspaces"
+          "niri/workspaces"
         ];
         modules-center = [
         ];
@@ -17,6 +18,7 @@
           "backlight"
           "pulseaudio"
           "hyprland/language"
+          "niri/language"
           "battery"
           "clock"
         ];
@@ -36,6 +38,9 @@
           format-icons = ["󰛨"];
         };
         "hyprland/language" = {
+          format = "󰌌 {short}  ";
+        };
+        "niri/language" = {
           format = "󰌌 {short}  ";
         };
         "battery" = {

@@ -1,3 +1,4 @@
+# NOTE: use `lualatex`
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     texlab
@@ -13,5 +14,8 @@
         multirow
         ;
     })
+  ];
+  fonts.packages = with pkgs; [
+    open-sans
   ];
 }

@@ -15,6 +15,7 @@
         "waybar &"
         "obsidian &"
         "gammastep -O 4000 &"
+        "swww-daemon"
         "~/Projects/dotfiles/dots/.config/hypr/wallpaper.sh"
       ];
 

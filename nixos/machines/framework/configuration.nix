@@ -13,6 +13,7 @@
     ../../modules/optional/gui.nix
     ../../modules/optional/kanata.nix
     ../../modules/optional/latex.nix
+    ../../modules/optional/printing.nix
     ../../modules/optional/udev-brightnesskeys.nix
     ../../modules/optional/zsa.nix
   ];

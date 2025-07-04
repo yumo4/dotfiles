@@ -8,5 +8,6 @@
     ./ohmyposh.nix
     ./shell.nix
     ./tmux.nix
+    ./zoxide.nix
   ];
 }
