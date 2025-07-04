@@ -10,6 +10,7 @@
 
     ../../modules/core
     ./samba
+    ../../modules/optional/tailscale.nix
 
     ../../homelab/core/acme.nix
     ../../homelab/core/caddy.nix
@@ -22,8 +23,6 @@
     ../../homelab/services/syncthing.nix
     ../../homelab/services/uptime-kuma.nix
     ../../homelab/services/vaultwarden.nix
-
-    # ../../homelab/services/
   ];
 
   # Bootloader.
@@ -47,8 +46,6 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    # libation # audible
-    # syncthing
     inetutils
     dnsutils
   ];
