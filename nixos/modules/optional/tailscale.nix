@@ -5,7 +5,7 @@
 }: let
   extraSetFlags =
     if meta.isServer
-    then ["--advertise-exit-node"]
+    then ["--advertise-exit-node" "--advertise-routes 192.168.178.0/24"]
     else [];
 in {
   environment.systemPackages = with pkgs; [
