@@ -32,11 +32,12 @@ in {
         (makeCommand "swww-daemon")
         (makeCommand "obsidian")
         (makeCommand "waybar")
+        (makeCommand "tailscale-systray")
         (makeCommand "xwayland-satellite")
         (makeCommand "~/Projects/dotfiles/dots/.config/hypr/wallpaper.sh")
         {command = ["gammastep" "-O" "4000"];}
-        {command = ["wl-paste" "--watch" "cliphist" "store"];}
-        {command = ["wl-paste" "--type text" "--watch" "cliphist" "store"];}
+        # {command = ["wl-paste" "--watch" "cliphist" "store"];}
+        # {command = ["wl-paste" "--type text" "--watch" "cliphist" "store"];}
       ];
       prefer-no-csd = true; # no client side decorations
       hotkey-overlay.skip-at-startup = true;

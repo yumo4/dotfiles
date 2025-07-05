@@ -2,6 +2,8 @@ default:
 	@just --list
 
 
+## nixos
+
 # this adds all files to be tracked by git 
 rebuild-pre: update-secrets
 	@git add --intent-to-add .
@@ -12,3 +14,9 @@ update:
 	nix flake update
 update-secrets:
 	nix flake update mysecrets --timeout 5
+
+## tailscale
+tailscale-up:
+	sudo tailscale up
+tailscale-exit-node:
+	sudo tailscale set --advertise-exit-node
