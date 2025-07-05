@@ -81,8 +81,8 @@ in {
           # "8.8.8.8"
           "https://dns.quad9.net/dns-query"
           # "https://dns.google.com/dns-query"
-          "https://dns.cloudflare.com/dns-query"
-          # "https://dns10.quad9.net/dns-query"
+          # "https://dns.cloudflare.com/dns-query"
+          "https://dns10.quad9.net/dns-query"
         ];
         rewrites = [
           {
