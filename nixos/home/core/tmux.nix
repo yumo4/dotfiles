@@ -1,4 +1,16 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  meta,
+  ...
+}: let
+  fgactive = "#ebdbb2";
+  fginactive = "#665c54";
+  background = "282828";
+  prefix =
+    if meta.isServer
+    then "C-a"
+    else "C-Space";
+in {
   programs.tmux = {
     enable = true;
     shell = "${pkgs.fish}/bin/fish";
@@ -31,7 +43,7 @@
     ];
     extraConfig = ''
       # Set prefix
-      set -g prefix C-Space
+      set -g prefix ${prefix}
 
       # unbind so comment shortcut in nvim works
       set -s extended-keys on
@@ -86,19 +98,19 @@
 
       set -g status on
       set -g status-justify left
-      set -g status-style "fg=#ebdbb2"
+      set -g status-style "fg=${fgactive}"
       set -g status-left " #{?client_prefix, , }"
       # set -g status-left "#[fg=#282828]█#[fg=#ebdbb2]{?client_prefix,  }#[fg=#282828]█"
       set -g status-right-length 50
 
-      set -g status-right " #[fg=#665c54] session:#[fg=#ebdbb2,bg=default] #S"
-      set -g window-status-format " #[fg=#665c54,bg=default]#I: #[fg=#default,bg=#ebdbb2]#W"
+      set -g status-right " #[fg=${fginactive}] session:#[fg=${fgactive},bg=default] #S"
+      set -g window-status-format " #[fg=${fginactive},bg=default]#I: #[fg=#default,bg=${fgactive}]#W"
 
-      set -g window-status-current-format " #[fg=#ebdbb2,bg=default]#I: #[fg=#665c54,bg=#default]#W"
+      set -g window-status-current-format " #[fg=${fgactive},bg=default]#I: #[fg=${fginactive},bg=#default]#W"
 
       # pane dividers
-      set -g pane-border-style "fg=#665c54"
-      set -g pane-active-border-style "fg=#ebdbb2"
+      set -g pane-border-style "fg=${fginactive}"
+      set -g pane-active-border-style "fg=${fgactive}"
     '';
   };
 }
