@@ -3,7 +3,10 @@
   meta,
   ...
 }: let
-  fgactive = "#ebdbb2";
+  fgactive =
+    if meta.isServer
+    then "#d65d0e"
+    else "#ebdbb2";
   fginactive = "#665c54";
   background = "282828";
   prefix =
