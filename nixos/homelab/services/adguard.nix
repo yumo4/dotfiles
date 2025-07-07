@@ -21,36 +21,9 @@ in {
     secrets = {
       "adguard-password" = {};
     };
-    # templates = {
-    #   "adguard-admin-password" = {
-    #     content = ''
-    #       ${config.sops.placeholder."adguard-password"}
-    #     '';
-    #     owner = "adguardhome";
-    #     group = "adguardhome";
-    #   };
-    # };
-    # templates = {
-    #   "adguard-admin-password".content = ''
-    #     ${config.sops.placeholder.adguard-password}
-    #   '';
-    # };
-    # templates = {
-    #   "adguard-config" = {
-    #     # content = "${config.sops.placeholder."adguard-password"}";
-    #     content = builtins.toJSON {
-    #       users = [
-    #         {
-    #           name = "admin";
-    #           password = config.sops.placeholder."adguard-password";
-    #         }
-    #       ];
-    #     };
-    #     path = "/var/lib/AdGuardHome/users.json";
-    #   };
-    # };
   };
   environment.systemPackages = with pkgs; [
+    adguardhome
     # inetutils
     # dnsutils
   ];
@@ -75,38 +48,38 @@ in {
       dns = {
         bind_hosts = ["0.0.0.0"];
         port = dnsPort;
+        bootstrap_dns = [
+          "1.1.1.1"
+          "8.8.8.8"
+        ];
         upstream_dns = [
-          # "192.168.178.1"
-          # "1.1.1.1"
-          # "8.8.8.8"
           "https://dns.quad9.net/dns-query"
           # "https://dns.google.com/dns-query"
           # "https://dns.cloudflare.com/dns-query"
           "https://dns10.quad9.net/dns-query"
         ];
-        rewrites = [
-          {
-            domain = "${baseDomain}";
-            answer = serverIP;
-          }
-
-          {
-            domain = "*.${baseDomain}";
-            answer = serverIP;
-          }
-
-          {
-            domain = "${localDomain}";
-            answer = serverIP;
-          }
-
-          {
-            domain = "*.${localDomain}";
-            answer = serverIP;
-          }
-        ];
-
         enable_dnssec = true;
+        rewrites = [
+          #   {
+          #     domain = "${baseDomain}";
+          #     answer = serverIP;
+          #   }
+          #
+          #   {
+          #     domain = "*.${baseDomain}";
+          #     answer = serverIP;
+          #   }
+          #
+          #   {
+          #     domain = "${localDomain}";
+          #     answer = serverIP;
+          #   }
+          #
+          #   {
+          #     domain = "*.${localDomain}";
+          #     answer = serverIP;
+          #   }
+        ];
       };
       filtering = {
         protection_enabled = true;
@@ -115,22 +88,24 @@ in {
       # users = [
       #   {
       #     name = "admin";
-      #     password = config.sops.secrets."adguard-password";
-      #     # password = "${config.sops.templates."adguard-admin-password".path}";
-      #     # password = "${config.sops.secrets."adguard-password".path}";
-      #     # password = "$2y$05$FaUu9KYphHFEEKFX3fwsBuKAv/XYTCk3P1l3fBEXVMuO3t8NXatV6";
+      #     password = "";
       #   }
       # ];
-      filters =
-        map (url: {
+      filters = [
+        {
+          name = "AdGuard DNS filter";
+          url = "https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt";
           enabled = true;
-          url = url;
-        }) [
-          "https://adguardteam.github.io/HostlistsRegistry/assets/filter_9.txt" # The Big List of Hacked Malware Web Sites
-          "https://adguardteam.github.io/HostlistsRegistry/assets/filter_11.txt" # malicious url blocklist
-          "https://adguardteam.github.io/HostlistsRegistry/assets/filter_1.txt" # default dns filter
-          "https://adaway.org/hosts.txt" # default ad block list
-        ];
+        }
+        {
+          name = "AdAway Default Blocklist";
+          url = "https://adaway.org/hosts.txt";
+          enabled = true;
+        }
+      ];
+      # "https://adguardteam.github.io/HostlistsRegistry/assets/filter_9.txt" # The Big List of Hacked Malware Web Sites
+      # "https://adguardteam.github.io/HostlistsRegistry/assets/filter_11.txt" # malicious url blocklist
+      # "https://adguardteam.github.io/HostlistsRegistry/assets/filter_1.txt" # default dns filter
     };
   };
 
