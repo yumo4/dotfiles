@@ -5,6 +5,7 @@
     ../../home/optional/ghostty.nix
     ../../home/optional/hyprland.nix
     ../../home/optional/hyprlock.nix
+    ../../home/optional/niri
     ../../home/optional/sops.nix
     ../../home/optional/ssh.nix
     ../../home/optional/syncthing.nix
