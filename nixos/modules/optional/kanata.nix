@@ -9,7 +9,7 @@
         extraDefCfg = "process-unmapped-keys yes";
         config = ''
           (defsrc
-           caps a s d f spc j k l ;
+           3 4 caps a s d f spc h j k l ; u o bspc
           )
           (defvar
            tap-time 150
@@ -26,13 +26,26 @@
            l (tap-hold $tap-time $hold-time l lalt)
            ; (tap-hold $tap-time $hold-time ; lmet)
            spc (tap-hold $tap-time $hold-time spc (layer-toggle extra))
+
+           section (multi ralt S-s)        ;; §
+           euro (multi ralt 5)             ;; €
+           a-umlaut (tap-hold $tap-time $hold-time (multi ralt q) lmet)  ;; ä
+           eszett (tap-hold $tap-time $hold-time (multi ralt s) lalt)    ;; ß
+           u-umlaut (multi ralt y)         ;; ü
+           o-umlaut (multi ralt p)         ;; ö
+
+
+           e-down (tap-hold $tap-time $hold-time down lsft)
+           e-up (tap-hold $tap-time $hold-time up lalt)
+           e-right (tap-hold $tap-time $hold-time right lmet)
+           e-; (tap-hold $tap-time $hold-time ; lmet)
           )
 
           (deflayer base
-           3   4   @caps @a  @s  @d  @f  @spc h  @j  @k  @l  @;  u  o  bspc
+           3 4 @caps @a  @s  @d  @f  @spc h  @j  @k  @l  @;  u  o  bspc
           )
           (deflayer extra
-           §   €   _     ä   ß   _   _   _    left down up right _   ü  ö  del
+           @section @euro _ @a-umlaut @eszett lsft lctl _ left down up right _ @u-umlaut @o-umlaut del
           )
         '';
       };
