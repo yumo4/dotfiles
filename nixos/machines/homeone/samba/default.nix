@@ -37,8 +37,8 @@ in {
         "guest account" = "nobody";
         "map to guest" = "bad user";
       };
-      "audiobooks" = {
-        "path" = "/home/max/Media/Audiobooks";
+      "media" = {
+        "path" = "/home/max/Media";
         "browsable" = "yes";
         "read only" = "no";
         "guest ok" = "no";

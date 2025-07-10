@@ -46,11 +46,13 @@ in {
   # ensuring the directory exists
   systemd.tmpfiles.rules = [
     "d /home/max/Media 0755 max users -"
-    "d /home/max/Media/Audiobooks 0755 max users -"
+    # "d /home/max/Media/Audiobooks 0755 max users -"
+    # "d /home/max/Media/Movies 0755 max users -"
+    # "d /home/max/Media/Shows 0755 max users -"
   ];
   # mounting the share
-  fileSystems."/home/max/Media/Audiobooks" = {
-    device = "//192.168.178.65/audiobooks";
+  fileSystems."/home/max/Media" = {
+    device = "//192.168.178.65/media";
     fsType = "cifs";
     # options = let
     #   # automounts_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s,user,users";
