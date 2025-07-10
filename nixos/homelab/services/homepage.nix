@@ -4,6 +4,7 @@
   lib,
   ...
 }: let
+  serverIP = "192.168.178.65";
   baseDomain = "yumo4.duckdns.org";
   subDomain = "home";
   localDomain = "homeone";
@@ -81,7 +82,8 @@ in {
     services.homepage-dashboard = {
       enable = true;
       openFirewall = true;
-      allowedHosts = "localhost:${toString port},127.0.0.1:${toString port},${subDomain}.${baseDomain}";
+      # allowedHosts = "localhost:${toString port},127.0.0.1:${toString port},${subDomain}.${baseDomain}";
+      allowedHosts = "localhost:${toString port},127.0.0.1:${toString port},${serverIP}:${toString port},${subDomain}.${baseDomain}";
       customCSS = ''
         body, html {
          font-family: SF Pro Display, Helvetica, Arial, sans-serif !important;
