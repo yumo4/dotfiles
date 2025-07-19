@@ -4,7 +4,7 @@
   inputs,
   ...
 }: let
-  baseDomain = "yumo4.duckdns.org";
+  baseDomain = "yumo4.dev";
   domainEmail = "maximilian.troe@gmail.com";
   secretspath = builtins.toString inputs.mysecrets;
 in {
@@ -14,7 +14,7 @@ in {
     validateSopsFiles = false;
 
     secrets = {
-      "duckdns-env" = {};
+      "cloudflare-env" = {};
     };
   };
 
@@ -27,14 +27,14 @@ in {
 
       domain = "${baseDomain}";
       extraDomainNames = ["*.${baseDomain}"];
-      dnsProvider = "duckdns";
+      dnsProvider = "cloudflare";
       dnsResolver = "1.1.1.1:53";
       dnsPropagationCheck = true;
 
       webroot = null;
 
       reloadServices = ["caddy.service"];
-      environmentFile = "${config.sops.secrets."duckdns-env".path}";
+      environmentFile = "${config.sops.secrets."cloudflare-env".path}";
     };
   };
 }

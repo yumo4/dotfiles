@@ -3,9 +3,8 @@
   config,
   ...
 }: let
-  baseDomain = "yumo4.duckdns.org";
+  baseDomain = "yumo4.dev";
   subDomain = "syncthing";
-  localDomain = "homeone";
   port = 8384;
   username = "max";
 in {
@@ -42,12 +41,6 @@ in {
     virtualHosts."${subDomain}.${baseDomain}" = {
       useACMEHost = baseDomain;
 
-      extraConfig = ''
-        reverse_proxy http://127.0.0.1:${toString port}
-      '';
-    };
-
-    virtualHosts."${subDomain}.${localDomain}" = {
       extraConfig = ''
         reverse_proxy http://127.0.0.1:${toString port}
       '';

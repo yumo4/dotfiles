@@ -18,6 +18,7 @@
     ../../homelab/services/adguard.nix
     ../../homelab/services/audiobookshelf.nix
     ../../homelab/services/homepage.nix
+    ../../homelab/services/jellyfin.nix
     ../../homelab/services/paperless.nix
     ../../homelab/services/stirling-pdf.nix
     ../../homelab/services/syncthing.nix

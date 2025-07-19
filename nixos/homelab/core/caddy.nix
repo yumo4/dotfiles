@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  baseDomain = "yumo4.duckdns.org";
+  baseDomain = "yumo4.dev";
 in {
   environment.systemPackages = with pkgs; [
     caddy
@@ -8,12 +8,6 @@ in {
   networking.firewall.allowedTCPPorts = [80 443];
   services.caddy = {
     enable = true;
-    # virtualHosts."${domain}".extraConfig = ''
-    #   respond "OK"
-    # '';
-    # globalConfig = ''
-    #   auto_https off
-    # '';
     virtualHosts = {
       "http://${baseDomain}" = {
         extraConfig = ''

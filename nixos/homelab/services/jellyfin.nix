@@ -3,7 +3,7 @@
   config,
   ...
 }: let
-  baseDomain = "yumo4.duckdns.org";
+  baseDomain = "yumo4.dev";
   subDomain = "jellyfin";
   port = 8096;
 in {
@@ -34,28 +34,12 @@ in {
     )
   ];
 
-  services.audiobookshelf = {
+  services.jellyfin = {
     enable = true;
     openFirewall = true;
-    port = port;
+    # port = port;
     user = "max";
   };
-
-  fileSystems."/var/lib/jellyfin/media/movies" = {
-    device = "/home/max/Media/Movies";
-    options = ["bind"];
-  };
-
-  fileSystems."/var/lib/jellyfin/media/shows" = {
-    device = "/home/max/Media/Shows";
-    options = ["bind"];
-  };
-
-  systemd.tmpfiles.rules = [
-    "d /var/lib/jellyfin/media 0755 jellyfin jellyfin -"
-    "d /var/lib/jellyfin/media/movies 0755 jellyfin jellyfin -"
-    "d /var/lib/jellyfin/media/shows 0755 jellyfin jellyfin -"
-  ];
 
   nixpkgs.config.packageOverrides = pkgs: {
     intel-vaapi-driver = pkgs.intel-vaapi-driver.override {enableHybridCodec = true;};

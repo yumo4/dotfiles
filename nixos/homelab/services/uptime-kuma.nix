@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  baseDomain = "yumo4.duckdns.org";
+  baseDomain = "yumo4.dev";
   subDomain = "uptime";
   port = 3001;
 in {
@@ -24,7 +24,7 @@ in {
       name = "Uptime Kuma";
       description = "";
       icon = "uptime-kuma.svg";
-      category = "Services";
+      category = "Network";
     };
     url = "${subDomain}.${baseDomain}";
   };

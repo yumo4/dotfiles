@@ -5,8 +5,8 @@
   lib,
   ...
 }: let
-  baseDomain = "yumo4.duckdns.org";
-  subDomain = "vaultwarden";
+  baseDomain = "yumo4.dev";
+  subDomain = "vault";
   port = 9090;
   smtpPort = 465;
   secretspath = builtins.toString inputs.mysecrets;

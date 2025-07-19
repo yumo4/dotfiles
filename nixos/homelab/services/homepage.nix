@@ -5,9 +5,8 @@
   ...
 }: let
   serverIP = "192.168.178.65";
-  baseDomain = "yumo4.duckdns.org";
+  baseDomain = "yumo4.dev";
   subDomain = "home";
-  localDomain = "homeone";
   port = 8082;
 
   homepageServices =
@@ -116,7 +115,7 @@ in {
               Glances = {
                 header = false;
                 style = "row";
-                columns = 4;
+                columns = 3;
               };
             }
           ]
@@ -163,12 +162,12 @@ in {
                 };
               }
               {
-                "Disk" = {
+                "Disc" = {
                   widget = {
                     type = "glances";
                     url = "http://localhost:${glancesPort}";
                     metric = "fs:/";
-                    chart = false;
+                    chart = true;
                     version = 4;
                   };
                 };
@@ -186,11 +185,6 @@ in {
       virtualHosts."${subDomain}.${baseDomain}" = {
         useACMEHost = baseDomain;
 
-        extraConfig = ''
-          reverse_proxy http://127.0.0.1:${toString port}
-        '';
-      };
-      virtualHosts."${subDomain}.${localDomain}" = {
         extraConfig = ''
           reverse_proxy http://127.0.0.1:${toString port}
         '';

@@ -4,9 +4,8 @@
   inputs,
   ...
 }: let
-  baseDomain = "yumo4.duckdns.org";
+  baseDomain = "yumo4.dev";
   subDomain = "paperless";
-  localDomain = "homeone";
   port = 18981;
   secretspath = builtins.toString inputs.mysecrets;
 in {
@@ -67,12 +66,6 @@ in {
     virtualHosts."${subDomain}.${baseDomain}" = {
       useACMEHost = baseDomain;
 
-      extraConfig = ''
-        reverse_proxy http://127.0.0.1:${toString port}
-      '';
-    };
-
-    virtualHosts."${subDomain}.${localDomain}" = {
       extraConfig = ''
         reverse_proxy http://127.0.0.1:${toString port}
       '';

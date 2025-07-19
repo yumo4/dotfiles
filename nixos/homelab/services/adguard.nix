@@ -4,9 +4,8 @@
   inputs,
   ...
 }: let
-  baseDomain = "yumo4.duckdns.org";
+  baseDomain = "yumo4.dev";
   subDomain = "ad";
-  localDomain = "homeone";
   serverIP = "192.168.178.65";
   port = 3000;
   dnsPort = 53;
@@ -60,25 +59,15 @@ in {
         ];
         enable_dnssec = true;
         rewrites = [
-          #   {
-          #     domain = "${baseDomain}";
-          #     answer = serverIP;
-          #   }
-          #
-          #   {
-          #     domain = "*.${baseDomain}";
-          #     answer = serverIP;
-          #   }
-          #
-          #   {
-          #     domain = "${localDomain}";
-          #     answer = serverIP;
-          #   }
-          #
-          #   {
-          #     domain = "*.${localDomain}";
-          #     answer = serverIP;
-          #   }
+          {
+            domain = "${baseDomain}";
+            answer = serverIP;
+          }
+
+          {
+            domain = "*.${baseDomain}";
+            answer = serverIP;
+          }
         ];
       };
       filtering = {
@@ -114,7 +103,7 @@ in {
       name = "Adguard";
       description = "";
       icon = "adguard-home.svg";
-      category = "Services";
+      category = "Network";
     };
     url = "${subDomain}.${baseDomain}";
   };

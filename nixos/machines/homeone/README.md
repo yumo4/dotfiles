@@ -1,26 +1,21 @@
 # homeone
 
 ## services
-### vaultwarden
-- db: sqlite
-- secrets managed with **sops nix** 
 
-### syncthing
-- `services.syncthing.enable = true;`
-
-### libation
-### audiobooksshelf
-
-### uptime-kuma
-### homepage
-
-### pihole / adguardhome
-
-### caddy / treafik
-
-## future plans
-- "seperate ohmyposh config" for server (per hostname) that shows the hostname
-
-
-- jellyfin
-- backups with borg (?) to another server (tentiveIV -> future PI4 Server)
+## FritzBox Setup
+Update-URL: 
+```bash
+https://api.cloudflare.com/client/v4/zones/<ZONE_ID>/dns_records/<RECORD_ID>
+```
+Domainname:
+```bash
+domainname
+```
+Benutzername:
+```bash
+Bearer
+```
+Kennwort:
+```bash
+<cloudflare api token>
+```

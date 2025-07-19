@@ -20,6 +20,7 @@ in {
 
   environment.systemPackages = with pkgs; [
     samba
+    # wsdd
     cifs-utils
     avahi
   ];
@@ -70,8 +71,8 @@ in {
   };
 
   # NOTE: for autodiscovery on windows
-  # samba-wsdd = {
-  #   enable = true;
-  #   openFirewall = true;
-  # };
+  services.samba-wsdd = {
+    enable = true;
+    openFirewall = true;
+  };
 }

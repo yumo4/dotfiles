@@ -3,9 +3,8 @@
   config,
   ...
 }: let
-  baseDomain = "yumo4.duckdns.org";
+  baseDomain = "yumo4.dev";
   subDomain = "audiobooks";
-  localDomain = "homeone";
   port = 8000;
 in {
   environment.systemPackages = with pkgs; [
@@ -17,15 +16,8 @@ in {
     openFirewall = true;
     port = port;
     host = "127.0.0.1";
-    # dataDir = "/var/lib/audiobookshelf";
     dataDir = "audiobookshelf";
-    # user = "max";
-    # group = "audiobookshelf";
   };
-
-  # users.users.audiobookshelf = {
-  #   extraGroups = ["users"];
-  # };
 
   fileSystems."/var/lib/audiobookshelf/audiobooks" = {
     device = "/home/max/Media/Audiobooks";
@@ -51,12 +43,6 @@ in {
     virtualHosts."${subDomain}.${baseDomain}" = {
       useACMEHost = baseDomain;
 
-      extraConfig = ''
-        reverse_proxy http://127.0.0.1:${toString port}
-      '';
-    };
-
-    virtualHosts."${subDomain}.${localDomain}" = {
       extraConfig = ''
         reverse_proxy http://127.0.0.1:${toString port}
       '';
