@@ -115,7 +115,7 @@ in {
               Glances = {
                 header = false;
                 style = "row";
-                columns = 3;
+                columns = 4;
               };
             }
           ]
@@ -162,11 +162,22 @@ in {
                 };
               }
               {
-                "Disc" = {
+                "Disk" = {
                   widget = {
                     type = "glances";
                     url = "http://localhost:${glancesPort}";
                     metric = "fs:/";
+                    chart = true;
+                    version = 4;
+                  };
+                };
+              }
+              {
+                "External Disk" = {
+                  widget = {
+                    type = "glances";
+                    url = "http://localhost:${glancesPort}";
+                    metric = "fs:/mnt/nebulon-b-01";
                     chart = true;
                     version = 4;
                   };

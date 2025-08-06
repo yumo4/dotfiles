@@ -17,13 +17,19 @@
 
     ../../homelab/services/adguard.nix
     ../../homelab/services/audiobookshelf.nix
+    ../../homelab/services/calibre-web.nix
     ../../homelab/services/homepage.nix
     ../../homelab/services/jellyfin.nix
+    ../../homelab/services/miniflux.nix
     ../../homelab/services/paperless.nix
     ../../homelab/services/stirling-pdf.nix
     ../../homelab/services/syncthing.nix
     ../../homelab/services/uptime-kuma.nix
     ../../homelab/services/vaultwarden.nix
+
+    ../../homelab/services/arr/prowlarr.nix
+    ../../homelab/services/arr/sonarr.nix
+    ../../homelab/services/arr/radarr.nix
   ];
 
   # Bootloader.
@@ -49,7 +55,16 @@
   environment.systemPackages = with pkgs; [
     inetutils
     dnsutils
+    powertop
   ];
+
+  # external drive
+  fileSystems."/mnt/nebulon-b-01" = {
+    device = "/dev/disk/by-uuid/4011720d-dd9c-4057-971e-4cc81a35af65";
+    fsType = "ext4";
+    options = ["defaults" "nofail"];
+  };
+  # powerManagement.powertop.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

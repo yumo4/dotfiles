@@ -4,36 +4,39 @@
   ...
 }: let
   baseDomain = "yumo4.dev";
-  subDomain = "audiobooks";
-  port = 8000;
+  subDomain = "books";
+  dataDir = "/var/lib/calibre-web";
+  port = 8083;
 in {
   environment.systemPackages = with pkgs; [
-    audiobookshelf
+    calibre-web
   ];
 
-  services.audiobookshelf = {
+  services.calibre-web = {
     enable = true;
     openFirewall = true;
-    port = port;
-    host = "127.0.0.1";
-    dataDir = "audiobookshelf";
+    listen = {
+      ip = "127.0.0.1";
+      port = port;
+    };
+    # user = "max";
+    dataDir = dataDir;
   };
 
-  fileSystems."/var/lib/audiobookshelf/audiobooks" = {
-    device = "/mnt/nebulon-b-01/Media/Audiobooks";
+  fileSystems."/var/lib/calibre-web/books" = {
+    device = "/mnt/nebulon-b-01/Media/Books";
     options = ["bind"];
   };
 
   systemd.tmpfiles.rules = [
-    "d /var/lib/audiobookshelf 0755 audiobookshelf audiobookshelf -"
-    #   "d /var/lib/audiobookshelf/audiobooks 0755 audiobookshelf users -"
+    "d /var/lib/calibre-web 0755 calibre-web calibre-web -"
   ];
 
-  homelab.services.audiobookshelf = {
+  homelab.services.calibre-web = {
     homepage = {
-      name = "Audiobookshelf";
+      name = "Calibre";
       description = "";
-      icon = "audiobookshelf.svg";
+      icon = "calibre.svg";
       category = "Media";
     };
     url = "${subDomain}.${baseDomain}";

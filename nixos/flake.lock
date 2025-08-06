@@ -44,10 +44,10 @@
     "mysecrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1752928603,
-        "narHash": "sha256-dr4QVZ4WH886nxAWzbvcCjh+spV3MCnktfxLDbbH3Wk=",
+        "lastModified": 1753885677,
+        "narHash": "sha256-mdJMmUTnB5ndujXtA8cENcVLmwSy+8tyDIZcColGNLY=",
         "ref": "main",
-        "rev": "129447b859d6cc8be445699ccd14a70b23626bbb",
+        "rev": "07927671416e62ad4511862587115f108783df8e",
         "shallow": true,
         "type": "git",
         "url": "ssh://git@github.com/yumo4/nix-secrets.git"

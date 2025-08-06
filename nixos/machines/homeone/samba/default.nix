@@ -39,7 +39,7 @@ in {
         "map to guest" = "bad user";
       };
       "media" = {
-        "path" = "/home/max/Media";
+        "path" = "/mnt/nebulon-b-01/Media";
         "browsable" = "yes";
         "read only" = "no";
         "guest ok" = "no";
