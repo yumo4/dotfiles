@@ -11,6 +11,8 @@
     ../../home/optional/ssh.nix
     ../../home/optional/syncthing.nix
     ../../home/optional/waybar.nix
+
+    ../../home/optional/sherlock.nix
   ];
   home.username = "max";
   home.homeDirectory = "/home/max";

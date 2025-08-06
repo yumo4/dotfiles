@@ -226,10 +226,10 @@ in {
   programs.niri.settings = {
     window-rules = windowRules;
     layer-rules = [
-      {
-        matches = [{namespace = "^swww-daemon$";}];
-        # place-within-backdrop = true;
-      }
+      # {
+      #   matches = [{namespace = "^swww-daemon$";}];
+      #   place-within-backdrop = true;
+      # }
     ];
   };
 }

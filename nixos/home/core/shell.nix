@@ -9,5 +9,7 @@
     lst = "tree -C";
     cat = "bat";
     tas = "tmux attach-session -t";
+    taildropsend = "tailscale file cp";
+    taildropget = "sudo tailscale file get ~/Downloads/";
   };
 }

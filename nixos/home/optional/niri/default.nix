@@ -9,6 +9,8 @@
     packages = with pkgs; [
       seatd
       jaq
+      swaybg
+      # xwayland-satellite
       # gnome-control-center
     ];
   };

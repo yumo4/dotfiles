@@ -16,7 +16,9 @@
     ../../modules/optional/gui.nix
     ../../modules/optional/latex.nix
     ../../modules/optional/printing.nix
+    ../../modules/optional/rip.nix
     ../../modules/optional/tailscale.nix
+    ../../modules/optional/vlc.nix
     ../../modules/optional/zsa.nix
   ];
 
@@ -38,7 +40,7 @@
       # vesktop
       calibre
       libation # audible
-      orca-slicer
+      # orca-slicer
       # bambu-studio
       syncthing
       vscodium-fhs

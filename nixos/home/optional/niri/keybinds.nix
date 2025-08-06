@@ -33,6 +33,8 @@
     "Mod+Ctrl+S".action.screenshot = {show-pointer = false;};
 
     "Mod+Space".action = rofi;
+    # "Mod+R".action = spawn "${pkgs.sherlock-launcher}/bin/sherlock";
+    "Mod+R".action = spawn "sherlock";
     "Mod+F".action = fileManager;
     "Mod+B".action = browser;
     # "Mod+O".action = spawn "${pkgs.obsidian}/bin/obsidian";
@@ -40,7 +42,7 @@
     "Mod+Ctrl+R".action = spawn "~/Projects/dotfiles/dots/.config/waybar/reload.sh";
     "Mod+N".action = spawn "~/Projects/dotfiles/dots/.config/rofi/rofi-quicknote.sh";
     "Mod+Return".action = spawn "${pkgs.ghostty}/bin/ghostty";
-    "Mod+Shift+Ctrl+Alt+L".action = spawn "hyprlock";
+    "Mod+escape".action = spawn "hyprlock";
 
     # "Mod+U".action = spawn "env XDG_CURRENT_DESKTOP=gnome gnome-control-center";
     "Mod+U".action = spawn "~/Projects/dotfiles/scripts/gnome-settings.sh";

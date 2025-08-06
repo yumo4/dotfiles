@@ -40,7 +40,7 @@
       # vesktop
       calibre
       libation # audible
-      orca-slicer
+      # orca-slicer
       syncthing
       vscodium-fhs
     ])

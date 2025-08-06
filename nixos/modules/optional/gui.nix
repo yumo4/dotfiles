@@ -57,12 +57,13 @@
   services.libinput.enable = true;
 
   environment.systemPackages = with pkgs; [
+    alacritty
     blueman
     brave
     # orca-slicer
     alsa-utils
     ghostty
-    gnome-control-center
+    # gnome-control-center
     gtk3
     hyprlock
     hyprshot
@@ -79,12 +80,14 @@
     rofi-wayland
     swaynotificationcenter
     swww
+    sherlock-launcher
     tailscale-systray
     unzip
     vesktop
-    vlc
+    # vlc
     vscodium-fhs
     waybar
     wl-clipboard
+    xwayland-satellite
   ];
 }

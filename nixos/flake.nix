@@ -6,7 +6,7 @@
 
     # this makes picking both unstable and stable packages possible
     # unstable is the default
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
@@ -27,6 +27,7 @@
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sherlock.url = "github:Skxxtz/sherlock";
   };
 
   outputs = {

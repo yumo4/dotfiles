@@ -28,16 +28,15 @@ in {
       };
 
       spawn-at-startup = [
-        # (makeCommand "hyprlock")
         (makeCommand "swww-daemon")
+        (makeCommand "~/Projects/dotfiles/dots/.config/hypr/wallpaper.sh")
+        (makeCommand "swaybg")
+        (makeCommand "~/Projects/dotfiles/scripts/wallpaper-sway.sh")
         (makeCommand "obsidian")
         (makeCommand "waybar")
         (makeCommand "tailscale-systray")
         (makeCommand "xwayland-satellite")
-        (makeCommand "~/Projects/dotfiles/dots/.config/hypr/wallpaper.sh")
         {command = ["gammastep" "-O" "4000"];}
-        # {command = ["wl-paste" "--watch" "cliphist" "store"];}
-        # {command = ["wl-paste" "--type text" "--watch" "cliphist" "store"];}
       ];
       prefer-no-csd = true; # no client side decorations
       hotkey-overlay.skip-at-startup = true;
@@ -101,7 +100,8 @@ in {
       };
 
       overview = {
-        backdrop-color = "transparent";
+        # backdrop-color = "transparent";
+        backdrop-color = inactiveColor;
       };
 
       gestures = {
@@ -120,7 +120,7 @@ in {
         background-color = "transparent";
         border = {
           enable = true;
-          width = 1;
+          width = 2;
           active.color = activeColor;
           inactive.color = inactiveColor;
         };
@@ -157,6 +157,9 @@ in {
           length.total-proportion = 0.1;
         };
       };
+      # animations = {
+      #   enable = false;
+      # };
     };
   };
 }
