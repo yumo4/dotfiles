@@ -1,90 +1,69 @@
 {
   pkgs,
   config,
+  inputs,
+  lib,
   ...
 }: let
   baseDomain = "yumo4.dev";
-  subDomain = "qbit";
+  subDomain = "qbt";
   port = 8112;
-
-  # Define your directories (adjust these paths to match your setup)
-  # mediaDir = "/media";
-  mediaDir = "/mnt/nebulon-b-01/Media";
+  downloadDir = "/mnt/nebulon-b-01/Media/Downloads";
+  secretspath = builtins.toString inputs.mysecrets;
 in {
-  imports = [
-    ../../../modules/custom/qbittorrent/default.nix
-  ];
+  imports = [inputs.sops-nix.nixosModules.sops];
+
+  sops = {
+    defaultSopsFile = "${secretspath}/secrets.yaml";
+    validateSopsFiles = false;
+
+    secrets = {
+      # "protonvpn-wg-publickey" = {};
+      # "protonvpn-wg-privatekey" = {};
+      # "protonvpn-wg-endpoint" = {};
+
+      # "qbittorrent/web-password" = {};
+    };
+  };
+
   environment.systemPackages = with pkgs; [
-    qbittorrent
+    qbittorrent-nox
+    wireguard-tools
+    iproute2
   ];
 
-  # qBittorrent service configuration using your custom module
   services.qbittorrent = {
     enable = true;
     user = "max";
     group = "users";
-    configDir = "/var/lib/qbittorrent";
+    openFirewall = true;
 
-    bittorrent = {
-      protocol = "TCP";
-      globalDownloadSpeedLimit = 6500; # 6.5 MB/s
-      globalUploadSpeedLimit = 2000; # 2 MB/s
-      interface = "wg-mullvad"; # VPN interface
-      interfaceName = "wg-mullvad"; # VPN interface name
-      preallocation = true;
-      queueingEnabled = false;
-      defaultSavePath = "${mediaDir}/Downloads";
-      disableAutoTMMByDefault = false;
-      disableAutoTMMTriggersCategorySavePathChanged = false;
-      disableAutoTMMTriggersDefaultSavePathChanged = false;
-      finishedTorrentExportDirectory = "${mediaDir}/Downloads/complete";
-      subcategoriesEnabled = true;
-    };
+    torrentingPort = 6881;
+    webuiPort = port;
 
-    network = {
-      portForwardingEnabled = false; # Disabled since using VPN
-    };
-
-    webUI = {
-      port = port;
-      username = "max";
-      localHostAuth = false;
-      csrfProtection = true;
-      clickjackingProtection = true;
-      authSubnetWhitelistEnabled = true;
-      authSubnetWhitelist = "127.0.0.1/32"; # Allow localhost without auth for Caddy
-    };
+    extraArgs = [
+      "--confirm-legal-notice"
+    ];
   };
 
-  # # Create the media group if it doesn't exist
-  # users.groups.media = {};
-  #
-  # # Ensure the qbittorrent user is part of the media group
-  # users.users.qbittorrent = {
-  #   extraGroups = ["media"];
-  # };
-
+  # Enable IP forwarding for network namespaces
   homelab.services.qbittorrent = {
     homepage = {
       name = "qBittorrent";
-      description = "Torrent client with web interface";
+      description = "BitTorrent client with VPN";
       icon = "qbittorrent.svg";
-      category = "Arr";
+      category = "Media";
     };
     url = "${subDomain}.${baseDomain}";
   };
 
+  # Caddy reverse proxy
   services.caddy = {
     virtualHosts."${subDomain}.${baseDomain}" = {
       useACMEHost = baseDomain;
 
       extraConfig = ''
-        reverse_proxy http://127.0.0.1:${toString port} {
-          # Handle WebSocket connections for real-time updates
-          header_up X-Forwarded-Proto {scheme}
-          header_up X-Forwarded-For {remote}
-          header_up X-Real-IP {remote}
-        }
+        reverse_proxy http://127.0.0.1:${toString port}
       '';
     };
   };
