@@ -8,12 +8,11 @@
   baseDomain = "yumo4.dev";
   subDomain = "qbt";
   port = 8112;
-  # downloadDir = "/mnt/nebulon-b-01/Media/Downloads";
+  downloadDir = "/mnt/nebulon-b-01/Media/Downloads";
   secretspath = builtins.toString inputs.mysecrets;
 in {
   imports = [
     inputs.sops-nix.nixosModules.sops
-    # inputs.vpn-confinement.nixosModules.default
   ];
 
   sops = {
@@ -21,60 +20,75 @@ in {
     validateSopsFiles = false;
 
     secrets = {
-      "protonvpn-wg-arr-config" = {};
+      "gluetun-env" = {};
+      "qbittorrent-env" = {};
     };
   };
 
   environment.systemPackages = with pkgs; [
-    qbittorrent
-    qbittorrent-nox
+    podman
     wireguard-tools
     iproute2
-    tcpdump
-    socat
   ];
 
-  services.qbittorrent = {
+  virtualisation.podman = {
     enable = true;
-    user = "max";
-    group = "users";
-    openFirewall = true;
-
-    torrentingPort = 6881;
-    webuiPort = port;
-
-    extraArgs = [
-      "--confirm-legal-notice"
-    ];
+    dockerCompat = true;
+    defaultNetwork.settings = {
+      dns_enabled = false; #true;
+    };
   };
 
-  # vpnNamespaces.qbtvpn = {
-  #   enable = true;
-  #   wireguardConfigFile = config.sops.secrets."protonvpn-wg-arr-config".path;
-  #
-  #   portMappings = [
-  #     {
-  #       from = port;
-  #       to = port;
-  #       protocol = "tcp";
-  #     }
-  #   ];
-  #
-  #   openVPNPorts = [
-  #     {
-  #       port = 6881;
-  #       protocol = "tcp";
-  #     }
-  #     {
-  #       port = 6881;
-  #       protocol = "udp";
-  #     }
-  #   ];
-  # };
-  # systemd.services.qbittorrent.vpnConfinement = {
-  #   enable = true;
-  #   vpnNamespaces = "qbtvpn";
-  # };
+  virtualisation.oci-containers.containers = {
+    gluetun = {
+      image = "qmcgaw/gluetun";
+      autoStart = true;
+      volumes = [
+        "/var/lib/gluetun:/gluetun"
+      ];
+      # check with
+      # sudo podman exec gluetun cat /tmp/gluetun/forwarded_port
+      ports = [
+        "${toString port}:${toString port}"
+        # "6881:6881" # torrent old
+        "55398:55398" # torrent
+        # "6789:6789"
+        "9696:9696" # prowlarr
+        "8989:8989" # sonarr
+        "7878:7878" # radarr
+      ];
+      environmentFiles = [config.sops.secrets."gluetun-env".path];
+      extraOptions = [
+        "--cap-add=NET_ADMIN"
+        "--device=/dev/net/tun:/dev/net/tun"
+        # "--network=arr"
+        # "--ip=172.39.0.2"
+        "--dns=127.0.0.1"
+      ];
+    };
+
+    qbittorrent = {
+      image = "lscr.io/linuxserver/qbittorrent:latest";
+      autoStart = true;
+      volumes = [
+        "/var/lib/qbittorrent/:/config"
+        "${downloadDir}:/downloads"
+      ];
+      environmentFiles = [config.sops.secrets."qbittorrent-env".path];
+      extraOptions = [
+        # "--cap-add=NET_ADMIN"
+        # "--device=/dev/net/tun:/dev/net/tun"
+        "--network=container:gluetun"
+        # "--ip=172.39.0.3"
+      ];
+      dependsOn = ["gluetun"];
+    };
+  };
+
+  systemd.tmpfiles.rules = [
+    "d /var/lib/gluetun 0755 max users -"
+    "d /var/lib/qbittorrent 0755 max users -"
+  ];
 
   homelab.services.qbittorrent = {
     homepage = {
@@ -91,9 +105,8 @@ in {
     virtualHosts."${subDomain}.${baseDomain}" = {
       useACMEHost = baseDomain;
 
-      # reverse_proxy http://127.0.0.1:${toString port}
       extraConfig = ''
-        reverse_proxy http://192.168.15.1:${toString port}
+        reverse_proxy http://127.0.0.1:${toString port}
       '';
     };
   };

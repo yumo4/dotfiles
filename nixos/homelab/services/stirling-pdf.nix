@@ -4,6 +4,7 @@
   port = 8085;
 in {
   environment.systemPackages = with pkgs; [
+    # libreoffice
     stirling-pdf
   ];
 

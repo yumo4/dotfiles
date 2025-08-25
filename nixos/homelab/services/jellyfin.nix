@@ -23,10 +23,11 @@ in {
 
             # this is the important line
             sed -i "s#</head>#<script src=\"configurationpage?name=skip-intro-button.js\"></script></head>#" dist/index.html
-            # sed -i "s#</head>#<script src=\"configurationpage?name=skip-intro-button.js\"></script><script src=\"configurationpage?name=InPlayerEpisodePreview.js\"></script></head>#" dist/index.html
-            # sed -i "s#</head>#<script src=\"configurationpage?name=skip-intro-button.js\"></script><script src=\"configurationpage?name=InPlayerEpisodePreview.js\"></script></head>#" dist/index.html
 
-            # sed -i "s#</head>#<script src=\"configurationpage?name=skip-intro-button.js\"></script><script src=\"configurationpage?name=inPlayerEpisodePreview.js\"></script></head>#" dist/index.html
+            # Inject Episode Preview
+            # sed -i "s#</head>#<script src=\"configurationpage?name=episode-preview-button.js\"></script></head>#" dist/index.html
+            sed -i "s#</head>#<script src=\"configurationpage?name=InPlayerPreview.js\"></script></head>#" dist/index.html
+
 
             mkdir -p $out/share
             cp -a dist $out/share/jellyfin-web

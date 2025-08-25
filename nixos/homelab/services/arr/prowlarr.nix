@@ -6,15 +6,35 @@
   baseDomain = "yumo4.dev";
   subDomain = "prowlarr";
   port = 9696;
-in {
-  environment.systemPackages = with pkgs; [
-    prowlarr
-  ];
 
-  services.prowlarr = {
-    enable = true;
-    openFirewall = true;
+  mediaDir = "/mnt/nebulon-b-01/Media";
+in {
+  virtualisation.oci-containers.containers = {
+    prowlarr = {
+      image = "lscr.io/linuxserver/prowlarr:latest";
+      autoStart = true;
+      volumes = [
+        "/var/lib/prowlarr/:/config"
+        "${mediaDir}:/media"
+      ];
+      environment = {
+        PUID = "1000";
+        GUID = "100";
+        TZ = "Europe/Berlin";
+      };
+      # ports = [
+      #   "${toString port}:${toString port}"
+      # ];
+      extraOptions = [
+        "--network=container:gluetun"
+      ];
+      dependsOn = ["gluetun"];
+    };
   };
+
+  systemd.tmpfiles.rules = [
+    "d /var/lib/prowlarr 0755 max users -"
+  ];
 
   homelab.services.prowlarr = {
     homepage = {
