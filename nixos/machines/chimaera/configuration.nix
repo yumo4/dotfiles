@@ -44,6 +44,8 @@
       # bambu-studio
       syncthing
       vscodium-fhs
+      ente-auth
+      # distrobox
     ])
     ++ (with pkgs-stable; [
       protonvpn-gui
@@ -62,6 +64,11 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+
+  # virtualisation.podman = {
+  #   enable = true;
+  #   dockerCompat = true;
+  # };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

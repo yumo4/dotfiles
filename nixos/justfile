@@ -16,7 +16,7 @@ update-secrets:
 	nix flake update mysecrets --timeout 5
 
 ## tailscale
-tailscale-up:
+tailscale-setup:
 	sudo tailscale up
 tailscale-exit-node:
 	sudo tailscale set --advertise-exit-node

@@ -27,7 +27,10 @@
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    sherlock.url = "github:Skxxtz/sherlock";
+    sherlock = {
+      url = "github:Skxxtz/sherlock";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -54,6 +57,10 @@
         name = "homeone";
         isServer = true;
       }
+      # {
+      #   name = "lusankya";
+      #   isServer = false;
+      # }
     ];
   in {
     nixosConfigurations = builtins.listToAttrs (map (host: {

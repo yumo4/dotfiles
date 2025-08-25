@@ -32,9 +32,8 @@
     "Mod+Shift+Alt+S".action = screenshot-window;
     "Mod+Ctrl+S".action.screenshot = {show-pointer = false;};
 
-    "Mod+Space".action = rofi;
-    # "Mod+R".action = spawn "${pkgs.sherlock-launcher}/bin/sherlock";
-    "Mod+R".action = spawn "sherlock";
+    # "Mod+Space".action = rofi;
+    "Mod+Space".action = spawn "sherlock";
     "Mod+F".action = fileManager;
     "Mod+B".action = browser;
     # "Mod+O".action = spawn "${pkgs.obsidian}/bin/obsidian";

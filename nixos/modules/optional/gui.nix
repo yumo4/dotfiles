@@ -80,7 +80,7 @@
     rofi-wayland
     swaynotificationcenter
     swww
-    sherlock-launcher
+    # sherlock-launcher
     tailscale-systray
     unzip
     vesktop

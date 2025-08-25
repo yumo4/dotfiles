@@ -13,6 +13,7 @@
     ../../home/optional/waybar.nix
 
     ../../home/optional/sherlock.nix
+    # ../../home/optional/sherlock
   ];
   home.username = "max";
   home.homeDirectory = "/home/max";
