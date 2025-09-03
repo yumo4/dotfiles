@@ -18,6 +18,7 @@
     ../../modules/optional/printing.nix
     ../../modules/optional/rip.nix
     ../../modules/optional/tailscale.nix
+    ../../modules/optional/sops.nix
     ../../modules/optional/vlc.nix
     ../../modules/optional/zsa.nix
   ];
@@ -36,16 +37,20 @@
 
   environment.systemPackages =
     (with pkgs; [
-      # pika-backup
-      # vesktop
-      calibre
-      libation # audible
-      # orca-slicer
       # bambu-studio
-      syncthing
-      vscodium-fhs
-      ente-auth
       # distrobox
+      # orca-slicer
+      calibre
+      ente-auth
+      libation # audible
+      pika-backup
+      syncthing
+      vesktop
+      vscodium-fhs
+
+      networkmanager-fortisslvpn
+      openfortivpn
+      openfortivpn-webview
     ])
     ++ (with pkgs-stable; [
       protonvpn-gui

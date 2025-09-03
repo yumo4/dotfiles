@@ -15,6 +15,7 @@
     ../../modules/optional/kanata.nix
     ../../modules/optional/latex.nix
     ../../modules/optional/printing.nix
+    ../../modules/optional/sops.nix
     ../../modules/optional/tailscale.nix
     ../../modules/optional/udev-brightnesskeys.nix
     ../../modules/optional/zsa.nix

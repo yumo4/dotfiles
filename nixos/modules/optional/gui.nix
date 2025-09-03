@@ -7,7 +7,7 @@
   imports = [inputs.niri.nixosModules.niri];
 
   services.displayManager.ly.enable = true;
-  services.desktopManager.gnome.enable = true;
+  # services.desktopManager.gnome.enable = true;
   # services.xserver.windowManager.qtile.enable = true;
   programs.hyprland.enable = true;
   programs.niri.enable = true;
@@ -60,10 +60,8 @@
     alacritty
     blueman
     brave
-    # orca-slicer
     alsa-utils
     ghostty
-    # gnome-control-center
     gtk3
     hyprlock
     hyprshot
@@ -73,17 +71,15 @@
     libnotify
     nautilus
     networkmanagerapplet
-    obs-studio
+    # obs-studio
     obsidian
     playerctl
-    pika-backup
     rofi-wayland
     swaynotificationcenter
     swww
-    # sherlock-launcher
     tailscale-systray
     unzip
-    vesktop
+    # vesktop
     # vlc
     vscodium-fhs
     waybar

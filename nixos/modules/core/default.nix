@@ -6,10 +6,11 @@
   ...
 }: {
   imports = [
-    ./packages.nix
+    ./fonts.nix
     ./gc.nix
     ./languages.nix
     ./locales.nix
+    ./packages.nix
     ./user.nix
   ];
 

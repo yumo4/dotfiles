@@ -5,8 +5,8 @@ default:
 ## nixos
 
 # this adds all files to be tracked by git 
-rebuild-pre: update-secrets
-	@git add --intent-to-add .
+# rebuild-pre: update-secrets
+# 	@git add --intent-to-add .
 # rebuild-post: check-sops
 
 

@@ -1,13 +1,13 @@
 # dotfiles
 
-This repo contains my dotfiles, nixos configuration and the wallpapers I use.
-I manage my dotfiles with [Home Manger](https://nix-community.github.io/home-manager/).
-
-My dotfiles include configurations for: `alacritty`, `fastfetch`, `fish`, `flameshot`, `ghostty`, `hyprland`, `nvim`, `oh-my-posh`, `qtile`, `rofi`, `tmux`, `waybar`, `.zshrc`, `.ideavimrc` and `Gruvbox-Material-Dark` icons and themes.
-
+<!-- This repo contains my dotfiles, nixos configuration and the wallpapers I use. -->
+<!-- I manage my dotfiles with [Home Manger](https://nix-community.github.io/home-manager/). -->
+<!---->
+<!-- My dotfiles include configurations for: `alacritty`, `fastfetch`, `fish`, `flameshot`, `ghostty`, `hyprland`, `nvim`, `oh-my-posh`, `qtile`, `rofi`, `tmux`, `waybar`, `.zshrc`, `.ideavimrc` and `Gruvbox-Material-Dark` icons and themes. -->
+<!---->
 ## Installation
 ```bash
-nix-shell -p git neovim ghostty
+nix-shell -p git neovim ghostty firefox just
 ```
 ```bash
 # git clone git@github.com:yumo4/dotfiles.git
@@ -28,9 +28,6 @@ sudo nixos-rebuild switch --flake .#<hostname>
 ```bash
 nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
 nix-channel --update
-```
-- installing home-manager:
-```bash
 nix-shell '<home-manager>' -A install
 ```
 If you get an error with something like "source not found" or "home-manager not found" log out and log back in and try again.

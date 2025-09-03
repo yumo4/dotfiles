@@ -11,10 +11,10 @@
     gammastep
     git
     inetutils
-    jetbrains-mono
+    # jetbrains-mono
     just
     neovim
-    nerd-fonts.jetbrains-mono
+    # nerd-fonts.jetbrains-mono
     oh-my-posh
     ripgrep
     sops

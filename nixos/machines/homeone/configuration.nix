@@ -12,6 +12,7 @@
     ../../modules/core
     ./samba
     ../../modules/optional/tailscale.nix
+    ../../modules/optional/sops.nix
 
     ../../homelab/core/acme.nix
     ../../homelab/core/caddy.nix

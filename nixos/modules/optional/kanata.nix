@@ -3,6 +3,8 @@
     enable = true;
     keyboards = {
       internalKeyboard = {
+        # NOTE: to get a new device
+        # ls -la /dev/input/by-path/ | grep kbd
         devices = [
           "/dev/input/by-path/platform-i8042-serio-0-event-kbd"
         ];

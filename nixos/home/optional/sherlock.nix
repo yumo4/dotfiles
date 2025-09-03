@@ -158,7 +158,12 @@
       # }
     ];
 
-    aliases = {};
+    aliases = {
+      vesktop = {
+        name = "Discord";
+        #   icon = "discord";
+      };
+    };
 
     ignore = ''
       hicolor-icon-theme.desktop
