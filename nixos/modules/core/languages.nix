@@ -21,6 +21,7 @@
     typescript-language-server
     nodejs_22
     prettierd
+    prettier
 
     # nix
     alejandra
@@ -50,5 +51,6 @@
 
     # php
     php
+    intelephense
   ];
 }

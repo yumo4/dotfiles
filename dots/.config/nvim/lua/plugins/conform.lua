@@ -14,8 +14,10 @@ return { -- Autoformat
       nix = { "alejandra" },
       java = { "google-java-format" },
       latex = { "tex-fmt" },
-      html = { "htmlbeautifier" },
-      -- css = { "stylelint" },
+      html = { "prettier" },
+      css = { "prettier" },
+      scss = { "prettier" },
+      php = { "pint" },
     },
     formatters = {
       -- lua
@@ -36,8 +38,11 @@ return { -- Autoformat
       -- stylelint = {},
       -- js
       prettierd = {},
+      prettier = {},
       -- tex-fmt = {
       -- },
+      -- php
+      pint = {},
     },
   },
 }

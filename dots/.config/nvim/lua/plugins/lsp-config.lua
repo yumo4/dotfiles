@@ -95,6 +95,8 @@ return { -- LSP Configuration & Plugins
       html = {},
       -- css
       cssls = {},
+      -- php
+      intelephense = {},
 
       -- lua
       lua_ls = {
