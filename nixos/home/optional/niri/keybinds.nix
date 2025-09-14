@@ -6,11 +6,8 @@
   programs.niri.settings.binds = with config.lib.niri.actions; let
     set-volume = spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@";
     brillo = spawn "${pkgs.brillo}/bin/brillo" "-q";
-    # brillo = spawn "${pkgs.brillo}/bin/brillo" "-q" "-u" "300000";
-    # rofi = spawn "${pkgs.rofi-wayland}/bin/rofi" "-show" "drun";
     rofi = spawn "rofi" "-show" "drun";
     browser = spawn "zen-beta";
-    # focusObsidian = spawn "niri" "msg" "action" "focus-windowd" "1";
     playerctl = spawn "${pkgs.playerctl}/bin/playerctl";
     fileManager = spawn "${pkgs.nautilus}/bin/nautilus" "--new-window";
   in {
@@ -36,15 +33,14 @@
     "Mod+Space".action = spawn "sherlock";
     "Mod+F".action = fileManager;
     "Mod+B".action = browser;
-    # "Mod+O".action = spawn "${pkgs.obsidian}/bin/obsidian";
-    # "Mod+O".action = focusObsidian;
     "Mod+Ctrl+R".action = spawn "~/Projects/dotfiles/dots/.config/waybar/reload.sh";
     "Mod+N".action = spawn "~/Projects/dotfiles/dots/.config/rofi/rofi-quicknote.sh";
     "Mod+Return".action = spawn "${pkgs.ghostty}/bin/ghostty";
     "Mod+escape".action = spawn "hyprlock";
 
-    # "Mod+U".action = spawn "env XDG_CURRENT_DESKTOP=gnome gnome-control-center";
+    # "Mod+U".action = spawn "env" "XDG_CURRENT_DESKTOP=gnome" "gnome-control-center";
     "Mod+U".action = spawn "~/Projects/dotfiles/scripts/gnome-settings.sh";
+    "Mod+P".action = spawn "swaync-client" "-t" "-sw";
 
     "Mod+W".action = close-window;
     "Mod+S".action = switch-preset-column-width;

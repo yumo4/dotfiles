@@ -77,6 +77,7 @@
     rofi-wayland
     swaynotificationcenter
     swww
+    # syshud
     tailscale-systray
     unzip
     # vesktop
@@ -85,5 +86,6 @@
     waybar
     wl-clipboard
     xwayland-satellite
+    # zed-editor
   ];
 }

@@ -2,18 +2,19 @@
   imports = [
     ../../home/core
 
+    # ../../home/optional/carapace.nix
     ../../home/optional/ghostty.nix
     ../../home/optional/gui.nix
     ../../home/optional/hyprland.nix
-    ../../home/optional/niri
     ../../home/optional/hyprlock.nix
+    ../../home/optional/niri
+    ../../home/optional/sherlock.nix
     ../../home/optional/sops.nix
     ../../home/optional/ssh.nix
     ../../home/optional/syncthing.nix
     ../../home/optional/waybar.nix
 
-    ../../home/optional/sherlock.nix
-    # ../../home/optional/sherlock
+    ../../home/optional/zed.nix
   ];
   home.username = "max";
   home.homeDirectory = "/home/max";

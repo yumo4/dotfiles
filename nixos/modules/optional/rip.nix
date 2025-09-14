@@ -16,7 +16,6 @@
   ];
 
   users.users.max = {
-    # Replace 'max' with your actual username
     extraGroups = ["cdrom" "optical" "disk" "storage"];
   };
 

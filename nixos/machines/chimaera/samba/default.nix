@@ -27,11 +27,12 @@ in {
 
   environment.systemPackages = with pkgs; [
     cifs-utils
-    # gvfs
+    gvfs
     samba
   ];
 
-  # services.gvfs.enable = true;
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
 
   services.samba = {
     enable = true;

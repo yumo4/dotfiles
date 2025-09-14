@@ -6,7 +6,8 @@
   lib,
   meta,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware-configuration.nix
 

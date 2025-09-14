@@ -31,12 +31,14 @@ in {
         (makeCommand "swww-daemon")
         (makeCommand "~/Projects/dotfiles/dots/.config/hypr/wallpaper.sh")
         (makeCommand "swaybg")
+        (makeCommand "swaync")
         (makeCommand "~/Projects/dotfiles/scripts/wallpaper-sway.sh")
         (makeCommand "obsidian")
         (makeCommand "waybar")
         (makeCommand "tailscale-systray")
         (makeCommand "xwayland-satellite")
         {command = ["gammastep" "-O" "4000"];}
+        # {command = ["syshud" "-p" "bottom" "-o" "v" "-M" "audio_in" "audio_out" "brightness" "keyboard"];}
       ];
       prefer-no-csd = true; # no client side decorations
       hotkey-overlay.skip-at-startup = true;

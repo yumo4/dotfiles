@@ -48,18 +48,22 @@
       {
         name = "framework";
         isServer = false;
+        isWork = false;
       }
       {
         name = "chimaera";
         isServer = false;
+        isWork = false;
       }
       {
         name = "homeone";
         isServer = true;
+        isWork = false;
       }
       # {
       #   name = "lusankya";
       #   isServer = false;
+      #   isWork = true;
       # }
     ];
   in {
@@ -77,6 +81,7 @@
             meta = {
               hostname = host.name;
               isServer = host.isServer;
+              isWork = host.isWork;
             };
           };
         };
@@ -93,6 +98,7 @@
             meta = {
               hostname = host.name;
               isServer = host.isServer;
+              isWork = host.isWork;
             };
           };
           modules = [
