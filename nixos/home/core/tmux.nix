@@ -43,6 +43,14 @@ in {
           set -g @continuum-save-interval '10'
         '';
       }
+      # {
+      #   plugin = tmux-floax;
+      #   extraConfig = ''
+      #     set -g @floax-bind 't'
+      #     set -g @floax-border-color '#ebdbb2'
+      #     set -g @floax-text-color '#ebdbb2'
+      #   '';
+      # }
     ];
     extraConfig = ''
       # Set prefix
@@ -79,12 +87,12 @@ in {
       bind v split-window -h -c '#{pane_current_path}'
 
       # pop up / floating
-      unbind t
-      bind t display-popup \
-      -w 80% \
-      -h 80% \
-      -d "#{pane_current_path}" \
-      -E "fish"
+      # unbind t
+      # bind t display-popup \
+      # -w 80% \
+      # -h 80% \
+      # -d "#{pane_current_path}" \
+      # -E "fish"
 
       # resize pane
       bind -r m resize-pane -Z
