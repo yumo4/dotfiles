@@ -10,6 +10,15 @@
 nix-shell -p git neovim ghostty firefox just
 ```
 ```bash
+ssh-keygen -t ed25519 -f ~/.ssh/id_<keyname>
+```
+(`-c` for fish)
+```bash
+eval "$(ssh-agent -s)"
+```
+
+
+```bash
 # git clone git@github.com:yumo4/dotfiles.git
 git clone https://github.com/yumo4/dotfiles.git
 ```
