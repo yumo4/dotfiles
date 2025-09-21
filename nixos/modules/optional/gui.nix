@@ -2,6 +2,7 @@
   pkgs,
   lib,
   inputs,
+  meta,
   ...
 }: {
   imports = [inputs.niri.nixosModules.niri];
@@ -44,7 +45,16 @@
   services.xserver = {
     enable = true;
     enableTearFree = true;
-    videoDrivers = ["modesetting" "amdgpu"]; # intel amd
+    # videoDrivers = ["modesetting" "amdgpu" "nvidia"]; # intel amd nvidia
+    videoDrivers =
+      if meta.hostname == "chimaera"
+      then ["amdgpu"]
+      else if meta.hostname == "lusankya"
+      then ["nvidia"]
+      else ["modesetting"];
+  };
+  hardware = lib.optionalAttrs (meta.hostname == "lusankya") {
+    nvidia.open = true;
   };
 
   # Configure keymap in X11
@@ -74,7 +84,7 @@
     # obs-studio
     obsidian
     playerctl
-    rofi-wayland
+    rofi
     swaynotificationcenter
     swww
     # syshud

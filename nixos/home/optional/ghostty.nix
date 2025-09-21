@@ -10,7 +10,7 @@
       font-feature = ["-calt" "-liga" "dlig"];
       font-thicken = true;
 
-      theme = "GruvboxDark";
+      theme = "Gruvbox Dark";
 
       cursor-style = "block";
       cursor-click-to-move = true;

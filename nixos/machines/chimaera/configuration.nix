@@ -6,14 +6,14 @@
   lib,
   meta,
   ...
-}:
-{
+}: {
   imports = [
     ./hardware-configuration.nix
 
     ../../modules/core
     ./samba
 
+    ../../modules/optional/bluetooth.nix
     ../../modules/optional/gui.nix
     ../../modules/optional/latex.nix
     ../../modules/optional/printing.nix
@@ -39,21 +39,22 @@
   environment.systemPackages =
     (with pkgs; [
       # bambu-studio
-      # distrobox
       # orca-slicer
-      calibre
+      # distrobox
       ente-auth
       libation # audible
       pika-backup
       syncthing
       vesktop
       vscodium-fhs
+      # zmkBATx
 
       networkmanager-fortisslvpn
       openfortivpn
       openfortivpn-webview
     ])
     ++ (with pkgs-stable; [
+      calibre
       protonvpn-gui
       protonvpn-cli
       wireguard-go

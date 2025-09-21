@@ -45,8 +45,6 @@
     "Mod+W".action = close-window;
     "Mod+S".action = switch-preset-column-width;
     "Mod+Tab".action = maximize-column;
-    # "Mod+Tab".action = fullscreen-window;
-    # "Mod+Shift+F".action = expand-column-to-available-width;
     "Mod+T".action = toggle-window-floating;
     # "Mod+Q".action = toggle-column-tabbed-display;
 
@@ -76,8 +74,10 @@
     "Mod+Shift+K".action = move-column-to-workspace-up;
     "Mod+Shift+J".action = move-column-to-workspace-down;
 
-    "Mod+Shift+Ctrl+J".action = move-column-to-monitor-down;
-    "Mod+Shift+Ctrl+K".action = move-column-to-monitor-up;
+    "Mod+Alt+H".action = move-column-to-monitor-left;
+    "Mod+Alt+J".action = move-column-to-monitor-down;
+    "Mod+Alt+K".action = move-column-to-monitor-up;
+    "Mod+Alt+L".action = move-column-to-monitor-right;
 
     "Mod+1".action = focus-workspace 1;
     "Mod+2".action = focus-workspace 2;

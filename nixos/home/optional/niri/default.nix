@@ -11,7 +11,7 @@
       jaq
       swaybg
       # xwayland-satellite
-      # gnome-control-center
+      gnome-control-center
     ];
   };
 }

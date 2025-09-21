@@ -6,4 +6,6 @@ elif [[ "$HOSTNAME" == "chimaera" ]]; then
 	swaybg -o '*' -i ~/Projects/dotfiles/wallpaper/julian-calle-falcon.jpg -m center &
 elif [[ "$HOSTNAME" == "lusankya" ]]; then
 	swaybg -o '*' -i ~/Projects/dotfiles/wallpaper/RMcQ-Tie-Pilot-MF.png -m center &
+else 
+	swaybg -o '*' -i ~/Projects/dotfiles/wallpaper/RMcQ-Deathstar-Construction.png -m center &
 fi

@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  meta,
+  ...
+}: {
   environment.systemPackages = with pkgs; [
     # cups
     avahi
@@ -19,21 +23,24 @@
     nssmdns4 = true;
     openFirewall = true;
   };
-  hardware.printers = {
-    ensurePrinters = [
-      {
-        name = "HP_Color_LaserJet_MFP_M277dw";
-        location = "Home";
-        deviceUri = "ipp://192.168.178.53:631/ipp/print";
-        model = "everywhere";
-        ppdOptions = {
-          PageSize = "A4";
-          Duplex = "DuplexNoTumble";
-          HPOption_Duplexer = "True";
-          # ColorModel = "Color";
-        };
-      }
-    ];
-    ensureDefaultPrinter = "HP_Color_LaserJet_MFP_M277dw";
-  };
+  hardware.printers =
+    if meta.isWork
+    then {}
+    else {
+      ensurePrinters = [
+        {
+          name = "HP_Color_LaserJet_MFP_M277dw";
+          location = "Home";
+          deviceUri = "ipp://192.168.178.53:631/ipp/print";
+          model = "everywhere";
+          ppdOptions = {
+            PageSize = "A4";
+            Duplex = "DuplexNoTumble";
+            HPOption_Duplexer = "True";
+            # ColorModel = "Color";
+          };
+        }
+      ];
+      ensureDefaultPrinter = "HP_Color_LaserJet_MFP_M277dw";
+    };
 }

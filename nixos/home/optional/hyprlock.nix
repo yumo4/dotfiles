@@ -5,7 +5,7 @@
   ...
 }: let
   positions =
-    if meta.hostname == "chimaera"
+    if meta.hostname == "chimaera" || "lusankya"
     then {
       time = "0, -5%";
       date = "0, +25%";
@@ -16,8 +16,8 @@
       date = "0, +30%";
     }
     else {
-      time = "0, -10%";
-      date = "0, +20%";
+      time = "0, -5%";
+      date = "0, +25%";
     };
 in {
   programs.hyprlock = {
@@ -46,16 +46,16 @@ in {
           valign = "top";
         }
         # DATE
-        {
-          monitor = "";
-          text = ''cmd[update:1000] echo -e "$(date +"%d. %b %A")"'';
-          color = "rgb(f9f5d7)";
-          font_size = 14;
-          font_family = "JetBrains Mono Nerd Font Mono ExtraBold";
-          position = positions.date;
-          halign = "center";
-          valign = "center";
-        }
+        # {
+        #   monitor = "";
+        #   text = ''cmd[update:1000] echo -e "$(date +"%d. %b %A")"'';
+        #   color = "rgb(f9f5d7)";
+        #   font_size = 14;
+        #   font_family = "JetBrains Mono Nerd Font Mono ExtraBold";
+        #   position = positions.date;
+        #   halign = "center";
+        #   valign = "center";
+        # }
       ];
 
       input-field = [

@@ -5,7 +5,8 @@
       mainBar = {
         layer = "top";
         position = "top";
-
+        # output = [
+        # ];
         modules-left = [
           "hyprland/workspaces"
           "niri/workspaces"

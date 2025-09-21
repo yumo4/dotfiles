@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  meta,
   ...
 }: let
   activeColor = "#928374";
@@ -27,19 +28,32 @@ in {
         SDL_VIDEODRIVER = "wayland";
       };
 
-      spawn-at-startup = [
-        (makeCommand "swww-daemon")
-        (makeCommand "~/Projects/dotfiles/dots/.config/hypr/wallpaper.sh")
-        (makeCommand "swaybg")
-        (makeCommand "swaync")
-        (makeCommand "~/Projects/dotfiles/scripts/wallpaper-sway.sh")
-        (makeCommand "obsidian")
-        (makeCommand "waybar")
-        (makeCommand "tailscale-systray")
-        (makeCommand "xwayland-satellite")
-        {command = ["gammastep" "-O" "4000"];}
-        # {command = ["syshud" "-p" "bottom" "-o" "v" "-M" "audio_in" "audio_out" "brightness" "keyboard"];}
-      ];
+      spawn-at-startup =
+        (
+          if meta.isWork
+          then [
+            (makeCommand "teams-for-linux")
+            (makeCommand "keepassxc")
+          ]
+          else [
+            (makeCommand "obsidian")
+            (makeCommand "tailscale-systray")
+            # {command = ["syshud" "-p" "bottom" "-o" "v" "-M" "audio_in" "audio_out" "brightness" "keyboard"];}
+          ]
+        )
+        ++ [
+          (makeCommand "swww-daemon")
+          (makeCommand "~/Projects/dotfiles/dots/.config/hypr/wallpaper.sh")
+          (makeCommand "swaybg")
+          (makeCommand "~/Projects/dotfiles/scripts/wallpaper-sway.sh")
+          (makeCommand "swaync")
+          (makeCommand "waybar")
+
+          (makeCommand "xwayland-satellite")
+          {command = ["gammastep" "-O" "4000"];}
+
+          (makeCommand "zen-beta")
+        ];
       prefer-no-csd = true; # no client side decorations
       hotkey-overlay.skip-at-startup = true;
 
@@ -73,33 +87,68 @@ in {
 
       screenshot-path = "~/Pictures/Screenshots/Screenshot-from-%Y-%m-%d-%H-%M-%S.png";
 
-      outputs = {
-        "DP-3" = {
-          mode = {
-            width = 1920;
-            height = 1080;
-            refresh = 143.98100;
+      outputs =
+        if meta.hostname == "chimaera"
+        then {
+          "DP-3" = {
+            mode = {
+              width = 1920;
+              height = 1080;
+              refresh = 143.98100;
+            };
+            scale = 1.0;
+            position = {
+              x = 0;
+              y = 0;
+            };
           };
-          scale = 1.0;
-          position = {
-            x = 0;
-            y = 0;
+        }
+        else if meta.hostname == "framework"
+        then {
+          "eDP-1" = {
+            mode = {
+              width = 2256;
+              height = 1504;
+              refresh = 60.00;
+            };
+            scale = 1.25; # 1.175
+            position = {
+              x = 0;
+              y = 0;
+            };
           };
+        }
+        # NOTE: test this first with
+        # niri msg outpus
+        # else if meta.hostname == "lusankya"
+        # then {
+        #   "eDP-1" = {
+        #     mode = {
+        #       width = 1920;
+        #       height = 1080;
+        #       refresh = 60.00;
+        #     };
+        #     scale = 1.0;
+        #     position = {
+        #       x = 0;
+        #       y = 0;
+        #     };
+        #   };
+        #   "HDMI-1" = {
+        #     mode = {
+        #       width = 1920;
+        #       height = 1080;
+        #       refresh = 60.00;
+        #     };
+        #     scale = 1.0;
+        #     position = {
+        #       x = 0;
+        #       y = 1920;
+        #     };
+        #   };
+        # }
+        else {
         };
-
-        "eDP-1" = {
-          mode = {
-            width = 2256;
-            height = 1504;
-            refresh = 60.00;
-          };
-          scale = 1.25; # 1.175
-          position = {
-            x = 0;
-            y = 0;
-          };
-        };
-      };
 
       overview = {
         # backdrop-color = "transparent";

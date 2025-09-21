@@ -7,4 +7,6 @@ if [[ "$HOSTNAME" == "framework" ]]; then
 elif [[ "$HOSTNAME" == "chimaera" ]]; then
     # swww-daemon &
     swww img --no-resize ~/Projects/dotfiles/wallpaper/julian-calle-falcon.jpg
+else 
+    swww img --no-resize ~/Projects/dotfiles/wallpaper/RMcQ-Deathstar-Construction.png
 fi
