@@ -1,7 +1,9 @@
 # NOTE: use `lualatex`
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    texlab
+    # texlab
+    ltex-ls
+    tex-fmt
     (texlive.combine {
       inherit
         (pkgs.texlive)

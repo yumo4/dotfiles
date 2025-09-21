@@ -4,19 +4,23 @@ return { -- Autoformat
     notify_on_error = false,
     format_on_save = {
       timeout_ms = 500,
-      lsp_fallback = true,
+      lsp_fallback = "fallback",
     },
     formatters_by_ft = {
       lua = { "stylua" },
       python = { "isort", "black" },
       go = { "gofumpt", "goimports-reviser" },
-      javascript = { { "prettierd", "prettier" } },
+      javascript = { "prettierd", "prettier", stop_after_first = true },
+      typescript = { "prettierd", "prettier", stop_after_first = true },
       nix = { "alejandra" },
       java = { "google-java-format" },
       latex = { "tex-fmt" },
       html = { "prettier" },
       css = { "prettier" },
       scss = { "prettier" },
+      json = { "prettier" },
+      yaml = { "prettier" },
+      markdown = { "prettier" },
       php = { "pint" },
     },
     formatters = {
@@ -32,13 +36,13 @@ return { -- Autoformat
       alejandra = {},
       -- java
       google_java_format = {},
-      -- html
-      htmlbeutifier = {},
-      -- css
-      -- stylelint = {},
-      -- js
-      prettierd = {},
-      prettier = {},
+      -- html css js/ts
+      prettier = {
+        prepend_args = { "--tab-width", "4" },
+      },
+      prettierd = {
+        prepend_args = { "--tab-width", "4" },
+      },
       -- tex-fmt = {
       -- },
       -- php

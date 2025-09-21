@@ -1,14 +1,9 @@
--- NOTE: not having `Mason` leads to lsp's not working on non nixos distros
-
-return { -- LSP Configuration & Plugins
-  "neovim/nvim-lspconfig",
+return {
+  "saghen/blink.cmp",
   dependencies = {
-    "saghen/blink.cmp",
-    -- Useful status updates for LSP
     { "j-hui/fidget.nvim", opts = {} },
   },
   config = function()
-    -- This function gets run when an LSP attaches to a particular buffer
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
       callback = function(event)
@@ -63,63 +58,129 @@ return { -- LSP Configuration & Plugins
       end,
     })
 
-    -- Get LSP capabilities from blink.cmp
     local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-    -- Define servers configuration
-    local servers = {
-      -- c
-      clangd = {},
-      -- go
-      gopls = {
-        filetypes = { "go", "gomod", "gowork", "gotmpl" },
-        settings = {
+    -- Configure each LSP server using vim.lsp.config
+
+    -- C/C++
+    vim.lsp.config.clangd = {
+      cmd = { "clangd" },
+      capabilities = capabilities,
+    }
+
+    -- Go
+    vim.lsp.config.gopls = {
+      cmd = { "gopls" },
+      filetypes = { "go", "gomod", "gowork", "gotmpl" },
+      capabilities = capabilities,
+      settings = {
+        gopls = {
           formatting = {
             gofumpt = true,
           },
         },
       },
-      -- python
-      pyright = {},
-      -- typescript
-      ts_ls = {},
-      -- latex
-      ltex = {},
-      texlab = {},
-      -- java
-      jdtls = {},
-      -- java-language-server = {},
-      -- nix
-      nil_ls = {},
-      -- html
-      html = {},
-      -- css
-      cssls = {},
-      -- php
-      intelephense = {},
+    }
 
-      -- lua
-      lua_ls = {
-        settings = {
-          Lua = {
-            runtime = { version = "LuaJIT" },
-            workspace = {
-              checkThirdParty = false,
-              library = { vim.env.VIMRUNTIME },
-            },
-            completion = {
-              callSnippet = "Replace",
-            },
-            -- diagnostics = { disable = { 'missing-fields' } },
+    -- Python
+    vim.lsp.config.pyright = {
+      cmd = { "pyright-langserver", "--stdio" },
+      capabilities = capabilities,
+    }
+
+    -- TypeScript
+    vim.lsp.config.ts_ls = {
+      cmd = { "typescript-language-server", "--stdio" },
+      capabilities = capabilities,
+    }
+
+    -- LaTeX
+    vim.lsp.config.ltex = {
+      cmd = { "ltex-ls" },
+      capabilities = capabilities,
+    }
+
+    vim.lsp.config.texlab = {
+      cmd = { "texlab" },
+      capabilities = capabilities,
+    }
+
+    -- Java
+    vim.lsp.config.jdtls = {
+      cmd = { "jdtls" },
+      capabilities = capabilities,
+    }
+
+    -- Nix
+    vim.lsp.config.nil_ls = {
+      cmd = { "nil" },
+      capabilities = capabilities,
+    }
+
+    -- HTML
+    vim.lsp.config.html = {
+      cmd = { "vscode-html-language-server", "--stdio" },
+      capabilities = capabilities,
+      filetypes = { "html", "htm" },
+      settings = {
+        html = {
+          format = {
+            enable = false, -- Let Prettier handle formatting
           },
         },
       },
     }
 
-    -- Setup each server
-    for server_name, server_settings in pairs(servers) do
-      server_settings.capabilities = require("blink.cmp").get_lsp_capabilities(server_settings.capabilities)
-      require("lspconfig")[server_name].setup(server_settings)
-    end
+    -- CSS
+    vim.lsp.config.cssls = {
+      cmd = { "vscode-css-language-server", "--stdio" },
+      capabilities = capabilities,
+      filetypes = { "css", "scss", "less" },
+      settings = {
+        css = {
+          format = {
+            enable = false, -- Let Prettier handle formatting
+          },
+          lint = {
+            unknownAtRules = "ignore", -- Avoid conflicts with CSS frameworks
+          },
+        },
+        scss = {
+          format = {
+            enable = false,
+          },
+        },
+        less = {
+          format = {
+            enable = false,
+          },
+        },
+      },
+    }
+
+    -- PHP
+    vim.lsp.config.intelephense = {
+      cmd = { "intelephense", "--stdio" },
+      capabilities = capabilities,
+    }
+
+    -- Lua
+    vim.lsp.config.lua_ls = {
+      cmd = { "lua-language-server" },
+      capabilities = capabilities,
+      settings = {
+        Lua = {
+          runtime = { version = "LuaJIT" },
+          workspace = {
+            checkThirdParty = false,
+            library = { vim.env.VIMRUNTIME },
+          },
+          completion = {
+            callSnippet = "Replace",
+          },
+          -- diagnostics = { disable = { 'missing-fields' } },
+        },
+      },
+    }
   end,
 }
