@@ -90,7 +90,6 @@
       * {
          margin: 0px;
          padding: 0px;
-         color: #ebdbb2;
       }
       #workspaces button {
          color: #928374;
@@ -100,24 +99,24 @@
          color: #ebdbb2;
          padding: 0 2px;
       }
+      #clock {
+         color: #ebdbb2;
+      }
+      #network {
+         color: #ebdbb2;
+      }
+      #pulseaudio {
+         color: #ebdbb2;
+      }
+      #battery {
+         color: #ebdbb2;
+      }
+      #language {
+         color: #ebdbb2;
+      }
+      #backlight {
+         color: #ebdbb2;
+      }
     '';
-    # #clock {
-    # color: #ebdbb2;
-    # }
-    # #network {
-    # color: #ebdbb2;
-    # }
-    # #pulseaudio {
-    # color: #ebdbb2;
-    # }
-    # #battery {
-    # color: #ebdbb2;
-    # }
-    # #language {
-    # color: #ebdbb2;
-    # }
-    # #backlight {
-    # color: #ebdbb2;
-    # }
   };
 }
