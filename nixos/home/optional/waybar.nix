@@ -12,16 +12,16 @@
           "niri/workspaces"
         ];
         modules-center = [
+          "clock"
         ];
         modules-right = [
           "tray"
           "network"
           "backlight"
           "pulseaudio"
-          "hyprland/language"
-          "niri/language"
+          # "hyprland/language"
+          # "niri/language"
           "battery"
-          "clock"
         ];
 
         "hyprland/workspaces" = {
@@ -32,7 +32,8 @@
         };
         "clock" = {
           tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-          format = " {:%d.%m.%y %H:%M} ";
+          # format = " {:%d.%m.%y %H:%M} ";
+          format = " {:%H:%M  %d.%m} ";
         };
         backlight = {
           format = "{icon} {percent}% ";
@@ -74,12 +75,22 @@
           };
           on-click = "pavucontrol";
         };
+        # "controller": "controller1", # specify the alias of the controller if there are more than 1 on the system
+        "bluetooth" = {
+          format = " {status}";
+          format-disabled = ""; # an empty format will hide the module
+          format-connected = " {num_connections} connected";
+          tooltip-format = "{controller_alias}{controller_address}";
+          tooltip-format-connected = "{controller_alias}{controller_address}{device_enumerate}";
+          tooltip-format-enumerate-connected = "{device_alias}{device_address}";
+        };
       };
     };
     style = ''
       * {
          margin: 0px;
          padding: 0px;
+         color: #ebdbb2;
       }
       #workspaces button {
          color: #928374;
@@ -89,24 +100,24 @@
          color: #ebdbb2;
          padding: 0 2px;
       }
-      #clock {
-         	color: #ebdbb2;
-      }
-      #network {
-         	color: #ebdbb2;
-      }
-      #pulseaudio {
-         	color: #ebdbb2;
-      }
-      #battery {
-         	color: #ebdbb2;
-      }
-      #language {
-         	color: #ebdbb2;
-      }
-      #backlight {
-         	color: #ebdbb2;
-      }
     '';
+    # #clock {
+    # color: #ebdbb2;
+    # }
+    # #network {
+    # color: #ebdbb2;
+    # }
+    # #pulseaudio {
+    # color: #ebdbb2;
+    # }
+    # #battery {
+    # color: #ebdbb2;
+    # }
+    # #language {
+    # color: #ebdbb2;
+    # }
+    # #backlight {
+    # color: #ebdbb2;
+    # }
   };
 }
