@@ -65,6 +65,7 @@ return {
     -- C/C++
     vim.lsp.config.clangd = {
       cmd = { "clangd" },
+      filetypes = { "c", "cpp" },
       capabilities = capabilities,
     }
 
@@ -85,35 +86,43 @@ return {
     -- Python
     vim.lsp.config.pyright = {
       cmd = { "pyright-langserver", "--stdio" },
+      filetypes = { "python" },
       capabilities = capabilities,
     }
 
     -- TypeScript
     vim.lsp.config.ts_ls = {
       cmd = { "typescript-language-server", "--stdio" },
+      filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
       capabilities = capabilities,
     }
 
     -- LaTeX
     vim.lsp.config.ltex = {
       cmd = { "ltex-ls" },
+      filetypes = { "tex", "plaintex", "bib" },
       capabilities = capabilities,
     }
 
     vim.lsp.config.texlab = {
       cmd = { "texlab" },
+      filetypes = { "tex", "plaintex", "bib" },
       capabilities = capabilities,
     }
 
     -- Java
     vim.lsp.config.jdtls = {
       cmd = { "jdtls" },
+      filetypes = { "java" },
       capabilities = capabilities,
     }
 
     -- Nix
     vim.lsp.config.nil_ls = {
       cmd = { "nil" },
+      -- vim.lsp.config.nixd = {
+      --   cmd = { "nixd" },
+      filetypes = { "nix" },
       capabilities = capabilities,
     }
 
@@ -161,6 +170,7 @@ return {
     -- PHP
     vim.lsp.config.intelephense = {
       cmd = { "intelephense", "--stdio" },
+      filetypes = { "php" },
       capabilities = capabilities,
     }
 
@@ -182,5 +192,19 @@ return {
         },
       },
     }
+    vim.lsp.enable({
+      "clangd",
+      "gopls",
+      "pyright",
+      "ts_ls",
+      "ltex",
+      "texlab",
+      "jdtls",
+      "nil_ls",
+      "html",
+      "cssls",
+      "intelephense",
+      "lua_ls",
+    })
   end,
 }
