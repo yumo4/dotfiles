@@ -118,10 +118,10 @@ return {
     }
 
     -- Nix
-    vim.lsp.config.nil_ls = {
-      cmd = { "nil" },
-      -- vim.lsp.config.nixd = {
-      --   cmd = { "nixd" },
+    -- vim.lsp.config.nil_ls = {
+    --   cmd = { "nil" },
+    vim.lsp.config.nixd = {
+      cmd = { "nixd" },
       filetypes = { "nix" },
       capabilities = capabilities,
     }
@@ -177,6 +177,7 @@ return {
     -- Lua
     vim.lsp.config.lua_ls = {
       cmd = { "lua-language-server" },
+      filetypes = { "lua" },
       capabilities = capabilities,
       settings = {
         Lua = {
@@ -200,7 +201,8 @@ return {
       "ltex",
       "texlab",
       "jdtls",
-      "nil_ls",
+      -- "nil_ls",
+      "nixd",
       "html",
       "cssls",
       "intelephense",
