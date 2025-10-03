@@ -60,11 +60,11 @@
         isServer = true;
         isWork = false;
       }
-      # {
-      #   name = "lusankya";
-      #   isServer = false;
-      #   isWork = true;
-      # }
+      {
+        name = "lusankya";
+        isServer = false;
+        isWork = true;
+      }
     ];
   in {
     nixosConfigurations = builtins.listToAttrs (map (host: {

@@ -74,10 +74,15 @@
     "Mod+Shift+K".action = move-column-to-workspace-up;
     "Mod+Shift+J".action = move-column-to-workspace-down;
 
-    "Mod+Alt+H".action = move-column-to-monitor-left;
-    "Mod+Alt+J".action = move-column-to-monitor-down;
-    "Mod+Alt+K".action = move-column-to-monitor-up;
-    "Mod+Alt+L".action = move-column-to-monitor-right;
+    "Mod+Alt+H".action = focus-monitor-left;
+    "Mod+Alt+J".action = focus-monitor-down;
+    "Mod+Alt+K".action = focus-monitor-up;
+    "Mod+Alt+L".action = focus-monitor-right;
+
+    "Mod+Alt+Shift+H".action = move-column-to-monitor-left;
+    "Mod+Alt+Shift+J".action = move-column-to-monitor-down;
+    "Mod+Alt+Shift+K".action = move-column-to-monitor-up;
+    "Mod+Alt+Shift+L".action = move-column-to-monitor-right;
 
     "Mod+1".action = focus-workspace 1;
     "Mod+2".action = focus-workspace 2;

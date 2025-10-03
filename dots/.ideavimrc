@@ -85,6 +85,6 @@ vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
 " Comment binding
-nnoremap gcc :action CommentByLineComment
+nnoremap gcc :action CommentByLineComment<CR>
 " this doesn't work / is wonky
-vnoremap gc :action CommentByLineComment
+vnoremap gc :action CommentByLineComment<CR>

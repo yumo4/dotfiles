@@ -5,7 +5,8 @@ if [[ "$HOSTNAME" == "framework" ]]; then
 elif [[ "$HOSTNAME" == "chimaera" ]]; then
 	swaybg -o '*' -i ~/Projects/dotfiles/wallpaper/julian-calle-falcon.jpg -m center &
 elif [[ "$HOSTNAME" == "lusankya" ]]; then
-	swaybg -o '*' -i ~/Projects/dotfiles/wallpaper/RMcQ-Tie-Pilot-MF.png -m center &
+	swaybg -o '*' -i ~/Projects/dotfiles/wallpaper/RMcQ-Tie-Pilot-MF.png &
 else 
-	swaybg -o '*' -i ~/Projects/dotfiles/wallpaper/RMcQ-Deathstar-Construction.png -m center &
+	# swaybg -o '*' -i ~/Projects/dotfiles/wallpaper/RMcQ-Deathstar-Construction.png -m &
+	swaybg -o '*' -i ~/Projects/dotfiles/wallpaper/RMcQ-Tie-Pilot-MF.png &
 fi

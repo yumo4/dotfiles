@@ -8,9 +8,9 @@
   imports = [inputs.niri.nixosModules.niri];
 
   services.displayManager.ly.enable = true;
-  # services.desktopManager.gnome.enable = true;
+  services.desktopManager.gnome.enable = true;
   # services.xserver.windowManager.qtile.enable = true;
-  programs.hyprland.enable = true;
+  # programs.hyprland.enable = true;
   programs.niri.enable = true;
   # programs.niri.package = inputs.niri.packages.${pkgs.system}.niri;
 
@@ -22,6 +22,13 @@
       pkgs.xdg-desktop-portal-gnome # For GNOME
       pkgs.xdg-desktop-portal-wlr # For Niri
     ];
+    config = {
+      common = {
+        default = ["wlr" "gtk"];
+        "org.freedesktop.impl.portal.ScreenCast" = ["wlr"];
+        "org.freedesktop.impl.portal.Screenshot" = ["wlr"];
+      };
+    };
   };
 
   # services.blueman.enable = true;
@@ -50,7 +57,7 @@
       if meta.hostname == "chimaera"
       then ["amdgpu"]
       else if meta.hostname == "lusankya"
-      then ["nvidia"]
+      then ["modesetting nvidia"]
       else ["modesetting"];
   };
   hardware = lib.optionalAttrs (meta.hostname == "lusankya") {

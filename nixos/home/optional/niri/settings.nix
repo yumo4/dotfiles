@@ -42,8 +42,8 @@ in {
           ]
         )
         ++ [
-          (makeCommand "swww-daemon")
-          (makeCommand "~/Projects/dotfiles/dots/.config/hypr/wallpaper.sh")
+          # (makeCommand "swww-daemon")
+          # (makeCommand "~/Projects/dotfiles/dots/.config/hypr/wallpaper.sh")
           (makeCommand "swaybg")
           (makeCommand "~/Projects/dotfiles/scripts/wallpaper-sway.sh")
           (makeCommand "swaync")
@@ -72,7 +72,7 @@ in {
           dwt = true;
           dwtp = true;
           drag = true;
-          natural-scroll = false;
+          natural-scroll = true;
           scroll-method = "two-finger";
           tap = true;
           # tap-button-map = "left-right-middle";
@@ -118,35 +118,34 @@ in {
             };
           };
         }
-        # NOTE: test this first with
         # niri msg outpus
-        # else if meta.hostname == "lusankya"
-        # then {
-        #   "eDP-1" = {
-        #     mode = {
-        #       width = 1920;
-        #       height = 1080;
-        #       refresh = 60.00;
-        #     };
-        #     scale = 1.0;
-        #     position = {
-        #       x = 0;
-        #       y = 0;
-        #     };
-        #   };
-        #   "HDMI-1" = {
-        #     mode = {
-        #       width = 1920;
-        #       height = 1080;
-        #       refresh = 60.00;
-        #     };
-        #     scale = 1.0;
-        #     position = {
-        #       x = 0;
-        #       y = 1920;
-        #     };
-        #   };
-        # }
+        else if meta.hostname == "lusankya"
+        then {
+          "eDP-1" = {
+            mode = {
+              width = 1920;
+              height = 1080;
+              refresh = 60.00;
+            };
+            scale = 1.0;
+            position = {
+              x = 0;
+              y = 0;
+            };
+          };
+          "HDMI-A-1" = {
+            mode = {
+              width = 1920;
+              height = 1080;
+              refresh = 60.00;
+            };
+            scale = 1.0;
+            position = {
+              x = 0;
+              y = -1080;
+            };
+          };
+        }
         else {
         };
 

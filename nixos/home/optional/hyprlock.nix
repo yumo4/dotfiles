@@ -5,7 +5,12 @@
   ...
 }: let
   positions =
-    if meta.hostname == "chimaera" || "lusankya"
+    if meta.hostname == "chimaera"
+    then {
+      time = "0, -5%";
+      date = "0, +25%";
+    }
+    else if meta.hostname == "lusankya"
     then {
       time = "0, -5%";
       date = "0, +25%";

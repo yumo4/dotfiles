@@ -7,7 +7,7 @@
     enable = true;
     userName =
       if meta.isWork
-      then "Maximilian Tröster"
+      then "Maximilian Troester"
       else "yumo4";
     userEmail =
       if meta.isWork
