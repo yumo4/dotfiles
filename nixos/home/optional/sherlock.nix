@@ -75,6 +75,19 @@
         };
         priority = 100;
       }
+      # {
+      #   name = "Bookmarks";
+      #   display_name = "Bookmarks";
+      #   type = "bookmarks";
+      #   # alias = "bm";
+      #   # tag_start = "{keyword}";
+      #   # tag_end = "{keyword}";
+      #   args = {
+      #     "icon" = "sherlock-bookmark";
+      #     "icon_class" = "reactive";
+      #   };
+      #   priority = 3;
+      # }
       {
         name = "Calculator";
         type = "calculation";

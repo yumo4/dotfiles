@@ -2,6 +2,7 @@
   environment.systemPackages = with pkgs; [
     # c
     gcc
+    clang-tools
 
     # go
     go
@@ -15,6 +16,7 @@
     # java
     java-language-server
     google-java-format
+    jdt-language-server
     zulu
 
     # js/ts
@@ -39,12 +41,12 @@
     lua
     lua-language-server
     luajit
-    # luajitPackages.lua-lsp
     luajitPackages.luarocks
     stylua
 
     # python
     python3
+    pyright
 
     # rust
     cargo
@@ -52,5 +54,7 @@
     # php
     php
     intelephense
+    php84Packages.php-cs-fixer
+    pretty-php
   ];
 }

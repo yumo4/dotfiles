@@ -60,8 +60,6 @@ return {
 
     local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-    -- Configure each LSP server using vim.lsp.config
-
     -- C/C++
     vim.lsp.config.clangd = {
       cmd = { "clangd" },
@@ -98,14 +96,10 @@ return {
     }
 
     -- LaTeX
+    -- vim.lsp.config.texlab = {
+    -- 	cmd = { "texlab" },
     vim.lsp.config.ltex = {
       cmd = { "ltex-ls" },
-      filetypes = { "tex", "plaintex", "bib" },
-      capabilities = capabilities,
-    }
-
-    vim.lsp.config.texlab = {
-      cmd = { "texlab" },
       filetypes = { "tex", "plaintex", "bib" },
       capabilities = capabilities,
     }
@@ -199,7 +193,7 @@ return {
       "pyright",
       "ts_ls",
       "ltex",
-      "texlab",
+      -- "texlab",
       "jdtls",
       -- "nil_ls",
       "nixd",

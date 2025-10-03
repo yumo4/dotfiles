@@ -21,7 +21,8 @@ return { -- Autoformat
       json = { "prettier" },
       yaml = { "prettier" },
       markdown = { "prettier" },
-      php = { "pint" },
+      -- php = { "pint" },
+      php = { "pretty-php" },
     },
     formatters = {
       -- lua
@@ -43,10 +44,12 @@ return { -- Autoformat
       prettierd = {
         prepend_args = { "--tab-width", "4" },
       },
-      -- tex-fmt = {
-      -- },
+      -- latex
+      texfmt = {},
       -- php
-      pint = {},
+      -- pint = {},
+      -- prettyphp = {},
+      phpcsfixer = {},
     },
   },
 }
