@@ -162,9 +162,12 @@ return {
     }
 
     -- PHP
-    vim.lsp.config.intelephense = {
-      cmd = { "intelephense", "--stdio" },
+    -- vim.lsp.config.intelephense = {
+    --   cmd = { "intelephense", "--stdio" },
+    vim.lsp.config.phpactor = {
+      cmd = { "phpactor", "language-server" },
       filetypes = { "php" },
+      root_markers = { "composer.json", ".git", "index.php" },
       capabilities = capabilities,
     }
 
@@ -199,7 +202,8 @@ return {
       "nixd",
       "html",
       "cssls",
-      "intelephense",
+      "phpactor",
+      -- "intelephense",
       "lua_ls",
     })
   end,

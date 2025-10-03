@@ -53,7 +53,8 @@
 
     # php
     php
-    intelephense
+    # intelephense
+    phpactor
     php84Packages.php-cs-fixer
     pretty-php
   ];
