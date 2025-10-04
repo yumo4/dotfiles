@@ -16,19 +16,23 @@
 
   xdg.portal = {
     enable = true;
-    extraPortals = lib.mkForce [
-      pkgs.xdg-desktop-portal-gtk # For both
-      pkgs.xdg-desktop-portal-hyprland # For Hyprland
-      pkgs.xdg-desktop-portal-gnome # For GNOME
-      pkgs.xdg-desktop-portal-wlr # For Niri
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-gnome
     ];
     config = {
       common = {
-        default = ["wlr" "gtk"];
-        "org.freedesktop.impl.portal.ScreenCast" = ["wlr"];
-        "org.freedesktop.impl.portal.Screenshot" = ["wlr"];
+        default = ["gnome" "gtk"];
+        "org.freedesktop.impl.portal.ScreenCast" = ["gnome"];
+        "org.freedesktop.impl.portal.Screenshot" = ["gnome"];
       };
     };
+  };
+
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    XDG_CURRENT_DESKTOP = "GNOME"; # Pretend to be GNOME
+    XDG_SESSION_TYPE = "wayland";
   };
 
   # services.blueman.enable = true;
@@ -87,7 +91,7 @@
     niri
     libnotify
     nautilus
-    networkmanagerapplet
+    # networkmanagerapplet
     # obs-studio
     obsidian
     playerctl

@@ -32,11 +32,11 @@ in {
         (
           if meta.isWork
           then [
-            (makeCommand "teams-for-linux")
+            # (makeCommand "teams-for-linux")
+            {command = ["chromium" "--app-id=cifhbcnohmdccbgoicgdjpfamggdegmo"];}
             (makeCommand "keepassxc")
           ]
           else [
-            (makeCommand "obsidian")
             (makeCommand "tailscale-systray")
             # {command = ["syshud" "-p" "bottom" "-o" "v" "-M" "audio_in" "audio_out" "brightness" "keyboard"];}
           ]
@@ -52,6 +52,7 @@ in {
           (makeCommand "xwayland-satellite")
           {command = ["gammastep" "-O" "4000"];}
 
+          (makeCommand "obsidian")
           (makeCommand "zen-beta")
         ];
       prefer-no-csd = true; # no client side decorations

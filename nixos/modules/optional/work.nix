@@ -18,20 +18,7 @@
     openfortivpn
     firefoxpwa
     libreoffice-fresh
-    # (pkgs.writeShellScriptBin "teams-for-linux-wayland" ''
-    #   export XDG_CURRENT_DESKTOP=sway
-    #   exec ${pkgs.teams-for-linux}/bin/teams-for-linux --enable-features=WebRTCPipeWireCapturer "$@"
-    # '')
     teams-for-linux
-    # (wrapOBS {
-    #   plugins = with pkgs.obs-studio-plugins; [
-    #     wlrobs
-    #     obs-backgroundremoval
-    #     obs-pipewire-audio-capture
-    #     obs-gstreamer
-    #     obs-vaapi
-    #   ];
-    # })
   ];
   programs.firefox = {
     enable = true;
