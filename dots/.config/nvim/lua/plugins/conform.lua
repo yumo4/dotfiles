@@ -22,7 +22,7 @@ return { -- Autoformat
       yaml = { "prettier" },
       markdown = { "prettier" },
       -- php = { "pint" },
-      php = { "pretty-php" },
+      php = { "php_cs_fixer" },
     },
     formatters = {
       -- lua
