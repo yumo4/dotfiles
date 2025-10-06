@@ -1,7 +1,9 @@
 return {
-  "saghen/blink.cmp",
+  "neovim/nvim-lspconfig", -- or just a simple plugin spec
   dependencies = {
-    { "j-hui/fidget.nvim", opts = {} },
+    "saghen/blink.cmp",
+    "j-hui/fidget.nvim",
+    opts = {},
   },
   config = function()
     vim.api.nvim_create_autocmd("LspAttach", {
