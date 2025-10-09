@@ -146,6 +146,18 @@ in {
               y = -1080;
             };
           };
+          "DP-7" = {
+            mode = {
+              width = 1920;
+              height = 1080;
+              refresh = 60.00;
+            };
+            scale = 1.0;
+            position = {
+              x = 0;
+              y = -1080;
+            };
+          };
         }
         else {
         };

@@ -6,12 +6,7 @@
   lib,
   meta,
   ...
-}:
-# let
-#   customCertsDir = "/home/max/.certs-work";
-#   getCertPath = fileName: "${customCertsDir}/${fileName}";
-# in
-{
+}: {
   imports = [
     ./hardware-configuration.nix
 
@@ -77,9 +72,6 @@
 
   # security.pki.certificates = [
   security.pki.certificates = [
-    # (builtins.readFile ./certs/flyeralarm-Root-CA.pem.crt)
-    # (builtins.readFile ./certs/af.flyeralarm.crt)
-
     (builtins.readFile /etc/nixos-secrets/flyeralarm-Root-CA.pem.crt)
     (builtins.readFile /etc/nixos-secrets/af.flyeralarm.crt)
   ];
