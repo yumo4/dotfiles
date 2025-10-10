@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   meta,
   ...
 }: {
@@ -17,6 +18,19 @@
       init = {
         defaultBranch = "main";
       };
+      commit.template = "${pkgs.writeText "git-commit-template" ''
+        # feat():
+        # fix():
+        # chore():
+        # docs():
+        # style():
+        # refactor():
+        # perf():
+        # test():
+        # build():
+        # ci():
+        # revert():
+      ''}";
     };
   };
 }
