@@ -33,7 +33,7 @@ in {
           if meta.isWork
           then [
             # (makeCommand "teams-for-linux")
-            {command = ["chromium" "--app-id=cifhbcnohmdccbgoicgdjpfamggdegmo"];}
+            # {command = ["chromium" "--app-id=cifhbcnohmdccbgoicgdjpfamggdegmo"];}
             (makeCommand "keepassxc")
           ]
           else [
@@ -64,8 +64,6 @@ in {
           xkb = {
             layout = "us";
             variant = "altgr-intl";
-            # i can't do the device specific layout config like in hyprland
-            # -> configure `kanata` properly (umlaute, ...)
           };
         };
         touchpad = {

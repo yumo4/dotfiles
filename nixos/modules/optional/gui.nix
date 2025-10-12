@@ -78,35 +78,36 @@
   services.libinput.enable = true;
 
   environment.systemPackages = with pkgs; [
+    # networkmanagerapplet
+    # obs-studio
+    # syshud
+    # vesktop
+    # vlc
+    # zed-editor
     alacritty
+    alsa-utils
     blueman
     brave
-    alsa-utils
+    chromium
     ghostty
     gtk3
     hyprlock
-    hyprshot
     hyprpicker
+    hyprshot
     inputs.zen-browser.packages."${system}".default
-    niri
     libnotify
     nautilus
-    # networkmanagerapplet
-    # obs-studio
+    niri
     obsidian
     playerctl
     rofi
     swaynotificationcenter
     swww
-    # syshud
     tailscale-systray
     unzip
-    # vesktop
-    # vlc
     vscodium-fhs
     waybar
     wl-clipboard
     xwayland-satellite
-    # zed-editor
   ];
 }
