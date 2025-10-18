@@ -123,7 +123,7 @@ in {
               height = 1440;
               refresh = 60.00;
             };
-            scale = 1.0;
+            scale = 1.25;
             position = {
               x = 0;
               y = -1080;
