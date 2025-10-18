@@ -116,6 +116,19 @@ in {
               y = 0;
             };
           };
+          # school
+          "HDMI-A-1" = {
+            mode = {
+              width = 2560;
+              height = 1440;
+              refresh = 60.00;
+            };
+            scale = 1.0;
+            position = {
+              x = 0;
+              y = -1080;
+            };
+          };
         }
         # niri msg outpus
         else if meta.hostname == "lusankya"

@@ -14,6 +14,7 @@
     ./samba
 
     ../../modules/optional/bluetooth.nix
+    ../../modules/optional/docker.nix
     ../../modules/optional/gui.nix
     ../../modules/optional/latex.nix
     ../../modules/optional/printing.nix
@@ -83,5 +84,5 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
 }

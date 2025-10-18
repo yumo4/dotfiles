@@ -1,5 +1,6 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
+    gnumake
     # c
     gcc
     clang-tools
@@ -24,6 +25,7 @@
     nodejs_22
     prettierd
     prettier
+    bun
 
     # nix
     alejandra
@@ -54,6 +56,7 @@
     # php
     php
     # intelephense
+    php84Packages.composer
     phpactor
     php84Packages.php-cs-fixer
     pretty-php

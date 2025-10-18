@@ -36,14 +36,12 @@
 
   environment.systemPackages =
     (with pkgs; [
-      # pika-backup
-      # protonvpn-gui
       # vesktop
       calibre
       libation # audible
-      # orca-slicer
       syncthing
       vscodium-fhs
+      teams-for-linux
     ])
     ++ (with pkgs-stable; [
       protonvpn-gui

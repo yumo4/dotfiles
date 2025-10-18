@@ -7,12 +7,10 @@
   environment.systemPackages = with pkgs; [
     # bruno
     # openfortivpn-webview # gtk
-    php84Packages.composer
     gnome-control-center # gnome settings application
     gnome-network-displays # might be buggy
     jetbrains.phpstorm
     keepassxc
-    gnumake
     mysql_jdbc
     nextcloud-client
     openfortivpn
