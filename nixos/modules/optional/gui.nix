@@ -87,10 +87,9 @@
     alacritty
     alsa-utils
     blueman
-    brave
-    chromium
     ghostty
     gtk3
+    helium-browser
     hyprlock
     hyprpicker
     hyprshot
