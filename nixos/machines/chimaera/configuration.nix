@@ -37,11 +37,17 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # needed to make helium / brave start via sherlock
+  boot.kernel.sysctl = {
+    "user.max_user_namespaces" = 100000;
+  };
+
   environment.systemPackages =
     (with pkgs; [
       # bambu-studio
       # orca-slicer
       # distrobox
+      helium-browser
       ente-auth
       libation # audible
       pika-backup

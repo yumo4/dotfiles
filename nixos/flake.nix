@@ -21,8 +21,10 @@
       url = "git+ssh://git@github.com/yumo4/nix-secrets.git?ref=main&shallow=1";
       flake = false;
     };
-
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -41,7 +43,13 @@
     ...
   } @ inputs: let
     system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
+    overlays = [
+      (final: prev: {
+        helium-browser = prev.callPackage ./packages/helium/default.nix {};
+      })
+    ];
+    # pkgs = nixpkgs.legacyPackages.${system};
+    pkgs = nixpkgs.legacyPackages.${system}.extend (nixpkgs.lib.composeManyExtensions overlays);
     pkgs-stable = nixpkgs-stable.legacyPackages.${system};
     username = "max";
     hosts = [
@@ -67,17 +75,21 @@
       }
     ];
   in {
+    packages.${system}.helium-browser = pkgs.helium-browser;
+
     nixosConfigurations = builtins.listToAttrs (map (host: {
         name = host.name;
         value = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
+            {nixpkgs.overlays = overlays;}
             ./machines/${host.name}/configuration.nix
             ./machines/${host.name}/hardware-configuration.nix
           ];
           specialArgs = {
             inherit inputs;
             inherit pkgs-stable;
+            inherit overlays;
             meta = {
               hostname = host.name;
               isServer = host.isServer;

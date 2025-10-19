@@ -8,7 +8,10 @@ default:
 # rebuild-pre: update-secrets
 # 	@git add --intent-to-add .
 # rebuild-post: check-sops
-
+generations:
+	sudo nix-env --list-generations --profile /nix/var/nix/profiles/system
+generations-hm:
+	home-manager generations
 
 update:
 	nix flake update
