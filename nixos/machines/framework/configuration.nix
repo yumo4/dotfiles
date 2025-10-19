@@ -37,6 +37,7 @@
   environment.systemPackages =
     (with pkgs; [
       # vesktop
+      helium-browser
       calibre
       libation # audible
       syncthing

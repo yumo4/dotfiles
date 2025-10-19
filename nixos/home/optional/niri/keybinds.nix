@@ -38,7 +38,7 @@
     # "XF86MonBrightnessDown".action = spawn "sh" "-c" "brillo -U 2 && notify-send 'Brightness' \"$(brillo -g)%\"";
     #
     "Print".action.screenshot-screen = {write-to-disk = true;};
-    "Mod+Shift+Alt+S".action = screenshot-window;
+    # "Mod+Shift+Alt+S".action = screenshot-window;
     "Mod+Ctrl+S".action.screenshot = {show-pointer = false;};
 
     # "Mod+Space".action = rofi;
