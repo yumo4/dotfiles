@@ -37,7 +37,6 @@
   environment.systemPackages =
     (with pkgs; [
       # vesktop
-      helium-browser
       calibre
       libation # audible
       syncthing
@@ -68,5 +67,5 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  system.stateVersion = "24.05";
+  system.stateVersion = "25.11";
 }

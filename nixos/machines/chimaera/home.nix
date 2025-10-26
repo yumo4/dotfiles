@@ -8,6 +8,7 @@
     ../../home/optional/hyprland.nix
     ../../home/optional/hyprlock.nix
     ../../home/optional/niri
+    ../../home/optional/hypridle.nix
     ../../home/optional/sherlock.nix
     ../../home/optional/sops.nix
     ../../home/optional/ssh.nix
@@ -15,6 +16,8 @@
     ../../home/optional/waybar.nix
 
     ../../home/optional/zed.nix
+    ../../home/optional/vicinae.nix
+    # ../../home/optional/quickshell.nix
   ];
   home.username = "max";
   home.homeDirectory = "/home/max";

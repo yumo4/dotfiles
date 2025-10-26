@@ -60,5 +60,8 @@
     phpactor
     php84Packages.php-cs-fixer
     pretty-php
+
+    # qml
+    # qt6.full
   ];
 }

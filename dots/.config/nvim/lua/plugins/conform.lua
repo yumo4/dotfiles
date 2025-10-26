@@ -23,6 +23,7 @@ return { -- Autoformat
       markdown = { "prettier" },
       -- php = { "pint" },
       php = { "php_cs_fixer" },
+      qml = { "qmlformat" },
     },
     formatters = {
       -- lua
@@ -50,6 +51,11 @@ return { -- Autoformat
       -- pint = {},
       -- prettyphp = {},
       phpcsfixer = {},
+      qmlformat = {
+        command = "qmlformat",
+        args = { "-i", "$FILENAME" },
+        stdin = false,
+      },
     },
   },
 }

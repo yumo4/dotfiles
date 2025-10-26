@@ -172,6 +172,40 @@ return {
       root_markers = { "composer.json", ".git", "index.php" },
       capabilities = capabilities,
     }
+    -- QML
+    vim.lsp.config.qmlls = {
+      cmd = { "qmlls" },
+      filetypes = { "qml" },
+      capabilities = capabilities,
+      settings = {
+        qml = {
+          -- Suppress warnings about unknown imports
+          disableWarnings = false,
+          -- Set import paths for Quickshell and Qt
+          importPaths = {
+            vim.fn.expand("$QML2_IMPORT_PATH"),
+          },
+        },
+      },
+      root_markers = { "shell.qml", ".git" },
+      -- Ignore warnings that are hard to resolve
+      handlers = {
+        ["textDocument/publishDiagnostics"] = function(err, result, ctx, config)
+          if result and result.diagnostics then
+            -- Filter out some common false positives
+            result.diagnostics = vim.tbl_filter(function(diagnostic)
+              local message = diagnostic.message
+              -- Suppress Quickshell import warnings
+              if message:match("Cannot find module") or message:match("Unexpected token") then
+                return false
+              end
+              return true
+            end, result.diagnostics)
+          end
+          return vim.lsp.diagnostic.on_publish_diagnostics(err, result, ctx, config)
+        end,
+      },
+    }
 
     -- Lua
     vim.lsp.config.lua_ls = {
@@ -207,6 +241,7 @@ return {
       "phpactor",
       -- "intelephense",
       "lua_ls",
+      "qmlls",
     })
   end,
 }

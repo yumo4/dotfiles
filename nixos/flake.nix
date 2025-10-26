@@ -33,6 +33,13 @@
       url = "github:Skxxtz/sherlock";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    vicinae = {
+      url = "github:vicinaehq/vicinae";
+    };
+    quickshell = {
+      url = "github:outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -40,6 +47,7 @@
     nixpkgs,
     nixpkgs-stable,
     home-manager,
+    vicinae,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -114,6 +122,7 @@
             };
           };
           modules = [
+            vicinae.homeManagerModules.default
             ./machines/${host.name}/home.nix
           ];
         };
