@@ -30,6 +30,7 @@
           "gitlab.fly.internal.de" = {
             host = "gitlab.fly.internal.de";
             identitiesOnly = true;
+            addKeysToAgent = "yes";
             identityFile = [
               "~/.ssh/id_${meta.hostname}"
               # NOTE: to add other keys (such as yubikeys) (order matters) do this:
