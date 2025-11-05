@@ -18,6 +18,7 @@
     ../../modules/optional/work.nix
     ../../modules/optional/gui.nix
     ../../modules/optional/printing.nix
+    ../../modules/optional/tailscale.nix
   ];
 
   networking.hostName = meta.hostname;
@@ -35,7 +36,7 @@
   environment.systemPackages =
     (with pkgs; [
       # syncthing
-
+      localsend
       chromium
       networkmanager-fortisslvpn
       openfortivpn

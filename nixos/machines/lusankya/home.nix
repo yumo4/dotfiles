@@ -6,6 +6,7 @@
     ../../home/optional/gui.nix
     ../../home/optional/hyprland.nix
     ../../home/optional/hyprlock.nix
+    # ../../home/optional/hypridle.nix
     ../../home/optional/niri
     ../../home/optional/sherlock.nix
     ../../home/optional/ssh.nix
