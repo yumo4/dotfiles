@@ -33,7 +33,7 @@ in {
           if meta.isWork
           then [
             # (makeCommand "teams-for-linux")
-            # {command = ["chromium" "--app-id=cifhbcnohmdccbgoicgdjpfamggdegmo"];}
+            {command = ["chromium" "--app-id=cifhbcnohmdccbgoicgdjpfamggdegmo"];}
             (makeCommand "keepassxc")
           ]
           else [
@@ -63,6 +63,7 @@ in {
         keyboard = {
           track-layout = "global";
           xkb = {
+            # layout = "de";
             layout = "us";
             variant = "altgr-intl";
           };
@@ -158,6 +159,19 @@ in {
               y = -1080;
             };
           };
+          "DP-5" = {
+            mode = {
+              width = 1920;
+              height = 1080;
+              refresh = 60.00;
+            };
+            scale = 1.0;
+            position = {
+              x = 0;
+              y = -1080;
+            };
+          };
+
           "DP-7" = {
             mode = {
               width = 1920;
@@ -188,6 +202,7 @@ in {
       cursor = {
         size = 24;
         theme = "Adwaita";
+        hide-when-typing = true;
       };
 
       layout = {

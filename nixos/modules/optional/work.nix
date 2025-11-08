@@ -17,6 +17,12 @@
     firefoxpwa
     libreoffice-fresh
     teams-for-linux
+    # Kugelroboter
+    bluez
+    bluez-tools
+    # hcidump
+    # blueman
+    # google-chrome
   ];
   programs.firefox = {
     enable = true;
