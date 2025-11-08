@@ -5,12 +5,12 @@
   fetchurl,
 }: let
   pname = "helium-browser";
-  version = "0.5.7.1";
+  version = "0.6.3.1";
 
   architectures = {
     "x86_64-linux" = {
       arch = "x86_64";
-      hash = "sha256-A+fNcW7ujbeYqOb+gxzQ0p19J14csfFyok0RVRFxo60=";
+      hash = "sha256-N7JpLLOdsnYuzYreN1iaHI992MR2SuXTmXHfa6fd1UU=";
     };
     "aarch64-linux" = {
       arch = "arm64";

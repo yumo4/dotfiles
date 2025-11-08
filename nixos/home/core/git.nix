@@ -17,7 +17,6 @@
           then "maximilian.troester@flyeralarm.com"
           else "maximilian.troe@gmail.com";
       };
-      # extraConfig = {
       init = {
         defaultBranch = "main";
       };
@@ -34,7 +33,6 @@
         # ci():
         # revert():
       ''}";
-      # };
     };
   };
 }
