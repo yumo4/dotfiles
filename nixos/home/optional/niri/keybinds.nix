@@ -14,35 +14,43 @@
     # "XF86AudioMute".action = spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle";
     # "XF86AudioMicMute".action = spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle";
 
-    "XF86AudioMute".action = spawn "sh" "-c" "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && notify-send 'Mute toggled'";
-    "XF86AudioMicMute".action = spawn "sh" "-c" "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && notify-send 'Mic mute toggled'";
-
-    "XF86AudioPlay".action = playerctl "play-pause";
-    "XF86AudioStop".action = playerctl "pause";
-    "XF86AudioPrev".action = playerctl "previous";
-    "XF86AudioNext".action = playerctl "next";
-
+    # "XF86AudioMute".action = spawn "sh" "-c" "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && notify-send 'Mute toggled'";
+    # "XF86AudioMicMute".action = spawn "sh" "-c" "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && notify-send 'Mic mute toggled'";
+    #
+    # "XF86AudioPlay".action = playerctl "play-pause";
+    # "XF86AudioStop".action = playerctl "pause";
+    # "XF86AudioPrev".action = playerctl "previous";
+    # "XF86AudioNext".action = playerctl "next";
+    #
     # "XF86AudioRaiseVolume".action = set-volume "5%+";
     # "XF86AudioLowerVolume".action = set-volume "5%-";
     #
     # "XF86MonBrightnessUp".action = brillo "-A" "2";
     # "XF86MonBrightnessDown".action = brillo "-U" "2";
 
-    "XF86AudioRaiseVolume".action = spawn "sh" "-c" "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ && notify-send 'Volume' \"$(wpctl get-volume @DEFAULT_AUDIO_SINK@)\"";
-    "XF86AudioLowerVolume".action = spawn "sh" "-c" "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && notify-send 'Volume' \"$(wpctl get-volume @DEFAULT_AUDIO_SINK@)\"";
+    # Volume mute toggle
+    "XF86AudioMute".action = spawn "swayosd-client" "--output-volume" "mute-toggle";
+    # Mic mute toggle
+    "XF86AudioMicMute".action = spawn "swayosd-client" "--input-volume" "mute-toggle";
+    # Playback controls (show playback OSD)
+    "XF86AudioPlay".action = spawn "swayosd-client" "--playerctl" "play-pause";
+    "XF86AudioStop".action = spawn "swayosd-client" "--playerctl" "pause";
+    "XF86AudioPrev".action = spawn "swayosd-client" "--playerctl" "previous";
+    "XF86AudioNext".action = spawn "swayosd-client" "--playerctl" "next";
+    # Volume up/down (using relative steps; you can change the values)
+    "XF86AudioRaiseVolume".action = spawn "swayosd-client" "--output-volume" "+5";
+    "XF86AudioLowerVolume".action = spawn "swayosd-client" "--output-volume" "-5";
+    # Brightness up/down (use + / - for relative steps, or 'raise'/'lower')
+    "XF86MonBrightnessUp".action = spawn "swayosd-client" "--brightness" "+2";
+    "XF86MonBrightnessDown".action = spawn "swayosd-client" "--brightness" "-2";
 
-    "XF86MonBrightnessUp".action = spawn "sh" "-c" "${pkgs.brillo}/bin/brillo -A 2 && notify-send 'Brightness' \"$(${pkgs.brillo}/bin/brillo -g)%\"";
-    "XF86MonBrightnessDown".action = spawn "sh" "-c" "${pkgs.brillo}/bin/brillo -U 2 && notify-send 'Brightness' \"$(${pkgs.brillo}/bin/brillo -g)%\"";
-
-    # "XF86MonBrightnessUp".action = spawn "sh" "-c" "brillo-A 2 && notify-send 'Brightness' \"$(brillo -g)%\"";
-    # "XF86MonBrightnessDown".action = spawn "sh" "-c" "brillo -U 2 && notify-send 'Brightness' \"$(brillo -g)%\"";
-    #
     "Print".action.screenshot-screen = {write-to-disk = true;};
     # "Mod+Shift+Alt+S".action = screenshot-window;
     "Mod+Ctrl+S".action.screenshot = {show-pointer = false;};
 
     # "Mod+Space".action = rofi;
     "Mod+Space".action = spawn "sherlock";
+    "Alt+Space".action = spawn "vicinae" "toggle";
     "Mod+F".action = fileManager;
     "Mod+B".action = browser;
     "Mod+Ctrl+R".action = spawn "~/Projects/dotfiles/dots/.config/waybar/reload.sh";

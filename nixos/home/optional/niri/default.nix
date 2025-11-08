@@ -10,6 +10,7 @@
       seatd
       jaq
       swaybg
+      swayosd
       # xwayland-satellite
       gnome-control-center
     ];

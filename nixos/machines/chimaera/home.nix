@@ -8,10 +8,11 @@
     ../../home/optional/hyprland.nix
     ../../home/optional/hyprlock.nix
     ../../home/optional/niri
-    ../../home/optional/hypridle.nix
+    # ../../home/optional/hypridle.nix
     ../../home/optional/sherlock.nix
     ../../home/optional/sops.nix
     ../../home/optional/ssh.nix
+    ../../home/optional/swaync.nix
     ../../home/optional/syncthing.nix
     ../../home/optional/waybar.nix
 

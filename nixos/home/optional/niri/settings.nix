@@ -45,6 +45,7 @@ in {
           # (makeCommand "swww-daemon")
           # (makeCommand "~/Projects/dotfiles/dots/.config/hypr/wallpaper.sh")
           (makeCommand "swaybg")
+          (makeCommand "swayosd-server")
           (makeCommand "~/Projects/dotfiles/scripts/wallpaper-sway.sh")
           (makeCommand "swaync")
           (makeCommand "waybar")
