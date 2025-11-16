@@ -10,8 +10,8 @@ return { -- Autoformat
       lua = { "stylua" },
       python = { "isort", "black" },
       go = { "gofumpt", "goimports-reviser" },
-      javascript = { "prettierd", "prettier", stop_after_first = true },
-      typescript = { "prettierd", "prettier", stop_after_first = true },
+      javascript = { "prettierd", "prettier" },
+      typescript = { "prettierd", "prettier" },
       nix = { "alejandra" },
       java = { "google-java-format" },
       latex = { "tex-fmt" },
@@ -20,6 +20,7 @@ return { -- Autoformat
       scss = { "prettier" },
       json = { "prettier" },
       yaml = { "prettier" },
+      toml = { "prettier" },
       markdown = { "prettier" },
       -- php = { "pint" },
       php = { "php_cs_fixer" },
@@ -38,12 +39,26 @@ return { -- Autoformat
       alejandra = {},
       -- java
       google_java_format = {},
-      -- html css js/ts
+      -- html, css, js/ts, json, yaml, toml
       prettier = {
-        prepend_args = { "--tab-width", "4" },
+        append_args = function(self, ctx)
+          local ft = vim.bo[ctx.buf].filetype
+          if ft == "json" or ft == "yaml" or ft == "toml" then
+            return { "--tab-width", "2" }
+          else
+            return { "--tab-width", "4" }
+          end
+        end,
       },
       prettierd = {
-        prepend_args = { "--tab-width", "4" },
+        append_args = function(self, ctx)
+          local ft = vim.bo[ctx.buf].filetype
+          if ft == "json" or ft == "yaml" or ft == "toml" then
+            return { "--tab-width", "2" }
+          else
+            return { "--tab-width", "4" }
+          end
+        end,
       },
       -- latex
       texfmt = {},
@@ -51,6 +66,7 @@ return { -- Autoformat
       -- pint = {},
       -- prettyphp = {},
       phpcsfixer = {},
+      -- qml
       qmlformat = {
         command = "qmlformat",
         args = { "-i", "$FILENAME" },
