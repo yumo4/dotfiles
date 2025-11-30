@@ -49,8 +49,8 @@
     "Mod+Ctrl+S".action.screenshot = {show-pointer = false;};
 
     # "Mod+Space".action = rofi;
-    "Mod+Space".action = spawn "sherlock";
-    "Alt+Space".action = spawn "vicinae" "toggle";
+    # "Mod+Space".action = spawn "sherlock";
+    "Mod+Space".action = spawn "vicinae" "toggle";
     "Mod+F".action = fileManager;
     "Mod+B".action = browser;
     "Mod+Ctrl+R".action = spawn "~/Projects/dotfiles/dots/.config/waybar/reload.sh";

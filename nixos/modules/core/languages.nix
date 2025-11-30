@@ -2,8 +2,8 @@
   environment.systemPackages = with pkgs; [
     gnumake
     # c
-    gcc
     clang-tools
+    gcc
 
     # go
     go
@@ -11,21 +11,23 @@
     gofumpt
     goimports-reviser
     golines
-    gotools
     gopls
+    gotools
 
     # java
-    java-language-server
     google-java-format
+    java-language-server
     jdt-language-server
     zulu
 
     # js/ts
-    typescript-language-server
-    nodejs_22
-    prettierd
-    prettier
     bun
+    nodePackages.jsdoc
+    nodejs_22
+    prettier
+    prettierd
+    typescript
+    typescript-language-server
 
     # nix
     alejandra
@@ -33,10 +35,10 @@
     nixd
 
     # html/css
+    jsbeautifier
+    stylelint
     tailwindcss
     tailwindcss-language-server
-    stylelint
-    jsbeautifier
     vscode-langservers-extracted
 
     # lua
@@ -54,12 +56,16 @@
     cargo
 
     # php
-    php
     # intelephense
+    php
     php84Packages.composer
-    phpactor
     php84Packages.php-cs-fixer
+    phpactor
+    phpdocumentor
     pretty-php
+
+    # sql
+    sqls
 
     # qml
     # qt6.full

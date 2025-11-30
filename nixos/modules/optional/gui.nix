@@ -4,7 +4,9 @@
   inputs,
   meta,
   ...
-}: {
+}: let
+  system = pkgs.stdenv.hostPlatform.system;
+in {
   imports = [inputs.niri.nixosModules.niri];
 
   services.displayManager.ly.enable = true;
@@ -12,7 +14,6 @@
   # services.xserver.windowManager.qtile.enable = true;
   # programs.hyprland.enable = true;
   programs.niri.enable = true;
-  # programs.niri.package = inputs.niri.packages.${pkgs.system}.niri;
 
   xdg.portal = {
     enable = true;

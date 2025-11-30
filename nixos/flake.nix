@@ -90,7 +90,10 @@
         value = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
-            {nixpkgs.overlays = overlays;}
+            {
+              nixpkgs.overlays = overlays;
+              nixpkgs.config.allowUnfree = true;
+            }
             ./machines/${host.name}/configuration.nix
             ./machines/${host.name}/hardware-configuration.nix
           ];

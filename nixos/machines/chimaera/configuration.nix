@@ -13,14 +13,15 @@
     ../../modules/core
     ./samba
 
+    # ../../modules/optional/printing.nix
     ../../modules/optional/bluetooth.nix
     ../../modules/optional/docker.nix
     ../../modules/optional/gui.nix
     ../../modules/optional/latex.nix
-    ../../modules/optional/printing.nix
+    ../../modules/optional/lmstudio.nix
     ../../modules/optional/rip.nix
-    ../../modules/optional/tailscale.nix
     ../../modules/optional/sops.nix
+    ../../modules/optional/tailscale.nix
     ../../modules/optional/vlc.nix
     ../../modules/optional/zsa.nix
   ];
@@ -48,11 +49,7 @@
       syncthing
       vesktop
       vscodium-fhs
-      # zmkBATx
-
-      networkmanager-fortisslvpn
-      openfortivpn
-      openfortivpn-webview
+      jetbrains.idea-community
     ])
     ++ (with pkgs-stable; [
       calibre
