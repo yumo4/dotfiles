@@ -52,6 +52,7 @@ in {
 
           (makeCommand "xwayland-satellite")
           {command = ["gammastep" "-O" "4000"];}
+          {command = ["vicinae" "server"];}
 
           (makeCommand "obsidian")
           (makeCommand "zen-beta")
@@ -88,105 +89,81 @@ in {
 
       screenshot-path = "~/Pictures/Screenshots/Screenshot-from-%Y-%m-%d-%H-%M-%S.png";
 
-      outputs =
+      outputs = let
+        mkOutput = {
+          width,
+          height,
+          refresh,
+          scale ? 1.0,
+          x ? 0,
+          y ? 0,
+        }: {
+          mode = {
+            inherit width height refresh;
+          };
+          inherit scale;
+          position = {inherit x y;};
+        };
+
+        lusankyaCommon = mkOutput {
+          width = 1920;
+          height = 1080;
+          refresh = 60.00;
+          scale = 1.0;
+          x = 0;
+          y = -1080;
+        };
+
+        lusankyaOutputs = builtins.listToAttrs (map (name: {
+          inherit name;
+          value = lusankyaCommon;
+        }) ["HDMI-A-1" "DP-5" "DP-6" "DP-7" "DP-8" "DP-9"]);
+      in
         if meta.hostname == "chimaera"
         then {
-          "DP-3" = {
-            mode = {
-              width = 1920;
-              height = 1080;
-              refresh = 143.98100;
-            };
+          "DP-3" = mkOutput {
+            width = 1920;
+            height = 1080;
+            refresh = 143.98100;
             scale = 1.0;
-            position = {
-              x = 0;
-              y = 0;
-            };
+            x = 0;
+            y = 0;
           };
         }
         else if meta.hostname == "framework"
         then {
-          "eDP-1" = {
-            mode = {
-              width = 2256;
-              height = 1504;
-              refresh = 60.00;
-            };
-            scale = 1.25; # 1.175
-            position = {
-              x = 0;
-              y = 0;
-            };
-          };
-          # school
-          "HDMI-A-1" = {
-            mode = {
-              width = 2560;
-              height = 1440;
-              refresh = 60.00;
-            };
+          "eDP-1" = mkOutput {
+            width = 2256;
+            height = 1504;
+            refresh = 60.00;
             scale = 1.25;
-            position = {
-              x = 0;
-              y = -1080;
-            };
-          };
-        }
-        # niri msg outpus
-        else if meta.hostname == "lusankya"
-        then {
-          "eDP-1" = {
-            mode = {
-              width = 1920;
-              height = 1080;
-              refresh = 60.00;
-            };
-            scale = 1.0;
-            position = {
-              x = 0;
-              y = 0;
-            };
-          };
-          "HDMI-A-1" = {
-            mode = {
-              width = 1920;
-              height = 1080;
-              refresh = 60.00;
-            };
-            scale = 1.0;
-            position = {
-              x = 0;
-              y = -1080;
-            };
-          };
-          "DP-5" = {
-            mode = {
-              width = 1920;
-              height = 1080;
-              refresh = 60.00;
-            };
-            scale = 1.0;
-            position = {
-              x = 0;
-              y = -1080;
-            };
+            x = 0;
+            y = 0;
           };
 
-          "DP-7" = {
-            mode = {
+          "HDMI-A-1" = mkOutput {
+            width = 2560;
+            height = 1440;
+            refresh = 60.00;
+            scale = 1.25;
+            x = 0;
+            y = -1080;
+          };
+        }
+        else if meta.hostname == "lusankya"
+        then
+          {
+            "eDP-1" = mkOutput {
               width = 1920;
               height = 1080;
               refresh = 60.00;
-            };
-            scale = 1.0;
-            position = {
+              scale = 1.0;
               x = 0;
-              y = -1080;
+              y = 0;
             };
-          };
-        }
-        else {
-        };
+          }
+          // lusankyaOutputs
+        else {};
 
       overview = {
         # backdrop-color = "transparent";

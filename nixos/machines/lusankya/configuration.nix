@@ -15,6 +15,7 @@
     ../../modules/optional/bluetooth.nix
     ../../modules/optional/docker.nix
     ../../modules/optional/kanata.nix
+    ../../modules/optional/lmstudio.nix
     ../../modules/optional/work.nix
     ../../modules/optional/gui.nix
     ../../modules/optional/printing.nix
@@ -33,6 +34,8 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  services.speechd.enable = false;
+  services.orca.enable = false;
   environment.systemPackages =
     (with pkgs; [
       # syncthing
@@ -43,6 +46,7 @@
       openfortivpn-webview
       openssl
       cacert
+      lmstudio
     ])
     ++ (with pkgs-stable; [
       wireguard-go
