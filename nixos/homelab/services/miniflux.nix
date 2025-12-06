@@ -36,7 +36,7 @@ in {
       LISTEN_ADDR = "127.0.0.1:${toString port}";
       # BASE_URL = "https://${baseDomain}";
       BASE_URL = "https://${subDomain}.${baseDomain}";
-      CREATE_ADMIN = "1";
+      CREATE_ADMIN = 1;
     };
   };
 
