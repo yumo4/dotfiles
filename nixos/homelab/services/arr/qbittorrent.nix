@@ -89,6 +89,38 @@ in {
     "d /var/lib/gluetun 0755 max users -"
     "d /var/lib/qbittorrent 0755 max users -"
   ];
+  systemd.services.qbittorrent-port-sync = {
+    description = "Sync gluetun forwarded port to qBittorrent on startup";
+
+    after = ["podman-gluetun.service"];
+    before = ["podman-qbittorrent.service"];
+
+    wantedBy = ["podman-qbittorrent.service"];
+
+    serviceConfig = {
+      Type = "oneshot";
+    };
+
+    script = ''
+      set -e
+
+      echo "Waiting for gluetun to be ready..."
+      for i in {1..30}; do
+        if podman exec gluetun cat /tmp/gluetun/forwarded_port 2>/dev/null; then
+          break
+        fi
+        sleep 1
+      done
+
+      PORT=$(podman exec gluetun cat /tmp/gluetun/forwarded_port)
+      echo "Found forwarded port: $PORT"
+
+      # Update qBittorrent config
+      podman exec qbittorrent sed -i "s/^Session\\\\Port=.*/Session\\\\Port=$PORT/" /config/qBittorrent/qBittorrent.conf
+
+      echo "Updated qBittorrent config to use port: $PORT"
+    '';
+  };
 
   homelab.services.qbittorrent = {
     homepage = {
