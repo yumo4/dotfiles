@@ -9,6 +9,48 @@ return {
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
       callback = function(event)
+        local client = vim.lsp.get_client_by_id(event.data.client_id)
+
+        -- lsp rename -> quickfixlist
+        -- Override the rename handler to track changes
+        if client then
+          local original_rename = vim.lsp.handlers["textDocument/rename"]
+          vim.lsp.handlers["textDocument/rename"] = function(err, result, ctx, config)
+            -- Call original handler first
+            original_rename(err, result, ctx, config)
+
+            if result and result.changes then
+              local current_buf = vim.api.nvim_get_current_buf()
+              local current_uri = vim.uri_from_bufnr(current_buf)
+              local modified = {}
+
+              for uri, edits in pairs(result.changes) do
+                if #edits > 0 then
+                  local filepath = vim.uri_to_fname(uri)
+                  local message = uri == current_uri and "Renamed" or "Reference updated"
+                  table.insert(modified, { filename = filepath, lnum = 1, col = 1, text = message })
+                end
+              end
+
+              if #modified > 1 then
+                -- Sort: "Renamed here" first, then "Reference updated"
+                table.sort(modified, function(a, b)
+                  if a.text == "Renamed here" then
+                    return true
+                  end
+                  if b.text == "Renamed here" then
+                    return false
+                  end
+                  return a.filename < b.filename -- Alphabetical for the rest
+                end)
+                vim.fn.setqflist(modified)
+                vim.cmd("copen")
+                vim.cmd.wincmd("p")
+              end
+            end
+          end
+        end
+
         -- Create a function for easier mapping
         local map = function(keys, func, desc)
           vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
@@ -45,7 +87,7 @@ return {
         map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
         -- Setup highlight references
-        local client = vim.lsp.get_client_by_id(event.data.client_id)
+        client = vim.lsp.get_client_by_id(event.data.client_id)
         if client and client.server_capabilities.documentHighlightProvider then
           vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
             buffer = event.buf,
@@ -95,6 +137,13 @@ return {
       cmd = { "typescript-language-server", "--stdio" },
       filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
       capabilities = capabilities,
+      settings = {
+        typescript = {
+          preferences = {
+            importModuleSpecifierFormat = "es2020",
+          },
+        },
+      },
     }
 
     -- LaTeX
@@ -172,6 +221,12 @@ return {
       root_markers = { "composer.json", ".git", "index.php" },
       capabilities = capabilities,
     }
+    vim.lsp.config.sqls = {
+      cmd = { "sqls" },
+      filetypes = { "sql", "mysql" },
+      root_markers = { "config.yml" },
+      settings = {},
+    }
     -- QML
     vim.lsp.config.qmlls = {
       cmd = { "qmlls" },
@@ -242,6 +297,7 @@ return {
       -- "intelephense",
       "lua_ls",
       "qmlls",
+      "sqls",
     })
   end,
 }

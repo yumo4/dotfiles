@@ -60,3 +60,6 @@ vim.opt.virtualedit = "block"
 vim.diagnostic.config({
   virtual_lines = true,
 })
+
+-- save confirm
+vim.opt.confirm = true

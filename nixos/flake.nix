@@ -8,6 +8,7 @@
     # unstable is the default
     nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixos-hardware.url = "github:nixos/nixos-hardware/master";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -46,6 +47,7 @@
     self,
     nixpkgs,
     nixpkgs-stable,
+    nixos-hardware,
     home-manager,
     vicinae,
     ...
@@ -63,24 +65,34 @@
     hosts = [
       {
         name = "framework";
+        system = "x86_64-linux";
         isServer = false;
         isWork = false;
       }
       {
         name = "chimaera";
+        system = "x86_64-linux";
         isServer = false;
         isWork = false;
       }
       {
         name = "homeone";
+        system = "x86_64-linux";
         isServer = true;
         isWork = false;
       }
       {
         name = "lusankya";
+        system = "x86_64-linux";
         isServer = false;
         isWork = true;
       }
+      # {
+      #   name = "wildkarrde";
+      #   system = "aarch64-linux";
+      #   isServer = true;
+      #   isWork = false;
+      # }
     ];
   in {
     packages.${system}.helium-browser = pkgs.helium-browser;
@@ -88,7 +100,7 @@
     nixosConfigurations = builtins.listToAttrs (map (host: {
         name = host.name;
         value = nixpkgs.lib.nixosSystem {
-          inherit system;
+          system = host.system;
           modules = [
             {
               nixpkgs.overlays = overlays;

@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     gnumake
+    jq
     # c
     clang-tools
     gcc

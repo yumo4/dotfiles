@@ -10,4 +10,10 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
       untracked = { text = "┃" },
     },
   },
+  config = function(_, opts)
+    require("gitsigns").setup(opts)
+    local gitsigns = require("gitsigns")
+    vim.keymap.set("n", "<leader>ph", gitsigns.preview_hunk)
+    vim.keymap.set("n", "<leader>hi", gitsigns.preview_hunk_inline)
+  end,
 }

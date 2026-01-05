@@ -1,7 +1,14 @@
 {config, ...}: {
   services.vicinae = {
-    enable = true;
-    autoStart = true;
+    # enable = true;
+    # autoStart = true;
+    systemd = {
+      enable = true;
+      autoStart = true;
+      environment = {
+        USE_LAYER_SHELL = 1;
+      };
+    };
     # settings = {
     #   faviconService = "twenty";
     #   font = {

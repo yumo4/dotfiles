@@ -45,16 +45,18 @@
       # distrobox
       ente-auth
       libation # audible
+      localsend
+      koreader
       pika-backup
       syncthing
-      vesktop
       vscodium-fhs
-      jetbrains.idea-community
+      jetbrains.idea-oss
     ])
     ++ (with pkgs-stable; [
       calibre
       protonvpn-gui
       protonvpn-cli
+      vesktop
       wireguard-go
       wireguard-tools
     ]);

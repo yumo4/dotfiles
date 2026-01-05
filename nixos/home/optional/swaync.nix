@@ -114,43 +114,43 @@
       };
 
       # Notification filtering - replace notifications instead of spamming
-      notification-visibility = {
-        "volume-update" = {
-          app-name = "^(pulseaudio|PulseAudio)$";
-          state = "enabled";
-        };
-
-        "brightness-update" = {
-          app-name = "^(brightness|Brightness)$";
-          state = "enabled";
-        };
-
-        "mpris-update" = {
-          app-name = "^(mpris|MPRIS)$";
-          state = "enabled";
-        };
-      };
+      # notification-visibility = {
+      #   "volume-update" = {
+      #     app-name = "^(pulseaudio|PulseAudio)$";
+      #     state = "enabled";
+      #   };
+      #
+      #   "brightness-update" = {
+      #     app-name = "^(brightness|Brightness)$";
+      #     state = "enabled";
+      #   };
+      #
+      #   "mpris-update" = {
+      #     app-name = "^(mpris|MPRIS)$";
+      #     state = "enabled";
+      #   };
+      # };
 
       # Scripts to trigger notifications for volume, brightness, and MPRIS
-      scripts = {
-        "volume-script" = {
-          exec = "notify-send -a 'pulseaudio' -u low 'Volume Updated'";
-          app-name = ".*";
-          urgency = "Low";
-        };
-
-        "brightness-script" = {
-          exec = "notify-send -a 'brightness' -u low 'Brightness Updated'";
-          app-name = ".*";
-          urgency = "Low";
-        };
-
-        "mpris-script" = {
-          exec = "notify-send -a 'mpris' -u low 'Now Playing'";
-          app-name = ".*";
-          urgency = "Low";
-        };
-      };
+      # scripts = {
+      #   "volume-script" = {
+      #     exec = "notify-send -a 'pulseaudio' -u low 'Volume Updated'";
+      #     app-name = ".*";
+      #     urgency = "Low";
+      #   };
+      #
+      #   "brightness-script" = {
+      #     exec = "notify-send -a 'brightness' -u low 'Brightness Updated'";
+      #     app-name = ".*";
+      #     urgency = "Low";
+      #   };
+      #
+      #   "mpris-script" = {
+      #     exec = "notify-send -a 'mpris' -u low 'Now Playing'";
+      #     app-name = ".*";
+      #     urgency = "Low";
+      #   };
+      # };
     };
 
     style = ''

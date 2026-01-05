@@ -122,10 +122,10 @@ in {
         if meta.hostname == "chimaera"
         then {
           "DP-3" = mkOutput {
-            width = 1920;
-            height = 1080;
-            refresh = 143.98100;
-            scale = 1.0;
+            width = 2560;
+            height = 1440;
+            refresh = 359.999;
+            scale = 1.15;
             x = 0;
             y = 0;
           };
