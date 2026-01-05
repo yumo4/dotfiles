@@ -53,9 +53,9 @@ in {
         ];
         upstream_dns = [
           "https://dns.quad9.net/dns-query"
-          # "https://dns.google.com/dns-query"
-          # "https://dns.cloudflare.com/dns-query"
           "https://dns10.quad9.net/dns-query"
+          # "https://dns.google.com/dns-query"
+          "https://dns.cloudflare.com/dns-query"
           # "https://base.dns.mullvad.net/dns-query"
         ];
         enable_dnssec = true;

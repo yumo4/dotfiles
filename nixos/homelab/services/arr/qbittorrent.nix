@@ -22,6 +22,7 @@ in {
     secrets = {
       "gluetun-env" = {};
       "qbittorrent-env" = {};
+      "qbittorrent-password" = {};
     };
   };
 
@@ -45,6 +46,7 @@ in {
       autoStart = true;
       volumes = [
         "/var/lib/gluetun:/gluetun"
+        "/var/lib/gluetun/tmp:/tmp/gluetun"
       ];
       # check with
       # sudo podman exec gluetun cat /tmp/gluetun/forwarded_port
@@ -88,14 +90,16 @@ in {
   systemd.tmpfiles.rules = [
     "d /var/lib/gluetun 0755 max users -"
     "d /var/lib/qbittorrent 0755 max users -"
+    "d /var/lib/gluetun/tmp 0755 max users -"
   ];
+
+  # Initial port sync on startup
   systemd.services.qbittorrent-port-sync = {
     description = "Sync gluetun forwarded port to qBittorrent on startup";
 
-    after = ["podman-gluetun.service"];
-    before = ["podman-qbittorrent.service"];
+    after = ["podman-gluetun.service" "podman-qbittorrent.service"];
 
-    wantedBy = ["podman-qbittorrent.service"];
+    wantedBy = ["multi-user.target"];
 
     serviceConfig = {
       Type = "oneshot";
@@ -105,20 +109,91 @@ in {
       set -e
 
       echo "Waiting for gluetun to be ready..."
-      for i in {1..30}; do
-        if podman exec gluetun cat /tmp/gluetun/forwarded_port 2>/dev/null; then
+      for i in {1..60}; do
+        if [ -f /var/lib/gluetun/tmp/forwarded_port ] && [ -s /var/lib/gluetun/tmp/forwarded_port ]; then
           break
         fi
         sleep 1
       done
 
-      PORT=$(podman exec gluetun cat /tmp/gluetun/forwarded_port)
+      PORT=$(cat /var/lib/gluetun/tmp/forwarded_port 2>/dev/null || echo "")
+
+      if [ -z "$PORT" ]; then
+        echo "ERROR: Could not read forwarded port"
+        exit 1
+      fi
+
       echo "Found forwarded port: $PORT"
 
-      # Update qBittorrent config
-      podman exec qbittorrent sed -i "s/^Session\\\\Port=.*/Session\\\\Port=$PORT/" /config/qBittorrent/qBittorrent.conf
+      # Wait for qBittorrent WebUI to be ready
+      echo "Waiting for qBittorrent WebUI..."
+      for i in {1..60}; do
+        if ${pkgs.curl}/bin/curl -s -o /dev/null -w "%{http_code}" "http://localhost:8112/api/v2/app/version" | grep -q "200\|403"; then
+          break
+        fi
+        sleep 2
+      done
 
-      echo "Updated qBittorrent config to use port: $PORT"
+      # Login and get cookie
+      echo "Logging in to qBittorrent..."
+      ${pkgs.curl}/bin/curl -s -c /tmp/qbt-cookies.txt -X POST "http://localhost:8112/api/v2/auth/login" \
+      --data-urlencode "username=max" \
+      --data-urlencode "password@${config.sops.secrets."qbittorrent-password".path}"
+
+      # Update port via API
+      echo "Setting port via API..."
+      ${pkgs.curl}/bin/curl -s -b /tmp/qbt-cookies.txt -X POST "http://localhost:8112/api/v2/app/setPreferences" \
+        -d "json={\"listen_port\":$PORT}"
+
+      echo "Updated qBittorrent to use port: $PORT"
+    '';
+  };
+
+  # Watch for port changes
+  systemd.paths.qbittorrent-port-sync = {
+    description = "Watch for gluetun port changes";
+    wantedBy = ["multi-user.target"];
+    pathConfig = {
+      PathModified = "/var/lib/gluetun/tmp/forwarded_port";
+      Unit = "qbittorrent-port-update.service";
+    };
+  };
+
+  # Update port when it changes
+  systemd.services.qbittorrent-port-update = {
+    description = "Update qBittorrent with new forwarded port";
+
+    serviceConfig = {
+      Type = "oneshot";
+    };
+
+    script = ''
+      set -e
+
+      if [ ! -f /var/lib/gluetun/tmp/forwarded_port ]; then
+        echo "Port file not found, skipping"
+        exit 0
+      fi
+
+      PORT=$(cat /var/lib/gluetun/tmp/forwarded_port 2>/dev/null || echo "")
+
+      if [ -z "$PORT" ]; then
+        echo "Port is empty, skipping"
+        exit 0
+      fi
+
+      echo "Detected new forwarded port: $PORT"
+
+      # Login and get cookie
+      ${pkgs.curl}/bin/curl -s -c /tmp/qbt-cookies.txt -X POST "http://localhost:8112/api/v2/auth/login" \
+      --data-urlencode "username=max" \
+      --data-urlencode "password@${config.sops.secrets."qbittorrent-password".path}"
+
+      # Update port via API
+      ${pkgs.curl}/bin/curl -s -b /tmp/qbt-cookies.txt -X POST "http://localhost:8112/api/v2/app/setPreferences" \
+        -d "json={\"listen_port\":$PORT}"
+
+      echo "Successfully updated qBittorrent to port: $PORT"
     '';
   };
 
