@@ -1,6 +1,6 @@
-{config, ...}: {
+{...}: {
   services.vicinae = {
-    # enable = true;
+    enable = true;
     # autoStart = true;
     systemd = {
       enable = true;
