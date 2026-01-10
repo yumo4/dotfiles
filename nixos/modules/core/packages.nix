@@ -21,6 +21,7 @@
     tmux
     tree-sitter
     wget
+    zip
     zoxide
   ];
 }

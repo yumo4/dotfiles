@@ -13,6 +13,7 @@
 
     ../../modules/optional/gui.nix
     ../../modules/optional/kanata.nix
+    ../../modules/optional/docker.nix
     ../../modules/optional/latex.nix
     ../../modules/optional/printing.nix
     ../../modules/optional/sops.nix
@@ -42,6 +43,8 @@
       syncthing
       vscodium-fhs
       teams-for-linux
+      gnome-network-displays # might be buggy
+      localsend
     ])
     ++ (with pkgs-stable; [
       protonvpn-gui
