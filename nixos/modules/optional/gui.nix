@@ -83,7 +83,6 @@ in {
     # obs-studio
     # syshud
     # vesktop
-    # vlc
     # zed-editor
     alacritty
     alsa-utils
@@ -105,6 +104,7 @@ in {
     swww
     tailscale-systray
     unzip
+    vlc
     vscodium-fhs
     waybar
     wl-clipboard

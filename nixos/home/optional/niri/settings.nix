@@ -145,7 +145,7 @@ in {
             width = 2560;
             height = 1440;
             refresh = 60.00;
-            scale = 1.25;
+            scale = 1.15;
             x = 0;
             y = -1080;
           };

@@ -14,6 +14,8 @@
     ./samba
 
     # ../../modules/optional/printing.nix
+    ../../modules/optional/norgb.nix
+
     ../../modules/optional/bluetooth.nix
     ../../modules/optional/docker.nix
     ../../modules/optional/gui.nix
@@ -22,7 +24,7 @@
     ../../modules/optional/rip.nix
     ../../modules/optional/sops.nix
     ../../modules/optional/tailscale.nix
-    ../../modules/optional/vlc.nix
+    # ../../modules/optional/vlc.nix
     ../../modules/optional/zsa.nix
   ];
 

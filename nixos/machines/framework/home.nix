@@ -1,15 +1,15 @@
 {pkgs, ...}: {
   imports = [
     ../../home/core
-    ../../home/optional/gui.nix
     ../../home/optional/ghostty.nix
+    ../../home/optional/gui.nix
     ../../home/optional/hyprland.nix
     ../../home/optional/hyprlock.nix
-    ../../home/optional/sherlock.nix
     ../../home/optional/niri
     ../../home/optional/sops.nix
     ../../home/optional/ssh.nix
     ../../home/optional/syncthing.nix
+    ../../home/optional/vicinae.nix
     ../../home/optional/waybar.nix
   ];
   home.username = "max";
