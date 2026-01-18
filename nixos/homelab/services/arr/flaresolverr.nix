@@ -3,7 +3,6 @@
   config,
   ...
 }: let
-  baseDomain = "yumo4.dev";
   port = 8191;
 in {
   virtualisation.oci-containers.containers = {
@@ -28,23 +27,4 @@ in {
   systemd.tmpfiles.rules = [
     "d /var/lib/flaresolverr 0755 max users -"
   ];
-
-  homelab.services.flaresolverr = {
-    homepage = {
-      name = "Flaresolverr";
-      description = "";
-      icon = "flaresolverr.svg";
-      category = "Arr";
-    };
-    url = "flaresolverr.${baseDomain}";
-  };
-
-  services.caddy = {
-    virtualHosts."flaresolverr.${baseDomain}" = {
-      useACMEHost = baseDomain;
-      extraConfig = ''
-        reverse_proxy http://127.0.0.1:${toString port}
-      '';
-    };
-  };
 }

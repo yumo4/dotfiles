@@ -58,6 +58,7 @@ in {
         "9696:9696" # prowlarr
         "8989:8989" # sonarr
         "7878:7878" # radarr
+        "8191:8191" # solverr
       ];
       environmentFiles = [config.sops.secrets."gluetun-env".path];
       extraOptions = [
