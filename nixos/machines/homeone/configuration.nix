@@ -32,6 +32,7 @@
     ../../homelab/services/arr/prowlarr.nix
     ../../homelab/services/arr/sonarr.nix
     ../../homelab/services/arr/radarr.nix
+    ../../homelab/services/arr/flaresolverr.nix
     ../../homelab/services/arr/qbittorrent.nix
   ];
 
