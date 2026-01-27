@@ -15,4 +15,5 @@
       gnome-control-center
     ];
   };
+  services.swayosd.enable = true;
 }

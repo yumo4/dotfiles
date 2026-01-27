@@ -39,6 +39,7 @@
   environment.systemPackages =
     (with pkgs; [
       # syncthing
+      networkmanager
       localsend
       chromium
       networkmanager-fortisslvpn

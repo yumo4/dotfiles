@@ -13,7 +13,7 @@
           addKeysToAgent = "yes";
         };
         # NOTE: this "forces" git to use a specific ssh key for GitHub
-        "github.com" = {
+        "github" = {
           host = "github.com";
           identitiesOnly = true;
           identityFile = [
@@ -27,8 +27,8 @@
         # NOTE: Only work machines get GitLab access
         if meta.isWork
         then {
-          "gitlab.fly.internal.de" = {
-            host = "gitlab.fly.internal.de";
+          "work" = {
+            host = "gitlab.fly-internal.de";
             identitiesOnly = true;
             addKeysToAgent = "yes";
             identityFile = [
