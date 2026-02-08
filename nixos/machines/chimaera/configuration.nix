@@ -49,10 +49,12 @@
       libation # audible
       localsend
       koreader
+      parsec-bin
       pika-backup
       syncthing
+      opencode
       vscodium-fhs
-      jetbrains.idea-oss
+      # jetbrains.idea-oss
     ])
     ++ (with pkgs-stable; [
       calibre

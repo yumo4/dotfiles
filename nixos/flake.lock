@@ -33,6 +33,24 @@
         "type": "github"
       }
     },
+    "gruvbox-material-gtk": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1770570589,
+        "narHash": "sha256-8/MJEToLbIjPzZRZQqcJpajLX4HPmYK4XuLQTlq+PTc=",
+        "owner": "yumo4",
+        "repo": "gruvbox-material-gtk",
+        "rev": "27cc87e4695f70ebb296055f1ffc5fc31712cde6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yumo4",
+        "repo": "gruvbox-material-gtk",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -40,11 +58,19 @@
         ]
       },
       "locked": {
+<<<<<<< HEAD
         "lastModified": 1769450270,
         "narHash": "sha256-pdVm/zJazDUAasTyHFX/Pbrlk9Upjxi0yzgn7GjGe4g=",
         "owner": "nix-community",
         "repo": "home-manager",
         "rev": "a10c1e8f5ad2589414407f4851c221cb66270257",
+=======
+        "lastModified": 1770491427,
+        "narHash": "sha256-8b+0vixdqGnIIcgsPhjdX7EGPdzcVQqYxF+ujjex654=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "cbd8a72e5fe6af19d40e2741dc440d9227836860",
+>>>>>>> 04457ebe (chore: moved gtk theme to flake, added folding for nvim, version bumps)
         "type": "github"
       },
       "original": {
@@ -61,11 +87,19 @@
         ]
       },
       "locked": {
+<<<<<<< HEAD
         "lastModified": 1768434960,
         "narHash": "sha256-cJbFn17oyg6qAraLr+NVeNJrXsrzJdrudkzI4H2iTcg=",
         "owner": "nix-community",
         "repo": "home-manager",
         "rev": "b4d88c9ac42ae1a745283f6547701da43b6e9f9b",
+=======
+        "lastModified": 1769872935,
+        "narHash": "sha256-07HMIGQ/WJeAQJooA7Kkg1SDKxhAiV6eodvOwTX6WKI=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "f4ad5068ee8e89e4a7c2e963e10dd35cd77b37b7",
+>>>>>>> 04457ebe (chore: moved gtk theme to flake, added folding for nvim, version bumps)
         "type": "github"
       },
       "original": {
@@ -104,11 +138,19 @@
         "xwayland-satellite-unstable": "xwayland-satellite-unstable"
       },
       "locked": {
+<<<<<<< HEAD
         "lastModified": 1769429762,
         "narHash": "sha256-kiWNe34XXo7wneh1PzaAPBvueVbjrZ8cCLcW18EB95Y=",
         "owner": "sodiboo",
         "repo": "niri-flake",
         "rev": "6bb07820013d6164df76c658b2dfab2a634300ac",
+=======
+        "lastModified": 1770493836,
+        "narHash": "sha256-UPG9xFnVkqHF5e2GOucQO8BXXzwp8BwwON2g+WBXLMA=",
+        "owner": "sodiboo",
+        "repo": "niri-flake",
+        "rev": "a17befde0c0ca25617fb3da505294deb45cef170",
+>>>>>>> 04457ebe (chore: moved gtk theme to flake, added folding for nvim, version bumps)
         "type": "github"
       },
       "original": {
@@ -137,11 +179,19 @@
     "niri-unstable": {
       "flake": false,
       "locked": {
+<<<<<<< HEAD
         "lastModified": 1769397515,
         "narHash": "sha256-VNfKIuHzNYPcaJxG+RxNgY4jK9CPf0nKovRDNFvdgAw=",
         "owner": "YaLTeR",
         "repo": "niri",
         "rev": "a34ed51586a8a440899396a9746eb413f05045e1",
+=======
+        "lastModified": 1770394936,
+        "narHash": "sha256-Pa0fkyLYUR+pZh7phPENDUo4mJIweaAm0uV83iUUlX8=",
+        "owner": "YaLTeR",
+        "repo": "niri",
+        "rev": "549148d27779d024255a84535b42b947f1c2a113",
+>>>>>>> 04457ebe (chore: moved gtk theme to flake, added folding for nvim, version bumps)
         "type": "github"
       },
       "original": {
@@ -168,11 +218,19 @@
     },
     "nixpkgs": {
       "locked": {
+<<<<<<< HEAD
         "lastModified": 1769170682,
         "narHash": "sha256-oMmN1lVQU0F0W2k6OI3bgdzp2YOHWYUAw79qzDSjenU=",
         "owner": "nixos",
         "repo": "nixpkgs",
         "rev": "c5296fdd05cfa2c187990dd909864da9658df755",
+=======
+        "lastModified": 1770197578,
+        "narHash": "sha256-AYqlWrX09+HvGs8zM6ebZ1pwUqjkfpnv8mewYwAo+iM=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "00c21e4c93d963c50d4c0c89bfa84ed6e0694df2",
+>>>>>>> 04457ebe (chore: moved gtk theme to flake, added folding for nvim, version bumps)
         "type": "github"
       },
       "original": {
@@ -199,11 +257,19 @@
     },
     "nixpkgs-stable": {
       "locked": {
+<<<<<<< HEAD
         "lastModified": 1769318308,
         "narHash": "sha256-Mjx6p96Pkefks3+aA+72lu1xVehb6mv2yTUUqmSet6Q=",
         "owner": "NixOS",
         "repo": "nixpkgs",
         "rev": "1cd347bf3355fce6c64ab37d3967b4a2cb4b878c",
+=======
+        "lastModified": 1770464364,
+        "narHash": "sha256-z5NJPSBwsLf/OfD8WTmh79tlSU8XgIbwmk6qB1/TFzY=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "23d72dabcb3b12469f57b37170fcbc1789bd7457",
+>>>>>>> 04457ebe (chore: moved gtk theme to flake, added folding for nvim, version bumps)
         "type": "github"
       },
       "original": {
@@ -231,11 +297,19 @@
     },
     "nixpkgs-unstable": {
       "locked": {
+<<<<<<< HEAD
         "lastModified": 1769170682,
         "narHash": "sha256-oMmN1lVQU0F0W2k6OI3bgdzp2YOHWYUAw79qzDSjenU=",
         "owner": "NixOS",
         "repo": "nixpkgs",
         "rev": "c5296fdd05cfa2c187990dd909864da9658df755",
+=======
+        "lastModified": 1770197578,
+        "narHash": "sha256-AYqlWrX09+HvGs8zM6ebZ1pwUqjkfpnv8mewYwAo+iM=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "00c21e4c93d963c50d4c0c89bfa84ed6e0694df2",
+>>>>>>> 04457ebe (chore: moved gtk theme to flake, added folding for nvim, version bumps)
         "type": "github"
       },
       "original": {
@@ -246,6 +320,22 @@
       }
     },
     "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1770197578,
+        "narHash": "sha256-AYqlWrX09+HvGs8zM6ebZ1pwUqjkfpnv8mewYwAo+iM=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "00c21e4c93d963c50d4c0c89bfa84ed6e0694df2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
       "locked": {
         "lastModified": 1762111121,
         "narHash": "sha256-4vhDuZ7OZaZmKKrnDpxLZZpGIJvAeMtK6FKLJYUtAdw=",
@@ -268,11 +358,19 @@
         ]
       },
       "locked": {
+<<<<<<< HEAD
         "lastModified": 1768985439,
         "narHash": "sha256-qkU4r+l+UPz4dutMMRZSin64HuVZkEv9iFpu9yMWVY0=",
         "owner": "outfoxxed",
         "repo": "quickshell",
         "rev": "191085a8821b35680bba16ce5411fc9dbe912237",
+=======
+        "lastModified": 1770542768,
+        "narHash": "sha256-XzvFb2305PjC465D+ederTO27puG3S8GmDXcUB79J1w=",
+        "owner": "outfoxxed",
+        "repo": "quickshell",
+        "rev": "395a1301a83e98dafc325289630ccacda5d69607",
+>>>>>>> 04457ebe (chore: moved gtk theme to flake, added folding for nvim, version bumps)
         "type": "github"
       },
       "original": {
@@ -283,11 +381,12 @@
     },
     "root": {
       "inputs": {
+        "gruvbox-material-gtk": "gruvbox-material-gtk",
         "home-manager": "home-manager",
         "mysecrets": "mysecrets",
         "niri": "niri",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": "nixpkgs_2",
         "nixpkgs-stable": "nixpkgs-stable_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "quickshell": "quickshell",
@@ -348,11 +447,19 @@
         ]
       },
       "locked": {
+<<<<<<< HEAD
         "lastModified": 1769469829,
         "narHash": "sha256-wFcr32ZqspCxk4+FvIxIL0AZktRs6DuF8oOsLt59YBU=",
         "owner": "mic92",
         "repo": "sops-nix",
         "rev": "c5eebd4eb2e3372fe12a8d70a248a6ee9dd02eff",
+=======
+        "lastModified": 1770526836,
+        "narHash": "sha256-xbvX5Ik+0inJcLJtJ/AajAt7xCk6FOCrm5ogpwwvVDg=",
+        "owner": "mic92",
+        "repo": "sops-nix",
+        "rev": "d6e0e666048a5395d6ea4283143b7c9ac704720d",
+>>>>>>> 04457ebe (chore: moved gtk theme to flake, added folding for nvim, version bumps)
         "type": "github"
       },
       "original": {
@@ -378,15 +485,23 @@
     },
     "vicinae": {
       "inputs": {
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs_3",
         "systems": "systems"
       },
       "locked": {
+<<<<<<< HEAD
         "lastModified": 1769463383,
         "narHash": "sha256-3u/UvkJb2XLcLcxyBskE2c5tv1HsNFhhC69tfStkIfk=",
         "owner": "vicinaehq",
         "repo": "vicinae",
         "rev": "f6222f1e82fe2077ad42f10a6d6837dc61c67fd0",
+=======
+        "lastModified": 1770568129,
+        "narHash": "sha256-ttlXJjnrRVxS18rLNKVWBUlup5F/mK2YILl/NN/wCU8=",
+        "owner": "vicinaehq",
+        "repo": "vicinae",
+        "rev": "eb1a25363a728ca8ba7864e5556af95f7a90310a",
+>>>>>>> 04457ebe (chore: moved gtk theme to flake, added folding for nvim, version bumps)
         "type": "github"
       },
       "original": {
@@ -415,11 +530,19 @@
     "xwayland-satellite-unstable": {
       "flake": false,
       "locked": {
+<<<<<<< HEAD
         "lastModified": 1769356222,
         "narHash": "sha256-Q0BVubV9ZnmLs506EhBSPglM+YJK56wsQNbeecvWPUo=",
         "owner": "Supreeeme",
         "repo": "xwayland-satellite",
         "rev": "cf14278b92b0a91d01587f09b4b00ea655ae24e6",
+=======
+        "lastModified": 1770167989,
+        "narHash": "sha256-rE2WTxKHe3KMG/Zr5YUNeKHkZfWwSFl7yJXrOKnunHg=",
+        "owner": "Supreeeme",
+        "repo": "xwayland-satellite",
+        "rev": "0947c4685f6237d4f8045482ce0c62feab40b6c4",
+>>>>>>> 04457ebe (chore: moved gtk theme to flake, added folding for nvim, version bumps)
         "type": "github"
       },
       "original": {
@@ -436,11 +559,19 @@
         ]
       },
       "locked": {
+<<<<<<< HEAD
         "lastModified": 1769491693,
         "narHash": "sha256-bbqeCDML1yXI6kpy8q8BshKRV1szk3xV0StAbzw4Z+o=",
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
         "rev": "708e0f10aba5de7d0f55883d06fa08aa6a7cd462",
+=======
+        "lastModified": 1770568363,
+        "narHash": "sha256-RJ/C24wN7LyuMmBgvIutA/PqXXceZtJtUCuZSaTjF/4=",
+        "owner": "0xc000022070",
+        "repo": "zen-browser-flake",
+        "rev": "2ada8a826ea88512387a5a17ee96f16369bcdd80",
+>>>>>>> 04457ebe (chore: moved gtk theme to flake, added folding for nvim, version bumps)
         "type": "github"
       },
       "original": {

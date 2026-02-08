@@ -9,6 +9,7 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
       changedelete = { text = "┃" },
       untracked = { text = "┃" },
     },
+    current_line_blame = true,
   },
   config = function(_, opts)
     require("gitsigns").setup(opts)

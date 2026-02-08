@@ -41,6 +41,7 @@
       url = "github:outfoxxed/quickshell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    gruvbox-material-gtk.url = "github:yumo4/gruvbox-material-gtk";
   };
 
   outputs = {

@@ -25,6 +25,32 @@ return {
       opts = {},
     },
     "folke/lazydev.nvim",
+    -- Copilot core
+    {
+      "zbirenbaum/copilot.lua",
+      cmd = "Copilot",
+      event = "InsertEnter",
+      opts = {
+        suggestion = { enabled = false }, -- disable inline ghost text
+        panel = { enabled = false }, -- disable panel UI
+      },
+    },
+
+    -- Copilot as a completion source (nvim-cmp source)
+    {
+      "zbirenbaum/copilot-cmp",
+      dependencies = { "zbirenbaum/copilot.lua" },
+      config = function()
+        require("copilot_cmp").setup()
+      end,
+    },
+
+    -- Bridge nvim-cmp sources into blink
+    {
+      "saghen/blink.compat",
+      version = "*",
+      opts = {},
+    },
   },
 
   version = "v1.*",
@@ -41,12 +67,23 @@ return {
     completion = { documentation = { auto_show = true } },
 
     sources = {
-      default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+      default = { "copilot", "lazydev", "lsp", "path", "snippets", "buffer" },
       providers = {
         lazydev = {
           name = "LazyDev",
           module = "lazydev.integrations.blink",
           score_offset = 100,
+        },
+        -- This is the important part:
+        -- Use blink.compat to wrap the nvim-cmp "copilot" source.
+        copilot = {
+          name = "Copilot",
+          module = "blink.compat.source",
+          score_offset = 50,
+          opts = {
+            -- name of the nvim-cmp source to wrap:
+            name = "copilot",
+          },
         },
       },
     },

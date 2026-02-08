@@ -91,6 +91,9 @@
          margin: 0px;
          padding: 0px;
       }
+      .mainBar#waybar {
+         background: #1d2021;
+      }
       #workspaces button {
          color: #928374;
          padding: 0 2px;

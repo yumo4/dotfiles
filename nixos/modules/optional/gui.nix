@@ -77,7 +77,7 @@ in {
 
   # enables touchpads
   services.libinput.enable = true;
-
+  i18n.inputMethod.enable = false;
   environment.systemPackages = with pkgs; [
     # networkmanagerapplet
     # obs-studio

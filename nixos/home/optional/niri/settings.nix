@@ -53,6 +53,7 @@ in {
           (makeCommand "xwayland-satellite")
           {command = ["gammastep" "-O" "4000"];}
           {command = ["vicinae" "server"];}
+          {command = ["ibus" "exit"];}
 
           (makeCommand "obsidian")
           (makeCommand "zen-beta")
@@ -93,23 +94,34 @@ in {
         mkOutput = {
           width,
           height,
-          refresh,
-          scale ? 1.0,
+          refresh ? null,
+          scale ? null,
           x ? 0,
           y ? 0,
-        }: {
-          mode = {
-            inherit width height refresh;
-          };
-          inherit scale;
+        }: let
+          finalScale =
+            if scale != null
+            then scale
+            else if width == 2560 && height == 1440
+            then 1.15
+            else 1.0;
+        in {
+          mode =
+            {
+              inherit width height;
+            }
+            // (
+              if refresh != null
+              then {inherit refresh;}
+              else {}
+            );
+          scale = finalScale;
           position = {inherit x y;};
         };
 
         lusankyaCommon = mkOutput {
           width = 1920;
           height = 1080;
-          refresh = 60.00;
-          scale = 1.0;
           x = 0;
           y = -1080;
         };
@@ -125,7 +137,6 @@ in {
             width = 2560;
             height = 1440;
             refresh = 359.999;
-            scale = 1.15;
             x = 0;
             y = 0;
           };
@@ -144,8 +155,6 @@ in {
           "HDMI-A-1" = mkOutput {
             width = 2560;
             height = 1440;
-            refresh = 60.00;
-            scale = 1.15;
             x = 0;
             y = -1080;
           };
@@ -225,7 +234,6 @@ in {
         };
       };
       # animations = {
-      #   enable = false;
       # };
     };
   };
