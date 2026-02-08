@@ -30,9 +30,6 @@
     ".ideavimrc".source = ../../../dots/.ideavimrc;
     ".config/rofi".source = ../../../dots/.config/rofi;
     ".config/fastfetch".source = ../../../dots/.config/fastfetch;
-
-    ".themes/Gruvbox-Material-Dark".source = ../../../dots/.themes/Gruvbox-Material-Dark;
-    ".icons/Gruvbox-Material-Dark".source = ../../../dots/.icons/Gruvbox-Material-Dark;
   };
 
   home.sessionVariables = {

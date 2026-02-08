@@ -36,9 +36,6 @@
     ".config/alacritty".source = ../../../dots/.config/alacritty;
     ".config/fastfetch".source = ../../../dots/.config/fastfetch;
     ".config/rofi".source = ../../../dots/.config/rofi;
-
-    ".themes/Gruvbox-Material-Dark".source = ../../../dots/.themes/Gruvbox-Material-Dark;
-    ".icons/Gruvbox-Material-Dark".source = ../../../dots/.icons/Gruvbox-Material-Dark;
   };
 
   home.sessionVariables = {
