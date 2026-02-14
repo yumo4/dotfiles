@@ -29,6 +29,8 @@
     prettierd
     typescript
     typescript-language-server
+    astro-language-server
+    vue-language-server
 
     # nix
     alejandra

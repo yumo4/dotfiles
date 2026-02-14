@@ -54,6 +54,7 @@
       syncthing
       opencode
       vscodium-fhs
+      element-desktop
       # jetbrains.idea-oss
     ])
     ++ (with pkgs-stable; [

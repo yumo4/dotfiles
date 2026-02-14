@@ -4,7 +4,7 @@ return { -- Autoformat
     notify_on_error = false,
     format_on_save = {
       timeout_ms = 500,
-      lsp_fallback = "fallback",
+      lsp_fallback = true,
     },
     formatters_by_ft = {
       lua = { "stylua" },
@@ -12,6 +12,8 @@ return { -- Autoformat
       go = { "gofumpt", "goimports-reviser" },
       javascript = { "prettierd", "prettier" },
       typescript = { "prettierd", "prettier" },
+      astro = { "prettierd", "prettier" },
+      vue = { "prettierd", "prettier" },
       nix = { "alejandra" },
       java = { "google-java-format" },
       latex = { "tex-fmt" },
@@ -40,26 +42,8 @@ return { -- Autoformat
       -- java
       google_java_format = {},
       -- html, css, js/ts, json, yaml, toml
-      prettier = {
-        append_args = function(self, ctx)
-          local ft = vim.bo[ctx.buf].filetype
-          if ft == "json" or ft == "yaml" or ft == "toml" then
-            return { "--tab-width", "2" }
-          else
-            return { "--tab-width", "4" }
-          end
-        end,
-      },
-      prettierd = {
-        append_args = function(self, ctx)
-          local ft = vim.bo[ctx.buf].filetype
-          if ft == "json" or ft == "yaml" or ft == "toml" then
-            return { "--tab-width", "2" }
-          else
-            return { "--tab-width", "4" }
-          end
-        end,
-      },
+      prettier = {},
+      prettierd = {},
       -- latex
       texfmt = {},
       -- php
