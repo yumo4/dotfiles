@@ -14,6 +14,7 @@
     # jetbrains-mono
     just
     neovim
+    mercurial
     # nerd-fonts.jetbrains-mono
     oh-my-posh
     ripgrep
