@@ -135,8 +135,34 @@ return {
     -- TypeScript
     vim.lsp.config.ts_ls = {
       cmd = { "typescript-language-server", "--stdio" },
-      filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+      filetypes = {
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "vue",
+      },
       capabilities = capabilities,
+      root_dir = function(bufnr, on_dir)
+        -- Find project root
+        local fname = vim.api.nvim_buf_get_name(bufnr)
+        local root = vim.fs.find({ "package.json", "tsconfig.json", ".git" }, {
+          path = fname,
+          upward = true,
+        })[1]
+        on_dir(root and vim.fs.dirname(root) or vim.fn.getcwd())
+      end,
+      init_options = {
+        plugins = {
+          {
+            name = "@vue/typescript-plugin",
+            -- Use absolute path resolved from project root
+            location = vim.fn.fnamemodify(vim.fn.findfile("package.json", ".;"), ":h")
+              .. "/node_modules/@vue/language-server",
+            languages = { "vue" },
+          },
+        },
+      },
       settings = {
         typescript = {
           preferences = {
@@ -144,6 +170,14 @@ return {
           },
         },
       },
+    }
+
+    -- Vue Language Server (handles CSS/HTML/template)
+    vim.lsp.config.vue_ls = {
+      cmd = { "vue-language-server", "--stdio" },
+      filetypes = { "vue" },
+      capabilities = capabilities,
+      root_markers = { "package.json", "tsconfig.json", "jsconfig.json", ".git" },
     }
 
     vim.lsp.config.astro = {
@@ -156,16 +190,6 @@ return {
       },
     }
 
-    vim.lsp.config.vue = {
-      cmd = { "vue-language-ls", "--stdio" },
-      filetypes = { "vue" },
-      capabilities = capabilities,
-      root_markers = { "package.json" },
-      -- init_options = {
-      --   typescript = {},
-      -- },
-    }
-
     vim.lsp.config.tailwindcss = {
       cmd = { "tailwind-language-server", "--stdio" },
       filetypes = {
@@ -176,7 +200,6 @@ return {
         "markdown",
         "mdx",
         "php",
-        "slim",
         "twig",
         -- css
         "css",
@@ -195,7 +218,6 @@ return {
         -- mixed
         "vue",
         "svelte",
-        "templ",
       },
       capabilities = {
         workspace = {
@@ -340,40 +362,6 @@ return {
       filetypes = { "sql", "mysql" },
       root_markers = { "config.yml" },
       settings = {},
-    }
-    -- QML
-    vim.lsp.config.qmlls = {
-      cmd = { "qmlls" },
-      filetypes = { "qml" },
-      capabilities = capabilities,
-      settings = {
-        qml = {
-          -- Suppress warnings about unknown imports
-          disableWarnings = false,
-          -- Set import paths for Quickshell and Qt
-          importPaths = {
-            vim.fn.expand("$QML2_IMPORT_PATH"),
-          },
-        },
-      },
-      root_markers = { "shell.qml", ".git" },
-      -- Ignore warnings that are hard to resolve
-      handlers = {
-        ["textDocument/publishDiagnostics"] = function(err, result, ctx, config)
-          if result and result.diagnostics then
-            -- Filter out some common false positives
-            result.diagnostics = vim.tbl_filter(function(diagnostic)
-              local message = diagnostic.message
-              -- Suppress Quickshell import warnings
-              if message:match("Cannot find module") or message:match("Unexpected token") then
-                return false
-              end
-              return true
-            end, result.diagnostics)
-          end
-          return vim.lsp.diagnostic.on_publish_diagnostics(err, result, ctx, config)
-        end,
-      },
     }
 
     -- Lua

@@ -55,6 +55,7 @@
       opencode
       vscodium-fhs
       element-desktop
+      pairdrop
       # jetbrains.idea-oss
     ])
     ++ (with pkgs-stable; [

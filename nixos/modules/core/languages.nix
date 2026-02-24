@@ -31,6 +31,8 @@
     typescript-language-server
     astro-language-server
     vue-language-server
+    oxfmt
+    oxlint
 
     # nix
     alejandra
@@ -69,8 +71,5 @@
 
     # sql
     sqls
-
-    # qml
-    # qt6.full
   ];
 }
