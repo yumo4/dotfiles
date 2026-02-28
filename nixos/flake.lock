@@ -101,13 +101,13 @@
         "rev": "fb4dcf01489817140dd5ce8e6f9ef5f1ca39f43b",
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@github.com/yumo4/nix-secrets.git"
+        "url": "ssh://git@codeberg.org/yumo/nix-secrets.git"
       },
       "original": {
         "ref": "main",
         "shallow": true,
         "type": "git",
-        "url": "ssh://git@github.com/yumo4/nix-secrets.git"
+        "url": "ssh://git@codeberg.org/yumo/nix-secrets.git"
       }
     },
     "niri": {

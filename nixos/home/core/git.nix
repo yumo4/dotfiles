@@ -17,7 +17,8 @@
         };
       }
       {
-        condition = "hasconfig:remote.*.url:git@codeberg.org:*/**";
+        # condition = "hasconfig:remote.*.url:git@codeberg.org:*/**";
+        condition = "hasconfig:remote.*.url:ssh://git@codeberg.org/**";
         contents = {
           user = {
             name = "yumo";

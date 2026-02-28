@@ -19,7 +19,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     mysecrets = {
-      url = "git+ssh://git@github.com/yumo4/nix-secrets.git?ref=main&shallow=1";
+      url = "git+ssh://git@codeberg.org/yumo/nix-secrets.git?ref=main&shallow=1";
       flake = false;
     };
     zen-browser = {
