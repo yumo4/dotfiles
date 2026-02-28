@@ -12,7 +12,6 @@
         "*" = {
           addKeysToAgent = "yes";
         };
-        # NOTE: this "forces" git to use a specific ssh key for GitHub
         "github" = {
           host = "github.com";
           identitiesOnly = true;
@@ -22,9 +21,15 @@
             # "~/.ssh/id_someotherid"
           ];
         };
+        "codeberg" = {
+          host = "codeberg.org";
+          identitiesOnly = true;
+          identityFile = [
+            "~/.ssh/id_${meta.hostname}"
+          ];
+        };
       }
       // (
-        # NOTE: Only work machines get GitLab access
         if meta.isWork
         then {
           "work" = {
@@ -33,8 +38,6 @@
             addKeysToAgent = "yes";
             identityFile = [
               "~/.ssh/id_${meta.hostname}"
-              # NOTE: to add other keys (such as yubikeys) (order matters) do this:
-              # "~/.ssh/id_someotherid"
             ];
           };
         }

@@ -6,17 +6,36 @@
 }: {
   programs.git = {
     enable = true;
+    includes = [
+      {
+        condition = "hasconfig:remote.*.url:git@github.com:*/**";
+        contents = {
+          user = {
+            name = "yumo4";
+            email = "maximilian.troe@gmail.com";
+          };
+        };
+      }
+      {
+        condition = "hasconfig:remote.*.url:git@codeberg.org:*/**";
+        contents = {
+          user = {
+            name = "yumo";
+            email = "maximilian.troester@protonmail.com";
+          };
+        };
+      }
+      {
+        condition = "hasconfig:remote.*.url:git@gitlab.fly-internal.de:*/**";
+        contents = {
+          user = {
+            name = "Maximilian Troester";
+            email = "maximilian.troester@flyeralarm.com";
+          };
+        };
+      }
+    ];
     settings = {
-      user = {
-        name =
-          if meta.isWork
-          then "Maximilian Troester"
-          else "yumo4";
-        email =
-          if meta.isWork
-          then "maximilian.troester@flyeralarm.com"
-          else "maximilian.troe@gmail.com";
-      };
       init = {
         defaultBranch = "main";
       };
